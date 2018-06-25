@@ -1,0 +1,19 @@
+{
+  "name": "nodesql",
+  "version": "1.0.0",
+  "description": "node app with sql as db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hk",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "db": "^1.0.7",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mssql": "^4.1.0",
+    "mysql": "^2.15.0"
+  }
+}

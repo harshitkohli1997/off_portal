@@ -1,0 +1,68 @@
+.header{
+    margin-left: 23%;
+
+}
+
+.header img {
+  float: left;
+  width: 120px;
+  height: 120px;
+  background: #555;
+}
+
+.header h4 {
+  position: relative;
+  top: 15px;
+  left: 10px;
+  color: blue
+}
+h6{
+    position: relative;
+    top: 5px;
+    left: 10px; 
+    color: blue;
+
+} 
+
+input {
+    margin: 30px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+    
+}
+
+th, td {
+    padding: 1px;
+}
+th {
+    text-align: left;
+}
+
+table {
+    border-spacing: 5px;
+}
+h5 {
+    text-align: center;
+    text-decoration: underline;
+    
+}
+
+.abc{
+    text-align: center;
+    color: black;
+    margin-bottom: 8%;
+    
+}
+
+.des{
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+input{
+    background-color: aliceblue
+}
