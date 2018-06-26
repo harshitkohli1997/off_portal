@@ -1,8 +1,12 @@
 <div class="indentform">
 <h5>Purchase Indent</h5>
-<h6 class="abc">INDENT NO: <b>41/1TD/2017-18/JAN</b> </h6>
+<br>
+<br>
+
 <form action="/" method="post">
-<p class="des">Name & designation of the Indenter:<input style="margin-bottom: 0% ; width:250px;" type="text"  name = "name">
+
+<p ><b> INDENT NO.<input style="margin-bottom: 0% ; size:35; padding-right: 20rem; margin-right:220px;width:15px;" type="text"  name = "indentno">  DATE.<input style="margin-bottom: 0% ;  width:250px; float:right" type="date"  name = "indentno"></b></p>
+<p >Name & designation of the Indenter:<input style="margin-bottom: 0% ; width:200px;" type="text"  name = "name">
 <br>
 Division: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "division"></p>
  
@@ -10,35 +14,91 @@ Division: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "d
 <br>
 <br>
 {{!-- <h4 class="center"><b>Budget Head-...P-50</b></h4> --}}
-<table class="table table-hover">
+<table id = "myTable"class="table table-hover">
     <thead>
+      <col width = "80">
+      <col width = "550">
+      <col width = "80">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Sr.no</th>
+        <th>Name of Item/Material</th>
+        <th>Qty</th>
+        <th>Estimated cost(`)</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><input style="margin-bottom: 0%" type="text"  name = "one"></td>
+        <td></td>
         <td><input style="margin-bottom: 0%" type="text"  name = "two"></td>
         <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
-      </tr>
-      {{!-- <tr>
-          <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-      </tr>
-      <tr>
-           <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "objname"></td>
-      </tr> --}}
+       <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       </tr>
+       <tr>
+       <td></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "two"></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       </tr>
+       <tr>
+       <td></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "two"></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       </tr>
+       <tr>
+       <td></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "two"></td>
+        <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       <td><input style="margin-bottom: 0%" type="text"  name = "three"></td>
+       </tr>
     </tbody>
   </table>
-  <input type="submit" value = "Save" class="btn">
-  </form>
  
-  <p>Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">in India. We shall be held responsible in case the certificate is found to be incorrect.
-  </p>
+ <ol>
+  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">in India. We shall be held responsible in case the certificate is found to be incorrect.
+  </p></li>
+  <br>
+   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No .  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">a sponsored / In house project and the deadline for delivery is <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">The consequence if the item is not procured within the dead line is <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">
+  </p></li>
+  <br>
+   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">
+  </p></li>
+  <br>
+   <li><p>  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">The delivery of the item is required by.
+  </p></li>
+  <br>
+   <li><p >  The availability of funds: <input type="radio" style="margin-left:10px;" name="yesorno" id="yes" value="yes">
+        <label for="yes"><b>yes</label> <input  type="radio" name="yesorno" id="no" value="no">
+        <label for="no"><b>no</label><br>
+        Name od Project :  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">
+        <br>Budget Provision :  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">
+        <br>
+        <br>
+       Whether necessary fund is available to process this item<br>(This should commensurate with the delivery Schedule)<br> PME/Accounts  <input id = "shiftright"type="radio" name="yesorno" id="yes" value="yes">
+        <label for="yes"><b>yes</label> <input  type="radio" name="yesorno" id="no" value="no">
+        <label for="no"><b>no</label><br>
+  <br>
+   
+      <li><p>  The installation Requirement like area , power , civil works etc. are ready ?  <input id = "shiftright"type="radio" name="yesorno" id="yes" value="yes">
+        <label for="yes"><b>yes</label> <input  type="radio" name="yesorno" id="no" value="no">
+        <label for="no"><b>no</label><br>
+  </p></li>
+      
+  
+   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.<input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname"> <br> 2. <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname"> <br>3.<input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">
+  </p></li>
+  <br>
+   <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">in India. We shall be held responsible in case the certificate is found to be incorrect.
+  </p></li>
+  <br>
+   <li><p>  The installation Requirement like area , power , civil works etc. are ready ?  
+  </p></li>
+  <br>
+   <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "objname">in India. We shall be held responsible in case the certificate is found to be incorrect.
+  </p></li>
+  <br>
+  
+</ol>
+   <input type="submit" value = "Save" class="btn">
+  </form>
   </div>
