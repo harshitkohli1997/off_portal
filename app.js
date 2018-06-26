@@ -22,6 +22,7 @@ db.connect((err) => {
     }
     console.log('connected');
 });
+module.exports = db;
 //set static folder
 app.use(express.static(path.join(__dirname,'public')));
 

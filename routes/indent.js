@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const db = require('../app')
 router.get('/', (req,res) => {
     res.render('form');
 });
@@ -33,7 +33,7 @@ router.post('/', (req,res) => {
     
         let material = {
             indentno:req.body.indentno,
-            snoone:req.body.one1,
+            sno:req.body.one1,
             materialname:req.body.two1,
             qty:req.body.three1,
             estimatedcost:req.body.four1
@@ -50,5 +50,6 @@ router.post('/', (req,res) => {
     })
  res.send('done');
 })
+
 
 module.exports = router;
