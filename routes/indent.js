@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../app')
-const mysql = require('mysql');
+const db = require('../database/db');
+
+
 router.get('/', (req,res) => {
     res.render('form');
 });
@@ -44,24 +45,28 @@ router.post('/', (req,res) => {
     let query1 = db.query(sql1,indent,(err,result) => {
         if(err) throw err;
         console.log(result);
-    });
-    let query2 = db.query(sql2,material,(err,result) => {
+    })
+    db.query(sql2,material,(err,result) => {
         if(err) throw err;
         console.log(result);
-    });
- res.send('done');
+       
+    })
+
+    res.redirect(`/abc/${req.body.indentno}`);
+        
+
+ 
 });
 
-router.get('/abc', (req,res) => {
-    let sql = 'SELECT * FROM indent'
-   let abc =  db.query(sql,(err,result) => {
+router.get('/abc/:id', (req,res) => {
+    let sql = 'SELECT * FROM indent Where indentno =?';
+    db.query(sql,[req.params.id],(err,result) => {
         if(err) throw err;
-        res.render('indentview', {
-            result:result
-        })
+        console.log(result);
+        res.send(result);
     })
-    
 })
+
 
 
 module.exports = router;
