@@ -64,9 +64,17 @@ router.get('/abc/:id', (req,res) => {
         if(err) throw err;
         console.log(result);
         res.send(result);
-    })
-})
+    });
+});
 
+router.get('/dashboard', (req,res) => {
+    db.query('Select * from indent',(err,result) => {
+        if(err) throw err;
+        res.render('dashboard', {
+            result:result
+        })
+    });
+})
 
 
 module.exports = router;

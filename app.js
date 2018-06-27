@@ -25,61 +25,15 @@ app.engine('handlebars', exphbs({
 
 
 
+// Global variables
+app.use(function(req, res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    next();
+  });
 
-
-app.get('/show', (req,res) => {
-    let sql = 'SELECT * FROM info';
-    db.query(sql,(err,result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send(result);
-    })
-})
-// app.post('/', (req,res) => {
-//     let indent = {
-//         indentno:req.body.indentno,
-//         date:req.body.date,
-//         name:req.body.name,
-//         division:req.body.division,
-//         innernm1:req.body.innernm1,
-//         innernm2:req.body.innernm2,
-//         projectno:req.body.projectno,
-//         deadline:req.body.deadline,
-//         consequence:req.body.consequence,
-//         equipdetails:req.body.equipdetails,
-//         delreqnm:req.body.delreqnm,
-//         fundavail:req.body.fundavail,
-//         projectnm:req.body.projectnm,
-//         budget:req.body.budget,
-//         necfundavail:req.body.fundavail,
-//         installreq:req.body.installreq,
-//         vend1:req.body.vend1,
-//         vend2:req.body.vend2,
-//         vend3:req.body.vend3,
-//         inspectionunder:req.body.inspectionunder,
-//         certifiedavail:req.body.certifiedavail
-//     }
-
-    
-//         let material = {
-//             indentno:req.body.indentno,
-//             sno:req.body.one1,
-//             materialname:req.body.two1,
-//             qty:req.body.three1,
-//             estimatedcost:req.body.four1
-//         };
-//     let sql1 = 'INSERT INTO indent SET ?';
-//     let sql2 = 'INSERT INTO material SET ?';
-//     let query1 = db.query(sql1,indent,(err,result) => {
-//         if(err) throw err;
-//         console.log(result);
-//     })
-//     let query2 = db.query(sql2,material,(err,result) => {
-//         if(err) throw err;
-//         console.log(result);
-//     })
-//  res.send('done');
-// })
 
 app.use('/',indent);
 app.listen(3000, () => {
