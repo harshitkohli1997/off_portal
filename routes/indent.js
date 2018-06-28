@@ -52,8 +52,6 @@ router.post('/', (req,res) => {
        
     })
 
-    res.redirect(`/abc/${req.body.indentno}`);
-        
 
  
 });
@@ -70,7 +68,7 @@ router.get('/abc/:id', (req,res) => {
 router.get('/dashboard', (req,res) => {
     db.query('Select * from indent',(err,result) => {
         if(err) throw err;
-        res.render('dashboard', {
+        res.render('user/dashboard', {
             result:result
         })
     });
