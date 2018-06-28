@@ -1,0 +1,44 @@
+<div class="row">
+<div class="header">
+  <img src="../../images/logo.png" alt="logo" />
+  <h4><b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4></b> 
+  <h6><b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH<b></h6>
+  <h6><b>(विज्ञान एवं प्रौद्योगिकी मंत्रालय, भारत सरकार)<b></h6>
+  <h6><b>COUNCIL OF SCIENCE & TECHNOLOGY, GOVT. OF INDIA</b></h6>
+</div>
+</div>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+       {{!-- <img class="logo" src="/pics/login_logo.jpg"> --}}
+      <h3 class="text-center">Account Register</h3>
+      <form action="/user/register" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" value="{{name}}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="emailid" class="form-control" value="{{email}}" required>
+        </div>
+         <div class="form-group">
+          <label for="name">Contact_no</label>
+          <input type="number" class="form-control" name="contact_no" value="{{contact_no}}" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" value="{{password}}" required>
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input type="password" name="password2" class="form-control" value="{{password2}}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
