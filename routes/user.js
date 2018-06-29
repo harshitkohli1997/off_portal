@@ -4,6 +4,7 @@ const db = require('../database/db');
 const passport = require('passport');
 
 
+
 // Load User Model
 // // require('../models/User');
 // const User = mongoose.model('users');
@@ -30,11 +31,15 @@ router.post('/login', (req, res, next) => {
 
 
 // Register Form POST
-router.post('/register', passport.authenticate('local-signup', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-}));
+router.post('/register', (req,res) => {
+  let user = {
+    name:req.body.name,
+    emailid:req.body.emailid,
+    contact_no:req.body.contact_no,
+    password:req.body.password
+  }
+  
+});
 
 
 // Logout User

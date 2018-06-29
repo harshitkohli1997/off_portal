@@ -51,18 +51,20 @@ router.post('/', (req,res) => {
         console.log(result);
        
     })
+    res.redirect('/')
 
 
  
 });
 
 router.get('/abc/:id', (req,res) => {
-    let sql = 'SELECT * FROM indent Where indentno =?';
+    let sql = 'SELECT * FROM indent WHERE indentno =?';
+  
     db.query(sql,[req.params.id],(err,result) => {
         if(err) throw err;
-        console.log(result);
-        res.send(result);
+       res.send(result);
     });
+  
 });
 
 router.get('/dashboard', (req,res) => {
