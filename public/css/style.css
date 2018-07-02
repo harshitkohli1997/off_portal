@@ -1,6 +1,8 @@
+nav {
+    background-color: blue;
+}
 .header{
-    margin-left: 23%;
-
+    margin-left: 20%;
 }
 
 
@@ -22,6 +24,10 @@ table
   height: 120px;
   
 }
+.logo{
+    width:130px;
+    margin:auto;
+  }
 
 .header h4 {
   position: relative;

@@ -4,7 +4,7 @@ const db = require('../database/db');
 
 
 router.get('/', (req,res) => {
-    res.render('form');
+    res.render('index');
 });
 
 router.post('/', (req,res) => {
