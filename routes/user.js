@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 
 
@@ -32,14 +33,40 @@ router.post('/login', (req, res, next) => {
 
 // Register Form POST
 router.post('/register', (req,res) => {
-  let user = {
+  const user = {
     name:req.body.name,
     emailid:req.body.emailid,
     contact_no:req.body.contact_no,
     password:req.body.password
-  }
+    
+  };
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if(err) throw err;
+      const newuser = {
+        name:req.body.name,
+        emailid:req.body.emailid,
+        contact_no:req.body.contact_no,
+        password: hash
+        
+      };
+      let sql1 = 'INSERT INTO newuser SET ?';
+   
+      let query1 = db.query(sql1,newuser,(err,result) => {
+          if(err) throw err;
+          console.log(result);
+          res.send('saved');
+      });
+    });
   
-});
+      
+    })
+  })
+
+  
+  
+   
+ 
 
 
 // Logout User

@@ -26,7 +26,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
+        dbconfig.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
             done(err, rows[0]);
         });
     });
@@ -37,41 +37,41 @@ module.exports = function(passport) {
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
 
-    passport.use(
-        'local-signup',
-        new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-            usernameField : 'name',
-            passwordField : 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
-        },
-        function(req, name, password, done) {
-            // find a user whose email is the same as the forms email
-            // we are checking to see if the user trying to login already exists
-            dbconfig.query("SELECT * FROM users WHERE name = ?",[name], function(err, rows) {
-                if (err)
-                    return done(err);
-                if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'That name is already taken.'));
-                } else {
-                    // if there is no user with that username
-                    // create the user
-                    var newUserMysql = {
-                        name: req.body.name,
-                        password: bcrypt.hashSync(req.body.password, null, null)  // use the generateHash function in our user model
-                    };
+    // passport.use(
+    //     'local-signup',
+    //     new LocalStrategy({
+    //         // by default, local strategy uses username and password, we will override with email
+    //         usernameField : 'name',
+    //         passwordField : 'password',
+    //         passReqToCallback : true // allows us to pass back the entire request to the callback
+    //     },
+    //     function(req, name, password, done) {
+    //         // find a user whose email is the same as the forms email
+    //         // we are checking to see if the user trying to login already exists
+    //         dbconfig.query("SELECT * FROM users WHERE name = ?",[name], function(err, rows) {
+    //             if (err)
+    //                 return done(err);
+    //             if (rows.length) {
+    //                 return done(null, false, req.flash('signupMessage', 'That name is already taken.'));
+    //             } else {
+    //                 // if there is no user with that username
+    //                 // create the user
+    //                 var newUserMysql = {
+    //                     name: req.body.name,
+    //                     password: bcrypt.hashSync(req.body.password, null, null)  // use the generateHash function in our user model
+    //                 };
 
-                    var insertQuery = "INSERT INTO users ( name,emailid,contact_no,password ) values (?,?)";
+    //                 var insertQuery = "INSERT INTO users ( name,emailid,contact_no,password ) values (?,?)";
 
-                    dbconfig.query(insertQuery,[newUserMysql.name, newUserMysql.password],function(err, rows) {
-                        newUserMysql.id = rows.insertId;
+    //                 dbconfig.query(insertQuery,[newUserMysql.name, newUserMysql.password],function(err, rows) {
+    //                     newUserMysql.id = rows.insertId;
 
-                        return done(null, newUserMysql);
-                    });
-                }
-            });
-        })
-    );
+    //                     return done(null, newUserMysql);
+    //                 });
+    //             }
+    //         });
+    //     })
+    // );
 
     // =========================================================================
     // LOCAL LOGIN =============================================================
@@ -88,7 +88,7 @@ module.exports = function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, name, password, done) { // callback with email and password from our form
-            connection.query("SELECT * FROM users WHERE name = ?",[name], function(err, rows){
+            dbconfig.query("SELECT * FROM newuser WHERE name = ?",[name], function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
