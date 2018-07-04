@@ -6,7 +6,9 @@ const db = require('../database/db');
 router.get('/', (req,res) => {
     res.render('index');
 });
-
+router.get('/hk', (req,res) => {
+    res.render('form')
+})
 router.post('/', (req,res) => {
     let indent = {
         indentno:req.body.indentno,
@@ -58,12 +60,17 @@ router.post('/', (req,res) => {
 });
 
 router.get('/abc/:id', (req,res) => {
-    let sql = 'SELECT * FROM indent WHERE indentno =?';
+    let sql = 'SELECT * FROM indent i INNER JOIN material m ON i.indentno = m.indentno WHERE i.indentno =?';
+   
   
-    db.query(sql,[req.params.id],(err,result) => {
+    db.query(sql,[req.params.id],(err,rows) => {
         if(err) throw err;
-       res.send(result);
-    });
+       console.log(rows)
+        res.render('indentview', {
+            rows:rows
+        })
+    })
+    
   
 });
 
@@ -71,8 +78,11 @@ router.get('/dashboard', (req,res) => {
     db.query('Select * from indent',(err,result) => {
         if(err) throw err;
         res.render('user/dashboard', {
-            result:result
+            result:result,
+            user:req.user[0]
+            
         })
+    
     });
 })
 

@@ -1,8 +1,13 @@
+.row{
+margin-bottom: 0%;
+}
 nav {
-    background-color: blue;
+    height: 50px;
+    line-height: 45px;
+    background-color: #0033CC;
 }
 .header{
-    margin-left: 20%;
+    margin-left: 0%;
 }
 
 
@@ -22,6 +27,8 @@ table
   float: left;
   width: 120px;
   height: 120px;
+  margin-left: 2%;
+  margin-top: 2%;
   
 }
 .logo{

@@ -1,3 +1,10 @@
+{{!-- <h1>welcome {{user.name}}</h1>
 {{#each result}}
 <a href="/abc/{{indentno}}">{{division}}</a><br>
-{{/each}}
+{{/each}} --}}
+<h1></h1>
+{{#if user}}
+<h1>hello {{user.name}}</h1>
+{{else}}
+<h1>still not working</h1>
+{{/if}}
