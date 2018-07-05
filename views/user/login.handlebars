@@ -1,17 +1,24 @@
 <div class="row">
   <div class="col-md-6 mx-auto">
-    <div class="card card-body">
-      <h3 class="text-center">Account Login</h3>
+    <div class="card login card-body">
+      <h3 class="text-center" style="color:black ;margin-left:21%;" ><b> Account Login</b></h3>
+      
+      <img src="/images/login_image.png" width="400" style="margin-left:28%;">
       <form method="post" action="/user/login">
-        <div class="form-group">
-          <label for="email">NAME</label>
-          <input type="text" name="name" class="form-control" width="200"required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+       
+          <label for="email" style="color:black;">NAME:</label>
+          <input style="width:400px; margin-left:5%; color:black; background-color:white;" type="text" name="name" class="form-control"   required>
+       
+       
+       <br>
+       <br>
+          <label style="color:black;"for="password">PASSWORD:</label>
+          <input  style="width:400px;color:black; background-color:white;" type="password" name="password" class="form-control" required>
+               <br>
+               <br>
+               <button  style="margin-left:19%;" type="submit" class="btn btn-color">Submit</button>
+               <br>
+               <a style="margin-left:25%;" href="/user/register"><u>Not a member? Register Here</u></a>
       </form>
     </div>
   </div>
