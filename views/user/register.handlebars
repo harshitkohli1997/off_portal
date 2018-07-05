@@ -2,32 +2,33 @@
 
 <div class="row">
   <div class="col-md-6 mx-auto">
-    <div class="card card-body">
+    <div class="card register card-body">
        {{!-- <img class="logo" src="/pics/login_logo.jpg"> --}}
-      <h3 class="text-center">Account Register</h3>
+      <h3 class="text-center-register" style ="color:black"><b>Account Register</b></h3>
+      <img style="margin-left:27%;" src="/images/register.png">
       <form action="/user/register" method="post">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" name="name" value="{{name}}" required>
-        </div>
+          <label for="name" style= "color:black; margin-left:10px;">Name</label>
+          <input style="width:400px; margin-left:11%; color:black; background-color:white;" type="text" class="form-control" name="name" value="{{name}}" required>
+        </div><br>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" name="emailid" class="form-control" value="{{email}}" required>
-        </div>
+          <label for="email" style= "color:black; margin-left:10px;">Email</label>
+          <input style="width:400px; margin-left:11%; color:black; background-color:white;" type="text" name="emailid" class="form-control" value="{{email}}" required>
+        </div><br>
          <div class="form-group">
-          <label for="name">Contact_no</label>
-          <input type="number" class="form-control" name="contact_no" value="{{contact_no}}" required>
-        </div>
+          <label for="name" style= "color:black; margin-left:10px;">Contact_no</label>
+          <input style="width:400px; margin-left:5%; color:black; background-color:white;" type="number" class="form-control" name="contact_no" value="{{contact_no}}" required>
+        </div><br>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" class="form-control" value="{{password}}" required>
-        </div>
+          <label for="password" style= "color:black; margin-left:10px;">Password</label>
+          <input style="width:400px; margin-left:6%; color:black; background-color:white;" type="password" name="password" class="form-control" value="{{password}}" required>
+        </div><br>
         <div class="form-group">
-          <label for="password2">Confirm Password</label>
-          <input type="password" name="password2" class="form-control" value="{{password2}}" required>
+          <label for="password2" style= "color:black; ">Confirm Password</label>
+          <input style="width:400px; ; color:black; background-color:white;" type="password" name="password2" class="form-control" value="{{password2}}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button style="margin-left:20%;" type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>

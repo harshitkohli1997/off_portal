@@ -202,11 +202,20 @@ input{
       margin-left: 24%;
       width: 500px;
       height: 550px;
-      background-color:  #FFECFE
+      background-color:  #FFECFE;
   }
+  .register{
+      width: 520px;
+      height: 750px;
+      background-color:  #FFECFE;
+      margin-left: 24%;
+    }
   .text-center{
       margin-left: 18%;
   }
+  .text-center-register{
+    margin-left: 15%;
+}
   .btn-color{
       width: 300px;
       height: 40px;
