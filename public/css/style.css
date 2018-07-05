@@ -1,7 +1,15 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
 .row{
 margin-bottom: 0%;
 padding-bottom: 10px;
-background-color:#D3D3D3
+
 
 }
 nav {
@@ -97,4 +105,18 @@ h5 {
 
 input{
     background-color: aliceblue
+}
+.page-footer {
+    background-color: #555555;
+}
+.btn{
+    width:25rem;
+    background-color: #00ff73;
+    margin-right: 5%;
+    height: 50px;
+}
+.card {
+    width: 60rem;
+    margin-left: 5%;
+    background-color: #999999
 }

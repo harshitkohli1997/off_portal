@@ -2,13 +2,21 @@
    <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo center">INDENT FORM</a>
+      {{#if user}}
+<ul class="right hide-on-med-and-down">
+        <li><a href="/user/logout">Logout</a></li>
+        <li>Welcome {{user.name}}</a></li>
+        </ul>
+      {{else}}
       <ul class="right hide-on-med-and-down">
         <li><a href="/user/login">Login</a></li>
         <li><a href="/user/register">Register</a></li>
         </ul>
+          {{/if}}
           <ul class="left hide-on-med-and-down">
           <li class="active"><a href="/">Home</a></li>
       </ul>
+      
     </div>
   </nav
   </div>
