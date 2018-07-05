@@ -1,15 +1,20 @@
 
-  
-
+ 
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  {{#if user}}
+    <a class="right" href="/user/logout"><i class="fa fa-sign-out space" aria-hidden="true"></i> Logout</a>
+  <a  class="right" href="/indentform"><i class="fa fa-plus-circle space" aria-hidden="true"></i>  Create Indent Form</a>
+{{else}}
+  <a class="left" href="/" ><i class="fa fa-home space" aria-hidden="true"></i> Home</a>
+  <a class="right" href="/user/login"><i class="fa fa-sign-out space" aria-hidden="true"></i> Login</a>
+  <a  class="right" href="/user/register"><i class="fa fa-user-plus space" aria-hidden="true"></i>  Register</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
+{{/if}}
 </div>
+
+
 <script>
   function myFunction() {
     var x = document.getElementById("myTopnav");

@@ -6,7 +6,7 @@ const db = require('../database/db');
 router.get('/', (req,res) => {
     res.render('index');
 });
-router.get('/hk', (req,res) => {
+router.get('/indentform', (req,res) => {
     res.render('form')
 })
 router.post('/', (req,res) => {

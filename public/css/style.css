@@ -13,8 +13,7 @@ padding-bottom: 10px;
 
 }
 nav {
-    height: 50px;
-    line-height: 45px;
+    
     background-color: #555555;
 }
 .header{
@@ -116,7 +115,8 @@ input{
     height: 50px;
 }
 .card {
-   box-shadow: 5px 5px;
+   box-shadow: 3px 3px 3px 3px;
+   color: #999999
   
 }
 .head {
@@ -134,7 +134,7 @@ input{
 }
 
 .topnav {
-    background-color: #333;
+    background-color: rgb(61, 54, 54);
     overflow: hidden;
 }
 
@@ -164,6 +164,10 @@ input{
     background-color: #999999;
     color: white;
 }
+.right {
+    float: right;
+    margin-right: 2%;
+}
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
@@ -190,4 +194,7 @@ input{
       display: block;
       text-align: left;
     }
+  }
+  .left{
+      margin-left: 3%;
   }
