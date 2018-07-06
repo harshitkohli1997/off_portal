@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 
+const { ensureAuthenticated } = require('../helpers/ensureauth')
+
 
 router.get('/', (req,res) => {
     res.render('index');
 });
-router.get('/indentform', (req,res) => {
+router.get('/indentform', ensureAuthenticated,(req,res) => {
     res.render('form')
 })
 router.post('/', (req,res) => {
@@ -60,22 +62,20 @@ router.post('/', (req,res) => {
  
 });
 
-router.get('/abc/:id', (req,res) => {
-    let sql = 'SELECT * FROM indent i INNER JOIN material m ON i.indentno = m.indentno WHERE i.indentno =?';
+router.get('/indent/:id',ensureAuthenticated ,(req,res) => {
+    let sql = 'SELECT * FROM indent WHERE indentno =?';
    
   
     db.query(sql,[req.params.id],(err,rows) => {
         if(err) throw err;
        console.log(rows)
-        res.render('indentview', {
-            rows:rows
-        })
+        res.send(rows)
     })
     
   
 });
 
-router.get('/dashboard', (req,res) => {
+router.get('/dashboard', ensureAuthenticated,(req,res) => {
     db.query('Select * from indent where userid = ?',[req.user[0].id],(err,result) => {
         if(err) throw err;
         res.render('user/dashboard', {
@@ -85,6 +85,5 @@ router.get('/dashboard', (req,res) => {
         })
     });
 })
-
 
 module.exports = router;

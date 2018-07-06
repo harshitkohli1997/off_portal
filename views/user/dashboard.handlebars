@@ -1,9 +1,51 @@
-{{#if user}}
-<h1>hello {{user.emailid}}</h1>
-<h1>hello {{user.name}}</h1>
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: blue;
+    color: white;
+}
+</style>
+</head>
+<br><br>
+
+<table id="customers">
+  
+  {{#if result}}
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
 {{#each result}}
-<h1>{{name}}</h1>
-{{/each}}
-{{else}}
-<h1>still not working</h1>
-{{/if}}
+  <tr>
+    <td>{{indentno}}</td>
+    <td>{{division}}</td>
+    <td><a href="/indent/{{indentno}}">view</a></td>
+  </tr>
+  {{/each}}
+  {{else}}
+ 
+  you have not created any indent form yet. :)
+  {{/if}}
+ 
+</table>
+<br><br>
+<br><br>
+
