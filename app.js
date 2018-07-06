@@ -23,9 +23,13 @@ require('./config/passport')(passport);
 //set static folder
 app.use(express.static(path.join(__dirname,'public')));
 
-//body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
+
+
 // view engine setup
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -34,23 +38,24 @@ app.engine('handlebars', exphbs({
 
   // Express session midleware
   app.use(cookieParser());
+  //body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
   app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false
   }));
   
+  app.use(passport.initialize()); 
+  app.use(passport.session());
+
   app.use(flash());
 
  
-  app.use(passport.initialize());
-  app.use(passport.session());
+  
   
 // Global variables
-app.use((req, res, next) => {
-  res.locals.user = req.user || null;
-  next();
-});
 
 
 

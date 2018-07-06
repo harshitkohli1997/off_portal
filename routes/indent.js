@@ -31,7 +31,8 @@ router.post('/', (req,res) => {
         vend2:req.body.vend2,
         vend3:req.body.vend3,
         inspectionunder:req.body.inspectionunder,
-        certifiedavail:req.body.certifiedavail
+        certifiedavail:req.body.certifiedavail,
+        userid : req.user[0].id
     }
 
     
@@ -75,14 +76,13 @@ router.get('/abc/:id', (req,res) => {
 });
 
 router.get('/dashboard', (req,res) => {
-    db.query('Select * from indent',(err,result) => {
+    db.query('Select * from indent where userid = ?',[req.user[0].id],(err,result) => {
         if(err) throw err;
         res.render('user/dashboard', {
             result:result,
             user:req.user[0]
             
         })
-    
     });
 })
 

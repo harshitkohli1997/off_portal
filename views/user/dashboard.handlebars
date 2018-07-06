@@ -1,5 +1,9 @@
 {{#if user}}
+<h1>hello {{user.emailid}}</h1>
 <h1>hello {{user.name}}</h1>
+{{#each result}}
+<h1>{{name}}</h1>
+{{/each}}
 {{else}}
 <h1>still not working</h1>
 {{/if}}
