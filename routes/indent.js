@@ -56,7 +56,7 @@ router.post('/', (req,res) => {
         console.log(result);
        
     })
-    res.redirect('/')
+    res.redirect('/user/dashboard')
 
 
  
