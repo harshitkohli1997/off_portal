@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <META Http-Equiv="Cache-Control" Content="no-cache">
+<META Http-Equiv="Pragma" Content="no-cache">
+<META Http-Equiv="Expires" Content="0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -45,6 +48,16 @@
         plugins:'wysiwygarea,toolbar,basicstyles,link'
       });
     </script> --}}
+    <script>
+    $().ready(function() {
+    if(document.referrer === 'http://localhost:3000/dashboard'){ 
+        history.pushState(null, null, '/');
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, 'login');
+        });
+    }
+})
+</script>
 </body>
 
 </html>

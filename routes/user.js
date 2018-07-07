@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs');
 
 // User Login Route
 router.get('/login', (req, res) => {
-  res.render('user/login');
+  res.render('user/login')
 });
 
 // User Register Route
@@ -58,7 +58,7 @@ router.post('/register', (req,res) => {
       let query1 = db.query(sql1,newuser,(err,result) => {
           if(err) throw err;
           console.log(result);
-          res.send('saved');
+          res.redirect('/user/login');
       });
     });
   
@@ -74,9 +74,13 @@ router.post('/register', (req,res) => {
 
 // Logout User
 router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/user/login');
+  // res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  req.session.destroy((err) => {
+  res.redirect('/user/login');  
+  })
+
+  // req.flash('success_msg', 'You are logged out');
+  
 });
 
 module.exports = router;

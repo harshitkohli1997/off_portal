@@ -9,7 +9,7 @@ router.get('/', (req,res) => {
     res.render('index');
 });
 router.get('/indentform', ensureAuthenticated,(req,res) => {
-    res.render('form')
+    res.render('form');
 })
 router.post('/', (req,res) => {
     let indent = {
@@ -56,7 +56,7 @@ router.post('/', (req,res) => {
         console.log(result);
        
     })
-    res.redirect('/user/dashboard')
+    res.redirect('/dashboard');
 
 
  
