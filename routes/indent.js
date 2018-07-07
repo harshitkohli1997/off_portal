@@ -6,11 +6,20 @@ const { ensureAuthenticated } = require('../helpers/ensureauth')
 
 
 router.get('/', (req,res) => {
-    res.render('index');
+    if(req.user){
+    db.query('Select id from newuser where id = ?',[req.user[0].id],(err,result) => {
+        if(err) throw err;
+        res.render('index', {
+            user:req.user[0]
+            
+        })
+    });
+}
+else {
+    res.render('index')
+}
 });
-router.get('/indentform', ensureAuthenticated,(req,res) => {
-    res.render('form');
-})
+
 router.post('/', (req,res) => {
     let indent = {
         indentno:req.body.indentno,
@@ -80,6 +89,15 @@ router.get('/dashboard', ensureAuthenticated,(req,res) => {
         if(err) throw err;
         res.render('user/dashboard', {
             result:result,
+            user:req.user[0]
+            
+        })
+    });
+})
+router.get('/indentform', ensureAuthenticated,(req,res) => {
+    db.query('Select id from newuser where id = ?',[req.user[0].id],(err,result) => {
+        if(err) throw err;
+        res.render('user/form', {
             user:req.user[0]
             
         })

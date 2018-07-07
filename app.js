@@ -52,11 +52,19 @@ app.use(bodyParser.json())
   app.use(passport.session());
 
   app.use(function(req, res, next) {
-    if(!req.user)
+    if(!req.user) 
     res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     next();
   })
-
+app.get('/check', (req,res) => {
+  if(req.user){
+    console.log('yes')
+  }
+    else {
+console.log('false')
+    }
+  
+})
   app.use(flash());
 
  

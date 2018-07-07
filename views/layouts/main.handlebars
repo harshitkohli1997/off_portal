@@ -23,14 +23,15 @@
 <body>
   <main>
   {{> _header}}
-    {{> _nav}}
-  
+   </main>
+  {{> _nav}}
 <div class = "container">
+     
     {{{body}}}
 
    
     </div>
-    </main>
+    
      {{> _footer}}
    
     <script
@@ -51,9 +52,9 @@
     <script>
     $().ready(function() {
     if(document.referrer === 'http://localhost:3000/dashboard'){ 
-        history.pushState(null, null, '/');
+        history.pushState(null, null, 'dashboard');
         window.addEventListener('popstate', function () {
-            history.pushState(null, null, 'login');
+            history.pushState(null, null, '/dashboard');
         });
     }
 })
