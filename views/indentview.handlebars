@@ -1,3 +1,4 @@
+{{#each rows}}
 <div class="indentform">
 <h5>Purchase Indent</h5>
 <br>
@@ -5,10 +6,10 @@
 
 <form action="/" method="post">
 
-<p ><b> INDENT NO.<input style="margin-bottom: 0% ;margin-right:32%;  width:250px;" type="text"  name = "indentno" required> Date.<input style="margin-bottom: 0% ;  width:250px; float:right" type="date"  name = "date" required></b></p>
-<p >Name & designation of the Indenter:<input style="margin-bottom: 0% ; width:200px;" type="text"  name = "name" required>
+<p ><b> INDENT NO.{{indentno}} Date.{{date}}</b></p>
+<p >Name & designation of the Indenter:{{name}}
 <br>
-Division: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "division"></p>
+Division: {{division}}</p>
  
 
 <br>
@@ -28,68 +29,66 @@ Division: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "d
     </thead>
     <tbody>
       <tr>
-        <td><input style="margin-bottom: 0%" type="text"  name = "one1"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "two1"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "three1"></td>
-       <td><input style="margin-bottom: 0%" type="text"  name = "four1"></td>
+        <td>{{one1}}</td>
+        <td>{{two1}}</td>
+        <td>{{three1}}</td>
+       <td>{{four1}}</td>
        </tr>
         <tr>
-        <td><input style="margin-bottom: 0%" type="text"  name = "one2"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "two2"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "three2"></td>
-       <td><input style="margin-bottom: 0%" type="text"  name = "four2"></td>
+        <td>{{one2}}</td>
+        <td>{{two2}}</td>
+        <td>{{three2}}</td>
+        <td>{{four2}}</td>
        </tr>
         <tr>
-        <td><input style="margin-bottom: 0%" type="text"  name = "one3"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "two3"></td>
-        <td><input style="margin-bottom: 0%" type="text"  name = "three3"></td>
-       <td><input style="margin-bottom: 0%" type="text"  name = "four3"></td>
+         <td>{{one3}}</td>
+        <td>{{two3}}</td>
+        <td>{{three3}}</td>
+        <td>{{four3}}</td>
        </tr>
       
     </tbody>
   </table>
  
  <ol>
-  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "innernm1">and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "innernm2">in India. We shall be held responsible in case the certificate is found to be incorrect.
+  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  {{innernm1}} and marketed by their only authorize disributer.M/s: {{innernm2}}in India. We shall be held responsible in case the certificate is found to be incorrect.
   </p></li>
   <br>
-   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No .  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "projectno">a sponsored / In house project and the deadline for delivery is <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "deadline">The consequence if the item is not procured within the dead line is <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "consequence">
+   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No . {{projectno}} a sponsored / In house project and the deadline for delivery is {{deadline}} The consequence if the item is not procured within the dead line is {{consequence}}
   </p></li>
   <br>
-   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "equipdetails">
+   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.   {{equipdetails}}
   </p></li>
   <br>
-   <li><p>  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "delreqnm">The delivery of the item is required by.
+   <li><p> {{delreqnm}} The delivery of the item is required by.
   </p></li>
   <br>
-   <li><p >  The availability of funds: <input type="radio" style="margin-left:10px;" name="fundavail" id="yes" value="yes">
-        <label for="yes"><b>yes</label> <input  type="radio" name="fundavail" id="no" value="no">
-        <label for="no"><b>no</label><br>
-        Name od Project :  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "projectnm">
-        <br>Budget Provision :  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "budget">
+   <li><p >  The availability of funds: {{fundavail}}
+        Name od Project :  {{projectnm}}
+        <br>Budget Provision :  {{budget}}
         <br>
         <br>
-       Whether necessary fund is available to process this item<br>(This should commensurate with the delivery Schedule)<br> PME/Accounts  <input type="radio" name="necfundavail" id="yes1" value="yes">
-        <label for="yes1"><b>yes</label> <input  type="radio" name="necfundavail" id="no1" value="no">
-        <label for="no1"><b>no</label><br>
+       Whether necessary fund is available to process this item<br>(This should commensurate with the delivery Schedule)<br> PME/Accounts
+       {{necfundavail}}
+        
   <br>
    
-      <li><p>  The installation Requirement like area , power , civil works etc. are ready ?  <input type="radio" name="installreq" id="yes2" value="yes">
-        <label for="yes2"><b>yes</label> <input  type="radio" name="installreq" id="no2" value="no">
-        <label for="no2"><b>no</label><br>
+      <li><p>  The installation Requirement like area , power , civil works etc. are ready ?  {{installreq}}
+       
   </p></li>
       
   
-   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.<input style="margin-bottom: 0% ; width:250px;" type="text"  name = "vend1"> <br> 2. <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "vend2"> <br>3.<input style="margin-bottom: 0% ; width:250px;" type="text"  name = "vend3">
+   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.{{vend1}} <br> 2. {{vend2}} <br>3.{{vend3}}
   </p></li>
   <br>
-   <li><p>  The inspection schedule for the item is under:  <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "inspectionunder">
+   <li><p>  The inspection schedule for the item is under:  {{inspectionunder}}
   </p></li>
   <br>
-   <li><p>  Certified that the item is not available in stores:   <input style="margin-bottom: 0% ; width:250px;" type="text"  name = "certifiedavail">
+   <li><p>  Certified that the item is not available in stores:   {{certifiedavail}}
   </p></li>
   <br>
   
 </ol>
    
   </div>
+  {{/each}}
