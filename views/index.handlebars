@@ -9,9 +9,14 @@
 & this app will keep track of all the indent forms which are created using this APP</b></span></p>
         </div>
         <div class="card-action">
+          {{#if user}}
+
+          {{else}}
           <a href="/user/login" class="btn">Login</a>
 <a href="/user/register" class="btn">Register</a> 
+       {{/if}}
         </div>
+
       </div>
     </div>
   </div>
