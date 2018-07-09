@@ -43,29 +43,32 @@ router.post('/', (req,res) => {
         vend3:req.body.vend3,
         inspectionunder:req.body.inspectionunder,
         certifiedavail:req.body.certifiedavail,
-        userid : req.user[0].id
+        userid : req.user[0].id,
+       
+        one1:req.body.one1,
+        two1:req.body.two1,
+        three1:req.body.three1,
+        four1:req.body.four1,
+        
+        one2:req.body.one2,
+        two2:req.body.two2,
+        three2:req.body.three2,
+        four2:req.body.four2,
+
+        one3:req.body.one3,
+        two3:req.body.two3,
+        three3:req.body.three3,
+        four3:req.body.four3    
     }
 
     
-        let material = {
-            indentno:req.body.indentno,
-            sno:req.body.one1,
-            materialname:req.body.two1,
-            qty:req.body.three1,
-            estimatedcost:req.body.four1
-        };
+        
     let sql1 = 'INSERT INTO indent SET ?';
-    let sql2 = 'INSERT INTO material SET ?';
     let query1 = db.query(sql1,indent,(err,result) => {
         if(err) throw err;
-        console.log(result);
+        res.redirect('/dashboard');    
     })
-    db.query(sql2,material,(err,result) => {
-        if(err) throw err;
-        console.log(result);
-       
-    })
-    res.redirect('/dashboard');
+    
 
 
  
