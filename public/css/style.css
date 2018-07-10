@@ -87,10 +87,15 @@ th {
 table {
     border-spacing: 5px;
 }
+
 h5 {
-    text-align: center;
-    text-decoration: underline;
+    margin-left: -1%;
+    /* text-decoration: underline; */
     
+}
+.alignto{
+    text-decoration: underline;
+    margin-left: 35%;
 }
 
 .abc{
@@ -224,3 +229,17 @@ input{
       width: 300px;
       height: 40px;
   }
+
+  .bigsize {
+      font-size: 13px;
+      
+  }
+  .enghin {
+      font-size: 20px;
+  }
+.h6col{
+    color: black
+}
+.first{
+    margin-right: 3%;
+}
