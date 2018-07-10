@@ -6,7 +6,9 @@ const session = require('express-session');
 const mysql = require('mysql');
 const passport = require('passport');
 const flash = require('connect-flash');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');;
+const htmlToPdf = require('html-to-pdf');
+const phantom = require('phantom');
 const db = require('./database/db')
 
 
@@ -55,16 +57,32 @@ app.use(bodyParser.json())
     if(!req.user) 
     res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     next();
-  })
-app.get('/check', (req,res) => {
-  if(req.user){
-    console.log('yes')
-  }
-    else {
-console.log('false')
-    }
+  });
+
+  // app.get('/convert', (req,res) => {
+    
+ //   phantom.create().then(function(ph) {
+   //   ph.createPage().then(function(page) {
+     //     page.open("http://localhost:3000").then(function(status) {
+       //       page.render('google.pdf').then(function() {
+         //         console.log('Page Rendered');
+           //       res.send('done')
+             //     ph.exit();
+              //});
+          //});
+      //});
+  //});
+  //})
+//***************auth check************//
+  // app.get('/check', (req,res) => {
+//   if(req.user){
+//     console.log('yes')
+//   }
+//     else {
+// console.log('false')
+//     }
   
-})
+//})
   app.use(flash());
 
  
