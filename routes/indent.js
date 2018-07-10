@@ -80,10 +80,25 @@ router.get('/indent/:id',ensureAuthenticated ,(req,res) => {
   
     db.query(sql,[req.params.id],(err,rows) => {
         if(err) throw err;
-       res.render('indentview', {
+        if(rows[0].one2 === " ")
+        {
+            display = 'display',
+            none = 'none'
+
+        }
+        else 
+        {
+            display = '',
+            none = '' 
+        }
+        res.render('indentview', {
            rows:rows,
-           user:req.user[0]
+           user:req.user[0],
+           display:display,
+           none:none
+           
        })
+       
     })
     
   

@@ -30,8 +30,11 @@ nav {
 table
 {
     border-collapse: separate;
+    /* empty-cells: hide; */
 }
-
+td:empty:after{
+    content: "\00a0";
+  }
 
 
 .header img {
@@ -117,6 +120,7 @@ input{
 .card {
    box-shadow: 3px 3px 3px 3px;
    color: #999999;
+   
   
 }
 .head {
@@ -161,7 +165,7 @@ input{
 }
 /* Add an active class to highlight the current page */
 .active {
-    background-color: #999999;
+    /* background-color: #999999; */
     color: white;
 }
 .right {
