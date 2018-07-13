@@ -1,30 +1,12 @@
-<style>
-table {  
-width: 700px; /**some value in px or %**/  
-border-bottom:2px solid #000;  
-}  
-  
-th.outer,  
-td.outer {  
-border-left: 2px solid #000;  
-border-right: 2px solid #000;  
-border-top: 2px solid #000;  
-padding: 0.5em;  
-}  
-  
-th.inner,  
-td.inner {  
-border-top: 2px solid #000;  
-padding: 0.5em;  
-}  
-</style>
 <br><br><br><br><br>
 <div id="print-content">
+{{!-- <img src="../../images/top.png" style="margin-left:16%;"> --}}
+
 <div class="row" style="margin-left:10%;">
-<div class="col s2">
+<div class="col s2 cols2">
   <img src="../../images/logo.png" alt="logo" height="120" width="110" style="margin-top:10%;"/>
   </div>
-  <div class="col s9">
+  <div class="col s9 cols9">
   <h5 class="first"><b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4></b> 
   <h6 class="h6col"><b >2- रफी मार्ग, नई दिल्ली, दिल्ली 110001</b></h6>
   <h5><b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH<b></h5>
@@ -33,20 +15,23 @@ padding: 0.5em;
 </div>
 </div>
 
-<div class="container">
+<br><br><br><br>
+
+
 {{#each rows}}
 <div class="indentform">
-<h5 class="alignto"><b>खरीद मांग पत्र/Purchase Indent</b></h5>
+<h5 class="alignto"><b><u>खरीद मांग पत्र/Purchase Indent</u></b></h5>
 <br>
 <br>
-
-<form action="/" method="post">
-
-<p ><b> INDENT NO.{{indentno}} Date.{{date}}</b></p>
+<form action="/" method="post"></form>
+<div class="row">
+  <div class="col s9">
+<p ><b> <span class="space" >INDENT NO  :  {{indentno}}</span></b></p></div><div class="col s3"><p><b><span class="space1" >Date : {{date}}</span></span></b></p></div>
+<br><br>
 <p >Name & designation of the Indenter:{{name}}
 <br>
 Division: {{division}}</p>
- 
+ </div>
 
 <br>
 <br>
@@ -134,7 +119,7 @@ Division: {{division}}</p>
 
  
   
-</div>
+
 <input type="button" onclick="printDiv('print-content')" value="print a div!"/>
 <script type="text/javascript">
 
@@ -143,10 +128,44 @@ function printDiv(divname) {
     var divToPrint = document.getElementById(divname);
     var htmlToPrint = '' +
         '<style type="text/css">' +
-        'table th, table td {' +
-        'border:1px solid #000;' +
-        'padding;0.5em;' +
-        '}' +
+        'table, th, td {'+
+    'border: 1px solid black;'+
+    'border-collapse: collapse;'+
+    
+    
+'}'+
+
+'th, td {'+
+    'padding: 1px;'+
+'}'+
+'th {'+
+    'text-align: left;'+
+'}'+
+
+'table {'+
+    'border-spacing: 5px;'+
+'}' +
+  '.bigsize {'+
+      'font-size: 13px;'+
+      
+  '}'+
+  '.enghin {'+
+      'font-size: 20px;'+
+  '}'+
+'.h6col{'+
+    'color: black'+
+'}'+
+'.first{'+
+    ' margin-right: 3%;'+
+'}'+
+'h5{ text-align:center; }'+
+'.space {display:inline-block;margin-right:10px;}'+ 
+'.space1 {display:inline-block;}'+
+'.cols2 {width:15%;}'+
+'.cols9 {width :70%;}'+
+'#print-content{background-color:black;}'+
+
+
         '</style>';
     htmlToPrint += divToPrint.outerHTML;
     newWin = window.open("");

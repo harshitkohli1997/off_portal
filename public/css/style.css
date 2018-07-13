@@ -29,8 +29,8 @@ nav {
 
 table
 {
-    border-collapse: separate;
-    /* empty-cells: hide; */
+    border-collapse: separate; 
+    empty-cells: hide;
 }
 td:empty:after{
     content: "\00a0";
@@ -238,12 +238,17 @@ input{
       font-size: 20px;
   }
 .h6col{
-    color: black
+    color: black;
+    margin-left: 120px;
 }
 .first{
     margin-right: 3%;
+    margin-left: 50px;
 }
 .alert{
     background-color: #FFCCCC;
     height: 50px;;
+}
+.clor{
+    background-color: wheat;
 }
