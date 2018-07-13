@@ -243,3 +243,7 @@ input{
 .first{
     margin-right: 3%;
 }
+.alert{
+    background-color: #FFCCCC;
+    height: 50px;;
+}

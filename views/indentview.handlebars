@@ -1,7 +1,25 @@
 <style>
-
+table {  
+width: 700px; /**some value in px or %**/  
+border-bottom:2px solid #000;  
+}  
+  
+th.outer,  
+td.outer {  
+border-left: 2px solid #000;  
+border-right: 2px solid #000;  
+border-top: 2px solid #000;  
+padding: 0.5em;  
+}  
+  
+th.inner,  
+td.inner {  
+border-top: 2px solid #000;  
+padding: 0.5em;  
+}  
 </style>
 <br><br><br><br><br>
+<div id="print-content">
 <div class="row" style="margin-left:10%;">
 <div class="col s2">
   <img src="../../images/logo.png" alt="logo" height="120" width="110" style="margin-top:10%;"/>
@@ -12,8 +30,9 @@
   <h5><b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH<b></h5>
   <h6 class="h6col"><b> 2- Rafi Marg, New Delhi, Delhi 110001<b></h6>
   
-</div></div>
 </div>
+</div>
+
 <div class="container">
 {{#each rows}}
 <div class="indentform">
@@ -108,4 +127,42 @@ Division: {{division}}</p>
 </ol>
    
   </div>
+  </div>
+  
 {{/each}}
+
+
+ 
+  
+</div>
+<input type="button" onclick="printDiv('print-content')" value="print a div!"/>
+<script type="text/javascript">
+
+
+function printDiv(divname) {
+    var divToPrint = document.getElementById(divname);
+    var htmlToPrint = '' +
+        '<style type="text/css">' +
+        'table th, table td {' +
+        'border:1px solid #000;' +
+        'padding;0.5em;' +
+        '}' +
+        '</style>';
+    htmlToPrint += divToPrint.outerHTML;
+    newWin = window.open("");
+    newWin.document.write(htmlToPrint);
+    newWin.print();
+    newWin.close();
+}
+</script>
+
+
+
+{{!-- function printDiv(divName) {
+
+ var printContents = document.getElementById(divName).innerHTML;
+ w=window.open();
+ w.document.write(printContents);
+ w.print();
+ w.close();
+} --}}

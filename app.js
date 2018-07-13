@@ -25,11 +25,6 @@ require('./config/passport')(passport);
 //set static folder
 app.use(express.static(path.join(__dirname,'public')));
 
-app.use((req, res, next) => {
-  res.locals.user = req.user || null;
-  next();
-});
-
 
 
 // view engine setup
@@ -59,6 +54,17 @@ app.use(bodyParser.json())
     next();
   });
 
+
+  app.use(flash());
+//#####
+app.use(function(req, res, next){
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
   // app.get('/convert', (req,res) => {
     
  //   phantom.create().then(function(ph) {
@@ -83,7 +89,7 @@ app.use(bodyParser.json())
 //     }
   
 //})
-  app.use(flash());
+
 
  
   
@@ -95,6 +101,6 @@ app.use(bodyParser.json())
 
 app.use('/',indent);
 app.use('/user',user)
-app.listen(3000, () => {
-    console.log('server started on port 3000');
+app.listen(5000, () => {
+    console.log('server started on port 5000');
 })

@@ -36,7 +36,36 @@ router.post('/login', (req, res, next) => {
 
 // Register Form POST
 router.post('/register', (req,res) => {
-  const user = {
+  let errors = []
+  
+  if(req.body.password != req.body.password2){
+    errors.push({text:'Passwords do not match'});
+  }
+
+  if(req.body.password.length < 4){
+    errors.push({text:'Password must be at least 4 characters'});
+  }
+  if(errors.length>0){
+    res.render('user/register', {
+      errors: errors,
+      name: req.body.name,
+      emailid: req.body.emailid,
+      contact_no:req.body.contact_no,
+      password: req.body.password,
+      password2: req.body.password2
+    });
+  }
+  else{
+    const user = db.query('SELECT emailid FROM newuser Where emailid = `req.body.emailid`')
+      if(user) {
+        req.flash('error_msg', 'Email already regsitered');
+        res.redirect('/user/register');
+      }
+    
+
+  else {
+    
+    const user = {
     name:req.body.name,
     emailid:req.body.emailid,
     contact_no:req.body.contact_no,
@@ -62,8 +91,11 @@ router.post('/register', (req,res) => {
       });
     });
   
-      
-    })
+  
+    });
+  }
+}  
+
   })
 
   

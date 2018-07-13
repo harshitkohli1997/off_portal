@@ -22,22 +22,7 @@
   </div>
   </div>
 
-  <div id="print-content">
- <h1>hello</h1>
-<h2>bye</h2>
   
-</div>
-<input type="button" onclick="printDiv('print-content')" value="print a div!"/>
-<script type="text/javascript">
-
-function printDiv(divName) {
-
- var printContents = document.getElementById(divName).innerHTML;
- w=window.open();
- w.document.write(printContents);
- w.print();
- w.close();
-}
 </script>
   <br>
 <br>
