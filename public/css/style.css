@@ -22,12 +22,13 @@ nav {
 }
 .column2 {
     float: left;
-    width: 40%;
+    width: 35%;
+    margin-bottom: 2%;
 }
 .column1 {
     float: left;
-    width: 15%;
-    margin-left: 14%;
+    width: 13%;
+    margin-left: 11%;
     
 }
 
@@ -53,7 +54,7 @@ table
 td:empty:after{
     content: "\00a0";
   }
-
+  
 
 .header img {
   float: left;
@@ -268,4 +269,17 @@ input{
 }
 .clor{
     background-color: wheat;
+}
+.column3 {
+    float: left;
+    width: 75%;
+}
+.column4{
+    float: left;
+    width:20%;
+}
+.formimg{
+    height:120px; 
+    width:110px;
+    margin-top:15%;
 }

@@ -1,188 +1,300 @@
 <div id="print-content">
- 
- <div class="row">
-   <div class="column1">
- <img src="../../images/logo.png" alt="logo" height="120" width="110" style="margin-top:10%;"/>
- </div>
-<div class="column2">
-    <div id="texts" style="display:inline; white-space:nowrap;">
-  <h5 class="first"><b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4></b> 
-  <h6 class="h6col"><b >2- रफी मार्ग, नई दिल्ली, दिल्ली 110001</b></h6>
-  <h5><b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH<b></h5>
-  <h6 class="h6col"><b> 2- Rafi Marg, New Delhi, Delhi 110001<b></h6>
-  </div>  </div></div>
-<br><br><br><br>
 
 
-{{#each rows}}
-<div class="indentform">
-<h5 class="alignto"><b><u>खरीद मांग पत्र/Purchase Indent</u></b></h5>
-<br>
-<br>
-<form action="/" method="post"></form>
-<div class="row">
-  <div class="col s9">
-<p ><b> <span class="space" >INDENT NO  :  {{indentno}}</span></b></p></div><div class="col s3"><p><b><span class="space1" >Date : {{date}}</span></span></b></p></div>
-<br><br>
-<p >Name & designation of the Indenter:{{name}}
-<br>
-Division: {{division}}</p>
- </div>
+    <div class="row">
+        <div class="column1">
+            <img src="../../images/logo.png" alt="logo" class="formimg" />
+        </div>
+        <div class="column2">
+            <div id="texts" style="display:inline; white-space:nowrap;">
+                <h5 class="first">
+                    <b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4>
+                    </b>
+                    <h6 class="h6col">
+                        <b>2- रफी मार्ग, नई दिल्ली, दिल्ली 110001</b>
+                    </h6>
+                    <h5 class="second">
+                        <b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH
+                            <b>
+                    </h5>
+                    <h6 class="h6col">
+                        <b> 2- Rafi Marg, New Delhi, Delhi 110001
+                            <b>
+                    </h6>
+            </div>
+        </div>
+    </div>
 
-<br>
-<br>
-{{!-- <h4 class="center"><b>Budget Head-...P-50</b></h4> --}}
-<table id = "myTable" class="table table-hover">
-    <thead>
-      <col width = "80">
-      <col width = "550">
-      <col width = "80">
-      <tr>
-        <th>Sr.no</th>
-        <th>Name of Item/Material</th>
-        <th>Qty</th>
-        <th>Estimated cost(`)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{one1}}</td>
-        <td>{{two1}}</td>
-        <td>{{three1}}</td>
-       <td>{{four1}}</td>
-       </tr>
-        <tr>
-        <td>{{one2}}</td>
-        <td>{{two2}}</td>
-        <td>{{three2}}</td>
-        <td>{{four2}}</td>
-       </tr>
-        <tr>
-         <td>{{one3}}</td>
-        <td>{{two3}}</td>
-        <td>{{three3}}</td>
-        <td>{{four3}}</td>
-       </tr>
-      
-    </tbody>
-  </table>
- 
- <ol>
-  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  {{innernm1}} and marketed by their only authorize disributer.M/s: {{innernm2}}in India. We shall be held responsible in case the certificate is found to be incorrect.
-  </p></li>
-  <br>
-   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No . {{projectno}} a sponsored / In house project and the deadline for delivery is {{deadline}} The consequence if the item is not procured within the dead line is {{consequence}}
-  </p></li>
-  <br>
-   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.   {{equipdetails}}
-  </p></li>
-  <br>
-   <li><p> {{delreqnm}} The delivery of the item is required by.
-  </p></li>
-  <br>
-   <li><p >  The availability of funds: {{fundavail}}
-        Name od Project :  {{projectnm}}
-        <br>Budget Provision :  {{budget}}
+
+
+    {{#each rows}}
+    <div class="indentform">
+        <h5 class="alignto">
+            <b>
+                <u>खरीद मांग पत्र/Purchase Indent</u>
+            </b>
+        </h5>
+
+        <div class="row">
+            <div class="column3">
+                <p>
+                    <b>
+                        <span class="space">INDENT NO : {{indentno}}</span>
+                    </b>
+                </p>
+            </div>
+            <div class="column4">
+                <p>
+                    <b>
+                        <span class="space1">Date : {{date}}</span>
+                        </span>
+                    </b>
+                </p>
+            </div>
+            <br>
+            <div class="column3">
+                <p>
+                    <b>
+                        <span class="space">Name & Designation of Indenter : {{name}}</span>
+                    </b>
+                </p>
+            </div>
+            <div class="column4">
+                <p>
+                    <b>
+                        <span class="space1">Division : {{division}}</span>
+                        </span>
+                    </b>
+                </p>
+            </div>
+        </div>
+
         <br>
         <br>
-       Whether necessary fund is available to process this item<br>(This should commensurate with the delivery Schedule)<br> PME/Accounts
-       {{necfundavail}}
-        
-  <br>
-   
-      <li><p>  The installation Requirement like area , power , civil works etc. are ready ?  {{installreq}}
-       
-  </p></li>
-      
-  
-   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.{{vend1}} <br> 2. {{vend2}} <br>3.{{vend3}}
-  </p></li>
-  <br>
-   <li><p>  The inspection schedule for the item is under:  {{inspectionunder}}
-  </p></li>
-  <br>
-   <li><p>  Certified that the item is not available in stores:   {{certifiedavail}}
-  </p></li>
-  <br>
-  
-</ol>
-   
-  </div>
-  </div>
-  
-{{/each}}
+        <h4 class="left">
+            <b>Budget Head-...P-50 ...............................</b>
+        </h4>
+        <table id="myTable" class="table table-hover">
+            <thead>
+                <col width="80">
+                <col width="550">
+                <col width="80">
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Name of Item/Material</th>
+                    <th>Qty</th>
+                    <th>Estimated cost(`)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{one1}}</td>
+                    <td>{{two1}}</td>
+                    <td>{{three1}}</td>
+                    <td>{{four1}}</td>
+                </tr>
+                <tr>
+                    <td>{{one2}}</td>
+                    <td>{{two2}}</td>
+                    <td>{{three2}}</td>
+                    <td>{{four2}}</td>
+                </tr>
+                <tr>
+                    <td>{{one3}}</td>
+                    <td>{{two3}}</td>
+                    <td>{{three3}}</td>
+                    <td>{{four3}}</td>
+                </tr>
 
-  
+            </tbody>
+        </table>
+
+        <ol>
+            <li>
+                <p> Certified that to the best of our knowledge, the items indented are the propietary items of M/s:
+                    <u>&emsp; {{innernm1}} &emsp;</u> and marketed by their only authorize disributer.M/s:
+                    <u>&emsp;{{innernm2}}&emsp;</u>in India. We shall be held responsible in case the certificate is found to
+                    be incorrect.
+                </p>
+            </li>
+            <br>
+            <li>
+                <p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project
+                    No .
+                    <u>&emsp;{{projectno}}&emsp;</u> a sponsored / In house project and the deadline for delivery is
+                    <u>&emsp;{{deadline}}&emsp;</u> The consequence if the item is not procured within the dead line is {{consequence}}
+                </p>
+            </li>
+            <br>
+            <li>
+                <p> The details about the equipment, availability of spares, ease of maintainance etc.
+                    <u> &emsp;{{equipdetails}}&emsp;</u>
+                </p>
+            </li>
+            <br>
+            <li>
+                <p>
+                    <u>&emsp;{{delreqnm}}&emsp;</u> The delivery of the item is required by.
+                </p>
+            </li>
+            <br>
+            <li>
+                <p> The availability of funds:
+                    <u>&emsp;{{fundavail}}&emsp;</u>
+                    <br> Name od Project :
+                    <u> &emsp;{{projectnm}}&emsp;</u>
+                    <br>
+                    <br>Budget Provision :
+                    <u>&emsp;{{budget}}&emsp;</u>
+                    <br>
+                    <br> Whether necessary fund is available to process this item
+                    <br>(This should commensurate with the delivery Schedule)
+                    <br> PME/Accounts
+                    <u>&emsp;{{necfundavail}}&emsp;</u>
+
+                    <br>
+
+                    <li>
+                        <p> The installation Requirement like area , power , civil works etc. are ready ?
+                            <u>&emsp; {{installreq}}&emsp;</u>
+
+                        </p>
+                    </li>
+
+
+                    <li>
+                        <p> The list of available vendors. Their addresses and websites whrever available.
+                            <br>1.
+                            <u>&emsp;{{vend1}}&emsp;</u>
+                            <br> 2.
+                            <u>&emsp; {{vend2}}&emsp; </u>
+                            <br>3.
+                            <u>&emsp;{{vend3}}&emsp;</u>
+                        </p>
+                    </li>
+                    <br>
+                    <li>
+                        <p> The inspection schedule for the item is under:
+                            <u> &emsp; {{inspectionunder}} &emsp;</u>
+                        </p>
+                    </li>
+                    <br>
+                    <li>
+                        <p> Certified that the item is not available in stores:
+                            <u> &emsp;{{certifiedavail}}&emsp;</u>
+                        </p>
+                    </li>
+                    <br>
+
+        </ol>
+
+    </div>
+
+
+    {{/each}}
+    <br><br><br>
+    <div class="row">
+      <div class="column3">
+                <p>
+                    <b>
+                        <span class="space">Indenting Officer</span>
+                    </b>
+                </p>
+            </div>
+            <div class="column4">
+                <p>
+                    <b>
+                        <span class="space1">Head of the Division</span>
+                        </span>
+                    </b>
+                </p>
+            </div>
+  </div>
+  </div>
 </div>
-  <input type="button" onclick="printDiv('print-content')" value="print a div!"/>
+<input type="button" onclick="printDiv('print-content')" value="print a div!" />
 <script type="text/javascript">
 
 
-function printDiv(divname) {
-    var divToPrint = document.getElementById(divname);
-    var htmlToPrint = '' +
-        '<style type="text/css">' +
-        'table, th, td {'+
-    'border: 1px solid black;'+
-    'border-collapse: collapse;'+
-    
-    
-'}'+
-
-'th, td {'+
-    'padding: 1px;'+
-'}'+
-'th {'+
-    'text-align: left;'+
-'}'+
-
-'table {'+
-    'border-spacing: 5px;'+
-'}' +
-  '.bigsize {'+
-      'font-size: 13px;'+
-      
-  '}'+
-  '.enghin {'+
-      'font-size: 20px;'+
-  '}'+
-'.h6col{'+
-    'color: black;'+
-    'margin-left:90px; margin-top:1px;'+
-'}'+
-'.first{'+
-    ' margin-left: 55px;'+
-'}'+
-'img{margin-top:1%;}'+
-'h5{ text-align:center; }'+
-'.space {display:inline-block;margin-right:10px;}'+ 
-'.space1 {display:inline-block;}'+
-'.cols2 {width:15%;}'+
-'.cols9 {width :70%;}'+
-'#print-content{background-color:black;}'+
-'.column1 {'+
-    'float: left;'+
-    'width: 22%;'+
-    'margin-left:10%'+
-'}'+
-'.column2 {'+
-    'float: left;'+
-    'width: 40%;'+
-'}'+
-
-/* Clear floats after the columns */
-'.row:after {'+
-    'content: "";'+
-    'display: table;'+
-    'clear: both;'+
-'}'+
+    function printDiv(divname) {
+        var divToPrint = document.getElementById(divname);
+        var htmlToPrint = '' +
+            '<style type="text/css">' +
+            'table, th, td {' +
+            'border: 1px solid black;' +
+            'border-collapse: collapse;' +
+            'min-height:20px;' +
 
 
-        '</style>';
-    htmlToPrint += divToPrint.outerHTML;
-    newWin = window.open("");
-    newWin.document.write(htmlToPrint);
-    newWin.print();
-    newWin.close();
-}
-</script> 
+            '}' +
+
+            'th, td {' +
+            'padding: 1px;' +
+            '}' +
+            'th {' +
+            'text-align: left;' +
+            '}' +
+            'td:empty:after{content: "."; color: transparent;visibility: hidden;}' +
+
+            'table {' +
+            'border-spacing: 5px;' +
+            '}' +
+            '.bigsize {' +
+            'font-size: 13px;' +
+
+            '}' +
+            '.enghin {' +
+            'font-size: 20px;' +
+            '}' +
+            '.h6col{' +
+            'color: black;' +
+            'margin-left:90px; margin-top:1px;' +
+            '}' +
+            '.first{' +
+            ' margin-left: 55px;margin-bottom:2px;' +
+            '}' +
+            '.second{margin-bottom:2px;}' +
+            'img{margin-top:15%;height:30:width:20}' +
+            'h5{ text-align:center; }' +
+            '.space {display:inline-block;margin-right:10px;}' +
+            '.space1 {display:inline-block;}' +
+            '.cols2 {width:15%;}' +
+            '.cols9 {width :70%;}' +
+            '#print-content{background-color:black;}' +
+            '.column1 {' +
+            'float: left;' +
+            'width: 13%;' +
+            'margin-left:20px;margin-right:65px;' +
+            '}' +
+            '.column2 {' +
+            'float: left;' +
+            'width: 40%;' +
+            'margin-bottom:0px;' +
+            '}' +
+            '.column3 {' +
+            'float: left;' +
+            'width: 65%;' +
+            'margin-bottom:0px;' +
+            '}' +
+            '.column4{width:30%; float:left;}'+
+            '.formimg{' +
+            'height:100px;' +
+            'width:95px;' +
+            'margin-top:20px;' +
+            '}' +
+            /* Clear floats after the columns */
+           '.row:after {' +
+            'content: "";' +
+            'display: table;' +
+            'clear: both;' +
+            '}' +
+            '.left{font-size:25px;margin-bottom:1px}' + 
+
+            '</style>';
+        htmlToPrint += divToPrint.outerHTML;
+        newWin = window.open("");
+        newWin.document.write(htmlToPrint);
+        newWin.print();
+        newWin.close();
+    }
+</script>

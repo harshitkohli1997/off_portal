@@ -55,12 +55,7 @@ router.post('/register', (req,res) => {
       password2: req.body.password2
     });
   }
-  else{
-    const user = db.query('SELECT emailid FROM newuser Where emailid = `req.body.emailid`')
-      if(user) {
-        req.flash('error_msg', 'Email already regsitered');
-        res.redirect('/user/register');
-      }
+
     
 
   else {
@@ -93,7 +88,7 @@ router.post('/register', (req,res) => {
   
   
     });
-  }
+  
 }  
 
   })
