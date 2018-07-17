@@ -1,16 +1,20 @@
+{{!-- <br><br><br><br><br>
 <div id="print-content">
- 
- <div class="row">
-   <div class="column1">
- <img src="../../images/logo.png" alt="logo" height="120" width="110" style="margin-top:10%;"/>
- </div>
-<div class="column2">
-    <div id="texts" style="display:inline; white-space:nowrap;">
+{{!-- <img src="../../images/top.png" style="margin-left:16%;"> --}}
+
+<div class="row" style="margin-left:10%;">
+<div class="col s2 cols2">
+  <img src="../../images/logo.png" alt="logo" height="120" width="110" style="margin-top:10%;"/>
+  </div>
+  <div class="col s9 cols9">
   <h5 class="first"><b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4></b> 
   <h6 class="h6col"><b >2- रफी मार्ग, नई दिल्ली, दिल्ली 110001</b></h6>
   <h5><b>COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH<b></h5>
   <h6 class="h6col"><b> 2- Rafi Marg, New Delhi, Delhi 110001<b></h6>
-  </div>  </div></div>
+  
+</div>
+</div>
+
 <br><br><br><br>
 
 
@@ -112,9 +116,11 @@ Division: {{division}}</p>
   
 {{/each}}
 
+
+ 
   
-</div>
-  <input type="button" onclick="printDiv('print-content')" value="print a div!"/>
+
+<input type="button" onclick="printDiv('print-content')" value="print a div!"/>
 <script type="text/javascript">
 
 
@@ -147,35 +153,17 @@ function printDiv(divname) {
       'font-size: 20px;'+
   '}'+
 '.h6col{'+
-    'color: black;'+
-    'margin-left:90px; margin-top:1px;'+
+    'color: black'+
 '}'+
 '.first{'+
-    ' margin-left: 55px;'+
+    ' margin-right: 3%;'+
 '}'+
-'img{margin-top:1%;}'+
 'h5{ text-align:center; }'+
 '.space {display:inline-block;margin-right:10px;}'+ 
 '.space1 {display:inline-block;}'+
 '.cols2 {width:15%;}'+
 '.cols9 {width :70%;}'+
 '#print-content{background-color:black;}'+
-'.column1 {'+
-    'float: left;'+
-    'width: 22%;'+
-    'margin-left:10%'+
-'}'+
-'.column2 {'+
-    'float: left;'+
-    'width: 40%;'+
-'}'+
-
-/* Clear floats after the columns */
-'.row:after {'+
-    'content: "";'+
-    'display: table;'+
-    'clear: both;'+
-'}'+
 
 
         '</style>';
@@ -185,4 +173,15 @@ function printDiv(divname) {
     newWin.print();
     newWin.close();
 }
-</script> 
+</script> --}}
+
+
+
+{{!-- function printDiv(divName) {
+
+ var printContents = document.getElementById(divName).innerHTML;
+ w=window.open();
+ w.document.write(printContents);
+ w.print();
+ w.close();
+} --}}

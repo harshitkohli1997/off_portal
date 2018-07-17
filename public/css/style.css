@@ -20,6 +20,24 @@ nav {
     margin-left: 0%;
    
 }
+.column2 {
+    float: left;
+    width: 40%;
+}
+.column1 {
+    float: left;
+    width: 15%;
+    margin-left: 14%;
+    
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
 
 
 .date
@@ -239,11 +257,10 @@ input{
   }
 .h6col{
     color: black;
-    margin-left: 120px;
+    margin-left: 140px;
 }
 .first{
-    margin-right: 3%;
-    margin-left: 50px;
+    margin-left: 60px;
 }
 .alert{
     background-color: #FFCCCC;
