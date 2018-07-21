@@ -132,9 +132,11 @@ h5 {
 input{
     background-color: aliceblue
 }
-.page-footer {
+.page-footer {    
     background-color: #555555;
+    
 }
+
 .btn{
     width:20rem;
     margin-left: 7%;

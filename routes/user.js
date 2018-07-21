@@ -59,7 +59,18 @@ router.post('/register', (req,res) => {
     
 
   else {
-    
+    let sql4 = 'SELECT * FROM newuser WHERE emailid =?';
+   
+  
+    db.query(sql4,[req.body.emailid],(err,rows) => {
+        if(err) throw err;
+       
+       if(rows){
+        req.flash('error_msg', 'Email already regsitered');
+        res.redirect('/user/register')
+       }
+      else{
+
     const user = {
     name:req.body.name,
     emailid:req.body.emailid,
@@ -90,6 +101,8 @@ router.post('/register', (req,res) => {
     });
   
 }  
+})
+  }
 
   })
 

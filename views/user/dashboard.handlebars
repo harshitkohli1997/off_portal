@@ -6,6 +6,10 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    
+}
+.push-footer{
+    margin-top:15%;
 }
 
 #customers td, #customers th {
@@ -31,6 +35,7 @@
 <table id="customers">
   
   {{#if result}}
+  <h1>History:</h1>
   <tr>
     <th>IndentNo</th>
     <th>Division</th>
@@ -44,8 +49,9 @@
   </tr>
   {{/each}}
   {{else}}
- 
+ <div class="push-footer">
   you have not created any indent form yet. :)
+  </div>
   {{/if}}
  
 </table>
