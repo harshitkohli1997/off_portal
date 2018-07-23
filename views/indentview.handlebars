@@ -1,3 +1,7 @@
+<button class="btn btn red" onclick="printDiv('print-content')" type="reset">
+    <i class="fa fa-print"></i> <b>PRINT</b>
+</button>
+<br><br><br><br>
 <div id="print-content">
 
 
@@ -212,7 +216,7 @@
   </div>
   </div>
 </div>
-<input type="button" onclick="printDiv('print-content')" value="print a div!" />
+
 <script type="text/javascript">
 
 
@@ -273,7 +277,7 @@
             '}' +
             '.column3 {' +
             'float: left;' +
-            'width: 65%;' +
+            'width: 70%;' +
             'margin-bottom:0px;' +
             '}' +
             '.column4{width:30%; float:left;}'+
@@ -292,9 +296,9 @@
 
             '</style>';
         htmlToPrint += divToPrint.outerHTML;
-        newWin = window.open("");
-        newWin.document.write(htmlToPrint);
-        newWin.print();
-        newWin.close();
+        //newWin = window.open("");
+        window.document.write(htmlToPrint);
+        window.print();
+        window.close();
     }
 </script>

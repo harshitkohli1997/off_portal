@@ -14,7 +14,7 @@ padding-bottom: 10px;
 }
 nav {
     
-    background-color: #555555;
+    background-color: #13AFE1;
 }
 .header{
     margin-left: 0%;
@@ -133,7 +133,7 @@ input{
     background-color: aliceblue
 }
 .page-footer {    
-    background-color: #555555;
+    background-color: #13AFE1;
     
 }
 
@@ -150,12 +150,12 @@ input{
   
 }
 .head {
-    background-color: bisque
+    background-color: #E6F9FF
 }
 .clr {
     width: 60rem;
     margin-left: 5%;
-    background-color: bisque;
+    background-color: #E6F9FF;
     
 
 }
@@ -164,7 +164,7 @@ input{
 }
 
 .topnav {
-    background-color: rgb(61, 54, 54);
+    background-color: #13AFE1;
     overflow: hidden;
 }
 
@@ -274,7 +274,7 @@ input{
 }
 .column3 {
     float: left;
-    width: 75%;
+    width: 80%;
 }
 .column4{
     float: left;
