@@ -93,6 +93,7 @@ router.post('/register', (req,res) => {
       let query1 = db.query(sql1,newuser,(err,result) => {
           if(err) throw err;
           console.log(result);
+          req.flash('success_msg', 'You are Registered Successfuly')
           res.redirect('/user/login');
       });
     });

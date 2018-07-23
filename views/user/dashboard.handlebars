@@ -6,15 +6,21 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+  
     
+}
+.top-push{
+  margin-top: 7%;
 }
 .push-footer{
     margin-top:15%;
+    padding-bottom: 10%;
 }
 
 #customers td, #customers th {
     border: 1px solid #ddd;
     padding: 8px;
+
 }
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
@@ -25,7 +31,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: blue;
+    background-color: #F12821;
     color: white;
 }
 </style>
@@ -35,7 +41,7 @@
 <table id="customers">
   
   {{#if result}}
-  <h1>History:</h1>
+  <h1 class="top-push">History:</h1>
   <tr>
     <th>IndentNo</th>
     <th>Division</th>
@@ -45,7 +51,7 @@
   <tr>
     <td>{{indentno}}</td>
     <td>{{division}}</td>
-    <td><a href="/indent/{{indentno}}">view</a></td>
+    <td><a href="/indent/{{id}}">view</a></td>
   </tr>
   {{/each}}
   {{else}}
