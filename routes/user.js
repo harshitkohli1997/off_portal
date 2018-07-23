@@ -65,7 +65,7 @@ router.post('/register', (req,res) => {
     db.query(sql4,[req.body.emailid],(err,rows) => {
         if(err) throw err;
        
-       if(rows){
+       if(rows[0]){
         req.flash('error_msg', 'Email already regsitered');
         res.redirect('/user/register')
        }
