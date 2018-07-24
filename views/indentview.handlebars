@@ -1,4 +1,9 @@
-<button class="btn btn red" onclick="printDiv('print-content')" type="reset">
+<style>
+.btn{
+    float: right;
+}
+</style>
+   <button class="btn btn red" onclick="printDiv('print-content')" type="reset">
     <i class="fa fa-print"></i> <b>PRINT</b>
 </button>
 <br><br><br><br>
@@ -42,18 +47,17 @@
         <div class="row">
             <div class="column3">
                 <p>
-                    <b>
+                
                         <span class="space">INDENT NO : {{indentno}}</span>
-                    </b>
+                
                 </p>
             </div>
             <div class="column4">
                 <p>
-                    <b>
+                    
                         <span class="space1">Date : {{date}}</span>
                         </span>
-                    </b>
-                </p>
+                                    </p>
             </div>
             <br>
             <div class="column3">
@@ -292,7 +296,7 @@
             'display: table;' +
             'clear: both;' +
             '}' +
-            '.left{font-size:25px;margin-bottom:1px}' + 
+            //'.left{font-size:25px;margin-bottom:1px}' + 
 
             '</style>';
         htmlToPrint += divToPrint.outerHTML;
