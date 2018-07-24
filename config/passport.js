@@ -60,7 +60,7 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('error_msg', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
-                return done(null, rows[0],req.flash('success_msg','login done'));
+                return done(null, rows[0],req.flash('success_msg','You are now logged in'));
             });
         })
     );

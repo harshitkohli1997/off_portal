@@ -25,10 +25,19 @@ require('./config/passport')(passport);
 //set static folder
 app.use(express.static(path.join(__dirname,'public')));
 
-
+const {
+  formatDate
+} = require('./helpers/hbs');
 
 // view engine setup
 app.engine('handlebars', exphbs({
+
+    helpers: { // to help the handlebars in formating
+       
+      formatDate: formatDate,
+      
+    },
+
     defaultLayout: 'main'
   }));
   app.set('view engine', 'handlebars');
@@ -65,30 +74,7 @@ app.use(function(req, res, next){
   next();
 });
 
-  // app.get('/convert', (req,res) => {
-    
- //   phantom.create().then(function(ph) {
-   //   ph.createPage().then(function(page) {
-     //     page.open("http://localhost:3000").then(function(status) {
-       //       page.render('google.pdf').then(function() {
-         //         console.log('Page Rendered');
-           //       res.send('done')
-             //     ph.exit();
-              //});
-          //});
-      //});
-  //});
-  //})
-//***************auth check************//
-  // app.get('/check', (req,res) => {
-//   if(req.user){
-//     console.log('yes')
-//   }
-//     else {
-// console.log('false')
-//     }
-  
-//})
+ 
 
 
  

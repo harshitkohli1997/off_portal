@@ -19,6 +19,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "html-to-pdf": "^0.1.11",
+    "moment": "^2.22.2",
     "mssql": "^4.1.0",
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
