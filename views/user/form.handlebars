@@ -2,10 +2,13 @@
   h5 {
     text-align: center
   }
+  .card {
+    color: black;
+  }
 </style>
 
 {{#if user}}
-
+<div class="card">
 <div class="indentform">
 <h5 ><u><b>Purchase Indent</b></u></h5>
 <br>
@@ -14,8 +17,8 @@
 
 <form action="/" method="post">
 
-<p ><b> INDENT NO.<input style="margin-bottom: 0% ;margin-right:32%;  ;background-color:white;width:250px;" type="text"  name = "indentno" > Date.<input style="margin-bottom: 0% ;  width:250px; float:right" type="date"  name = "date" required></b></p>
-<p >Name & designation of the Indenter:<input style="margin-bottom: 0% ; width:200px;background-color:white;" type="text"  name = "name" required>
+<p ><b> Name & designation <input style="margin-bottom: 0% ;margin-right:40%;  ;background-color:white;width:250px;" type="text"  name = "indentno" > Date.<input style="margin-bottom: 0% ;  width:250px; float:right" type="date"  name = "date" required></b></p>
+
 <br>
 Division: <input style="margin-bottom: 0% ; width:250px;;background-color:white;" type="text"  name = "division"></p>
  
