@@ -24,6 +24,7 @@ nav {
     float: left;
     width: 35%;
     margin-bottom: 2%;
+    margin-left: 15px;
 }
 .column1 {
     float: left;
@@ -267,14 +268,20 @@ input{
 }
 .alert{
     background-color: #FFCCCC;
-    height: 50px;;
+    height: 50px;
+    text-align: center;
+    padding-top:10px;
+}
+.alert-notdanger {
+    background-color: #B6F89E;
 }
 .clor{
     background-color: wheat;
 }
 .column3 {
     float: left;
-    width: 80%;
+    width: 75%;
+    margin-left: 30px;
 }
 .column4{
     float: left;

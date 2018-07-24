@@ -2,14 +2,20 @@
 .btn{
     float: right;
 }
+.card {
+    color: black;
+    width: 100%;
+    margin-left: 0%;
+}
 </style>
    <button class="btn btn red" onclick="printDiv('print-content')" type="reset">
     <i class="fa fa-print"></i> <b>PRINT</b>
 </button>
 <br><br><br><br>
+<div class="card">
 <div id="print-content">
 
-
+<div class="container">
     <div class="row">
         <div class="column1">
             <img src="../../images/logo.png" alt="logo" class="formimg" />
@@ -48,37 +54,38 @@
             <div class="column3">
                 <p>
                 
-                        <span class="space">INDENT NO : {{indentno}}</span>
+                        <span class="space">मांग पत्र संख्या  / INDENT NO : {{indentno}}</span>
                 
                 </p>
             </div>
             <div class="column4">
                 <p>
                     
-                        <span class="space1">Date : {{date}}</span>
-                        </span>
+                        <span class="space1">दिनांक/ Date : {{date}}</span>
+                        
+                        
                                     </p>
             </div>
-            <br>
+            
             <div class="column3">
                 <p>
                     <b>
-                        <span class="space">Name & Designation of Indenter : {{name}}</span>
+                       Name & Designation of Indenter : {{name}}
+                       <br>मांगकर्ता का नाम और पदनाम
                     </b>
                 </p>
             </div>
             <div class="column4">
                 <p>
                     <b>
-                        <span class="space1">Division : {{division}}</span>
-                        </span>
+                        Division : {{division}}
+                        <br>अनुभाग 
                     </b>
                 </p>
             </div>
         </div>
 
-        <br>
-        <br>
+
         <h4 class="left">
             <b>Budget Head-...P-50 ...............................</b>
         </h4>
@@ -119,51 +126,55 @@
 
         <ol>
             <li>
-                <p> Certified that to the best of our knowledge, the items indented are the propietary items of M/s:
-                    <u>&emsp; {{innernm1}} &emsp;</u> and marketed by their only authorize disributer.M/s:
-                    <u>&emsp;{{innernm2}}&emsp;</u>in India. We shall be held responsible in case the certificate is found to
+                <p>प्रमाणित किया जाता है की मेरी जानकारी तथा विश्वास के अनुसार इस मांग पत्र की मदे (वस्तुए)
+मैसर्स / Certified that to the best of our knowledge, the items indented are the propietary items of M/s:
+                    <u>&emsp; {{innernm1}} &emsp;</u>की मालिकाना  (प्रोपराइटरी) मदे (वस्तुए) है तथा इनके विपणन भारत मई इसके एक मात्र वितरक मैसर्स / and marketed by their only authorize disributer.M/s:
+                    <u>&emsp;{{innernm2}}&emsp;</u>द्वारा किया जाता है यदि उपयुक्त प्रमाण पत्र सही नहीं पाया जाता है तो इस स्थिति में/ हम जिमिदार होंगे / in India. We shall be held responsible in case the certificate is found to
                     be incorrect.
                 </p>
             </li>
             <br>
             <li>
-                <p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project
+                <p>यह मांग आपातिक है  तथा पूर्वानुमान नहीं लगाया जा सका , ये मदें एक प्रायोजित/ घरेलु परियोजना संख्या / The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project
                     No .
-                    <u>&emsp;{{projectno}}&emsp;</u> a sponsored / In house project and the deadline for delivery is
-                    <u>&emsp;{{deadline}}&emsp;</u> The consequence if the item is not procured within the dead line is {{consequence}}
+                    <u>&emsp;{{projectno}}&emsp;</u>के लिये अपेक्षित है माल सुपुर्दगी की अंतिम तारीख / a sponsored / In house project and the deadline for delivery is
+                    <u>&emsp;{{deadline}}&emsp;</u>यदि और अंतिम तारीख तक इस मद की खरीद नहीं की जा सकी तो इसका परिणाम यह  होगा की / The consequence if the item is not procured within the dead line is {{consequence}}
                 </p>
             </li>
             <br>
             <li>
-                <p> The details about the equipment, availability of spares, ease of maintainance etc.
+                <p>उपस्कर की आयु कल पुर्जा की उपलब्धता रखरखाव में आसानी अदि से सम्बधित विवरण 
+ / The details about the equipment, availability of spares, ease of maintainance etc.
                     <u> &emsp;{{equipdetails}}&emsp;</u>
                 </p>
             </li>
             <br>
             <li>
                 <p>
-                    <u>&emsp;{{delreqnm}}&emsp;</u> The delivery of the item is required by.
+                    <u>&emsp;{{delreqnm}}&emsp;</u>को मद की सुपुर्दगी की जाए / The delivery of the item is required by.
                 </p>
             </li>
             <br>
             <li>
-                <p> The availability of funds:
+                <p> निधियो की उपलब्धता / The availability of funds:
                     <u>&emsp;{{fundavail}}&emsp;</u>
-                    <br> Name od Project :
+                    <br> परियोजना का नाम / Name of Project :
                     <u> &emsp;{{projectnm}}&emsp;</u>
-                    <br>
-                    <br>Budget Provision :
+                    <br> बजट प्रावधान / Budget Provision :
                     <u>&emsp;{{budget}}&emsp;</u>
-                    <br>
+                    <br><br>
+                    क्या इस मद(बस्तु) को प्राप्त करने के लिये आवश्यक निधि उपलब्ध है 
                     <br> Whether necessary fund is available to process this item
-                    <br>(This should commensurate with the delivery Schedule)
-                    <br> PME/Accounts
-                    <u>&emsp;{{necfundavail}}&emsp;</u>
-
+                    <br>(This should commensurate with the delivery Schedule)&emsp;&emsp;&emsp;<u>&emsp;{{necfundavail}}&emsp;</u>
+<br>
+                    (ये माल सुपुर्दगी कार्यक्रम के अनुरूप होना चाहिये)
+                    <br>पीएमई/लेखा / PME/Accounts
+                    
                     <br>
-
+<br><br><br><br>
                     <li>
-                        <p> The installation Requirement like area , power , civil works etc. are ready ?
+                        
+                        <p>अधिष्ठापन आवश्यकताए जैसे क्षेत्र, बिजली ,सिविल कार्य आदि तैयार है  / The installation Requirement like area , power , civil works etc. are ready ?
                             <u>&emsp; {{installreq}}&emsp;</u>
 
                         </p>
@@ -171,7 +182,7 @@
 
 
                     <li>
-                        <p> The list of available vendors. Their addresses and websites whrever available.
+                        <p>बिक्रेताओ की सूचि उनके पते तथा यदि उपलब्ध है तो उनकी वेबसाइट  / The list of available vendors. Their addresses and websites whrever available.
                             <br>1.
                             <u>&emsp;{{vend1}}&emsp;</u>
                             <br> 2.
@@ -182,13 +193,13 @@
                     </li>
                     <br>
                     <li>
-                        <p> The inspection schedule for the item is under:
+                        <p>मद(वस्तुओ) के लिये निरिक्षण  / The inspection schedule for the item is under:
                             <u> &emsp; {{inspectionunder}} &emsp;</u>
                         </p>
                     </li>
                     <br>
                     <li>
-                        <p> Certified that the item is not available in stores:
+                        <p> प्रमाणित किया जाता है की ये सामान भण्डार में उपलब्ध नहीं है  / Certified that the item is not available in stores:
                             <u> &emsp;{{certifiedavail}}&emsp;</u>
                         </p>
                     </li>
@@ -206,6 +217,7 @@
                 <p>
                     <b>
                         <span class="space">Indenting Officer</span>
+                        <br>मांगकर्ता अधिकारी                               
                     </b>
                 </p>
             </div>
@@ -213,14 +225,14 @@
                 <p>
                     <b>
                         <span class="space1">Head of the Division</span>
-                        </span>
+                        <br>अनुभाग प्रधान
                     </b>
                 </p>
             </div>
   </div>
   </div>
 </div>
-
+</div>
 <script type="text/javascript">
 
 
@@ -247,21 +259,25 @@
             'table {' +
             'border-spacing: 5px;' +
             '}' +
-            '.bigsize {' +
+           '.bigsize {' +
             'font-size: 13px;' +
 
             '}' +
+            '@media print {'+
+  '@page { margin: 0; }'+
+  'body { margin: 1.5cm; }'+
+'}'+
             '.enghin {' +
             'font-size: 20px;' +
             '}' +
             '.h6col{' +
             'color: black;' +
-            'margin-left:90px; margin-top:1px;' +
+            'margin-left:90px; margin-top:1px; margin-bottom:2px;' +
             '}' +
             '.first{' +
             ' margin-left: 55px;margin-bottom:2px;' +
             '}' +
-            '.second{margin-bottom:2px;}' +
+            '.second{margin-bottom:2px; margin-top:2px;}' +
             'img{margin-top:15%;height:30:width:20}' +
             'h5{ text-align:center; }' +
             '.space {display:inline-block;margin-right:10px;}' +
@@ -272,22 +288,22 @@
             '.column1 {' +
             'float: left;' +
             'width: 13%;' +
-            'margin-left:20px;margin-right:65px;' +
+            'margin-left:20px;margin-right:53px;' +
             '}' +
             '.column2 {' +
             'float: left;' +
             'width: 40%;' +
-            'margin-bottom:0px;' +
-            '}' +
+            'margin-bottom:0px;margin-left: 0px;' +
+                     '}' +
             '.column3 {' +
             'float: left;' +
-            'width: 70%;' +
-            'margin-bottom:0px;' +
+            'width: 60%;' +
+            'margin-left:30px;' +
             '}' +
             '.column4{width:30%; float:left;}'+
             '.formimg{' +
-            'height:100px;' +
-            'width:95px;' +
+            'height:90px;' +
+            'width:85px;' +
             'margin-top:20px;' +
             '}' +
             /* Clear floats after the columns */
@@ -296,7 +312,8 @@
             'display: table;' +
             'clear: both;' +
             '}' +
-            //'.left{font-size:25px;margin-bottom:1px}' + 
+            'p{ font-size:13px; }'+
+            '.left{font-size:25px;margin-bottom:1px}' + 
 
             '</style>';
         htmlToPrint += divToPrint.outerHTML;
