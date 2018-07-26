@@ -2,7 +2,7 @@
   "name": "nodesql",
   "version": "1.0.0",
   "description": "node app with sql as db",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -87,6 +87,8 @@ app.use(function(req, res, next){
 
 app.use('/',indent);
 app.use('/user',user)
-app.listen(5000, () => {
-    console.log('server started on port 5000');
+
+port = 8080;
+app.listen(port,'0.0.0.0', () => {
+    console.log('server started on port 8080');
 })

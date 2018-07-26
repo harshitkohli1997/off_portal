@@ -116,11 +116,10 @@ router.post('/register', (req,res) => {
 // Logout User
 router.get('/logout', (req, res) => {
   // res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-  req.session.destroy((err) => {
-  res.redirect('/user/login');  
-  })
-
-  // req.flash('success_msg', 'You are logged out');
+req.flash('success_msg','You have successfully logged out!')
+  req.logOut()
+res.redirect('/user/login')
+ 
   
 });
 
