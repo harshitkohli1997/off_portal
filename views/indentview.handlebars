@@ -8,7 +8,7 @@
     margin-left: 0%;
 }
 </style>
-   <button class="btn btn red" onclick="printDiv('print-content')" type="reset">
+   <button href="/test" class="btn btn red"  onclick="printDiv('print-content')" type="reset">
     <i class="fa fa-print"></i> <b>PRINT</b>
 </button>
 <br><br><br><br>
@@ -284,7 +284,9 @@
             '.space1 {display:inline-block;}' +
             '.cols2 {width:15%;}' +
             '.cols9 {width :70%;}' +
-            
+            'img {'+
+    '-webkit-print-color-adjust: exact;'+
+'}'+
             '.column1 {' +
             'float: left;' +
             'width: 13%;' +
@@ -319,7 +321,11 @@
         htmlToPrint += divToPrint.outerHTML;
         //newWin = window.open("");
         window.document.write(htmlToPrint);
-        window.print();
-        window.close();
+
+        setTimeout(function () { // wait until all resources loaded 
+                window.print();
+        window.close()// change window to winPrint
+        }, 250);
+        ;
     }
 </script>

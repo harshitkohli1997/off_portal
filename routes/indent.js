@@ -101,6 +101,10 @@ router.get('/dashboard', ensureAuthenticated,(req,res) => {
         })
     });
 })
+
+router.get('/test', (req,res) => {
+    res.redirect('/dashboard');
+})
 router.get('/indentform', ensureAuthenticated,(req,res) => {
     db.query('Select id from newuser where id = ?',[req.user[0].id],(err,result) => {
         if(err) throw err;
