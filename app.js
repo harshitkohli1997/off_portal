@@ -26,7 +26,8 @@ require('./config/passport')(passport);
 app.use(express.static(path.join(__dirname,'public')));
 
 const {
-  formatDate
+  formatDate,
+  ifcond
 } = require('./helpers/hbs');
 
 // view engine setup
@@ -35,6 +36,7 @@ app.engine('handlebars', exphbs({
     helpers: { // to help the handlebars in formating
        
       formatDate: formatDate,
+      ifcond:ifcond
       
     },
 

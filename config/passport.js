@@ -64,4 +64,32 @@ module.exports = function(passport) {
             });
         })
     );
+
+    passport.use(
+        'local-logina',
+        new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'name',
+            passwordField : 'password',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, name, password, done) { // callback with email and password from our form
+            dbconfig.query("SELECT * FROM admin WHERE name = ?",[name], function(err, rows){
+                if (err)
+                    return done(err);
+                if (!rows.length) {
+                    return done(null, false, req.flash('error_msg', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+                }
+
+                // if the user is found but the password is wrong
+                if (!bcrypt.compareSync(password, rows[0].password))
+                    return done(null, false, req.flash('error_msg', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+
+                // all is well, return successful user
+                return done(null, rows[0],req.flash('success_msg','You are now logged in'));
+            });
+        })
+    );
 };
+
+

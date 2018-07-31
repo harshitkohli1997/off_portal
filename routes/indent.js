@@ -91,7 +91,23 @@ router.get('/indent/:id',ensureAuthenticated ,(req,res) => {
   
 });
 
+// router.get('/try1', (req,res) => {
+//     console.log(req.user[0].type)
+// })
+
 router.get('/dashboard', ensureAuthenticated,(req,res) => {
+    
+    if(req.user[0].type === 'admin'){
+        db.query('Select * from indent',(err,result) => {
+            if(err) throw err;
+            res.render('user/admindashboard', {
+                result:result,
+                
+                
+            })
+        });
+    }
+    else {
     db.query('Select * from indent where userid = ?',[req.user[0].id],(err,result) => {
         if(err) throw err;
         res.render('user/dashboard', {
@@ -100,6 +116,7 @@ router.get('/dashboard', ensureAuthenticated,(req,res) => {
             
         })
     });
+}
 })
 
 router.get('/test', (req,res) => {
@@ -190,4 +207,29 @@ router.post('/', (req,res) => {
 });
 
 });
+
+router.get('/admin/dashboard', (req,res) => {
+    db.query('Select * from indent',(err,result) => {
+        if(err) throw err;
+        res.render('user/admindashboard', {
+            result:result,
+            
+            
+        })
+    });
+});
+
+router.get('/admin/login', (req,res) => {
+    res.render('user/admin');
+});
+
+router.post('/admin/login', (req,res) => {
+    if(req.body.name === 'admincsir'){
+        if(req.body.password === 'admin@1234'){
+          res.redirect('/admin/dashboard');
+        }
+
+    }
+})
+
 module.exports = router;
