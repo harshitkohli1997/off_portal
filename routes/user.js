@@ -32,29 +32,7 @@ router.post('/login', (req, res, next) => {
   
 });
 
-router.get('/admin/dashboard', (req,res) => {
-  db.query('Select * from indent',(err,result) => {
-      if(err) throw err;
-      res.render('user/admindashboard', {
-          result:result,
-          
-          
-      })
-  });
-});
 
-router.get('/admin/login', (req,res) => {
-  res.render('user/admin');
-});
-
-router.post('/admin/login', (req,res,next) => {
-  passport.authenticate('local-logina', {
-    successRedirect:'/user/admin/dashboard',
-    failureRedirect: 'user/admin/login',
-    failureFlash: true,
-    
-  })(req, res, next);
-})
 
 // Register Form POST
 router.post('/register', (req,res) => {

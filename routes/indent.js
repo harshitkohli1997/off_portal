@@ -251,12 +251,21 @@ router.get('/viewall', (req,res) => {
 router.get('/viewuser', (req,res) => {
     db.query('Select * from newuser',(err,result) => {
         if(err) throw err;
-        res.render('user/viewall', {
+        res.render('user/viewuser', {
             result:result,
             
             
         })
     });
 });
+
+router.delete('/user/:id', (req,res) => {
+    db.query('DELETE from newuser where id = ?',[req.params.id],(err,result) => {
+        if(err) throw err;
+
+        res.redirect('/viewuser');
+        
+    });
+})
 
 module.exports = router;
