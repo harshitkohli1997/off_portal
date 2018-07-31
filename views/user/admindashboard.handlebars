@@ -1,65 +1,14 @@
-<META Http-Equiv="Cache-Control" Content="no-cache">
-<META Http-Equiv="Pragma" Content="no-cache">
-<META Http-Equiv="Expires" Content="0">
-<style>
-#customers {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  
-    
-}
-.top-push{
-  margin-top: 12%;
-}
-.push-footer{
-    margin-top:15%;
-    padding-bottom: 10%;
-}
-
-#customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #F12821;
-    color: white;
-}
-</style>
-
-<br><br>
-<h1>welcome admin</h1>
-<table id="customers">
-  
-  {{#if result}}
-  <h1 class="top-push">History:</h1>
-  <tr>
-    <th>IndentNo</th>
-    <th>Division</th>
-    <th>View</th>
-  </tr>
-{{#each result}}
-  <tr>
-    <td>{{indentno}}</td>
-    <td>{{division}}</td>
-    <td><a href="/indent/{{id}}">view</a></td>
-  </tr>
-  {{/each}}
-  {{else}}
- <div class="push-footer">
-  No Indent form found
-  </div>
-  {{/if}}
  
-</table>
-<br><br>
-<br><br>
+<style>
+    .color{
+        color: black;
+        text-align: center;
+    }
+</style>
+ <div class="container">
+ <h1 class="color"><b>Welcome Admin</b></h1>
+ <br><br><br><br>
+ <a href="/viewall" class="btn btn red">View all Indent Forms</a>
+<a href="/viewuser" class="btn btn red">List of active Users</a> 
+</div>
+<br><br><br><br><br><br><br>

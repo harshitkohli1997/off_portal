@@ -209,14 +209,7 @@ router.post('/', (req,res) => {
 });
 
 router.get('/admin/dashboard', (req,res) => {
-    db.query('Select * from indent',(err,result) => {
-        if(err) throw err;
-        res.render('user/admindashboard', {
-            result:result,
-            
-            
-        })
-    });
+    res.render('user/admindashboard')
 });
 
 router.get('/admin/login', (req,res) => {
@@ -231,5 +224,39 @@ router.post('/admin/login', (req,res) => {
 
     }
 })
+
+router.delete('/indent/:id', (req,res) => {
+    let sql = 'DELETE FROM indent WHERE id =?';
+   
+  
+    db.query(sql,[req.params.id],(err,rows) => {
+        if(err) throw err;
+       
+        res.redirect('/viewall');
+       
+    })
+});
+
+router.get('/viewall', (req,res) => {
+    db.query('Select * from indent',(err,result) => {
+        if(err) throw err;
+        res.render('user/viewall', {
+            result:result,
+            
+            
+        })
+    });
+});
+
+router.get('/viewuser', (req,res) => {
+    db.query('Select * from newuser',(err,result) => {
+        if(err) throw err;
+        res.render('user/viewall', {
+            result:result,
+            
+            
+        })
+    });
+});
 
 module.exports = router;

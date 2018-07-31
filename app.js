@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const mysql = require('mysql');
 const passport = require('passport');
 const flash = require('connect-flash');
@@ -30,6 +31,7 @@ const {
   ifcond
 } = require('./helpers/hbs');
 
+app.use(methodOverride('_method'));
 // view engine setup
 app.engine('handlebars', exphbs({
 
