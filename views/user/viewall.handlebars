@@ -19,10 +19,15 @@
 .btn {
     background-color:#FF9206;
     
+    
 }
- .push {
-        margin-left: 20%;
-    }
+.push{
+    background-color: #13AFE1;
+    margin-left: 20%;
+}
+.colr{
+    background-color: #13AFE1;
+}
 
 #customers td, #customers th {
     border: 1px solid #ddd;
@@ -43,7 +48,7 @@
 }
 </style>
 <a href="/viewall" class="btn push">View all Indent Forms</a>
-<a href="/viewuser" class="btn">List of active Users</a> 
+<a href="/viewuser" class="btn colr">List of active Users</a> 
 <table id="customers">
   
   {{#if result}}
@@ -58,10 +63,10 @@
   <tr>
     <td>{{indentno}}</td>
     <td>{{division}}</td>
-    <td><a  class="btn" href="/indent/{{id}}">view</a></td>
+    <td><a  class="btn" href="/indent/{{id}}"><i class = "fa fa-address-book"></i> View</a></td>
     <td><form action="/indent/{{id}}?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
-            <button type = "submit" class="btn red"><i class = "fa fa-remove"></i>Delete</button>
+            <button type = "submit" class="btn red"><i class = "fa fa-remove"></i> Delete</button>
             </form></a></td>
   </tr>
   {{/each}}

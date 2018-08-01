@@ -17,10 +17,14 @@
     padding-bottom: 10%;
 }
 .btn {
-    background-color:#FF9206;
+    background-color:#13    AFE1;
     }
     .push {
         margin-left: 20%;
+    }
+
+    .color{
+        background-color: #FF9206
     }
 
 #customers td, #customers th {
@@ -59,7 +63,7 @@
     
     <td><form action="/user/{{id}}?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
-            <button type = "submit" class="btn red"><i class = "fa fa-remove"></i>Delete</button>
+            <button type = "submit" class="btn color"><i class = "fa fa-remove"></i> Delete</button>
             </form></a></td>
   </tr>
   {{/each}}
