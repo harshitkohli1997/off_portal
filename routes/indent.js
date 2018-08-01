@@ -208,7 +208,7 @@ router.post('/', (req,res) => {
 
 });
 
-router.get('/admin/dashboard', (req,res) => {
+router.get('/admin/dashboard', ensureAuthenticated,(req,res) => {
     res.render('user/admindashboard')
 });
 
@@ -237,7 +237,7 @@ router.delete('/indent/:id', (req,res) => {
     })
 });
 
-router.get('/viewall', (req,res) => {
+router.get('/viewall',ensureAuthenticated, (req,res) => {
     db.query('Select * from indent',(err,result) => {
         if(err) throw err;
         res.render('user/viewall', {
@@ -248,8 +248,9 @@ router.get('/viewall', (req,res) => {
     });
 });
 
-router.get('/viewuser', (req,res) => {
-    db.query('Select * from newuser',(err,result) => {
+router.get('/viewuser', ensureAuthenticated,(req,res) => {
+    const type = 'NULL';    
+    db.query("Select * from newuser WHERE TYPE is Null",(err,result) => {
         if(err) throw err;
         res.render('user/viewuser', {
             result:result,
