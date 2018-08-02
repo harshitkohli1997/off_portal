@@ -75,7 +75,7 @@ router.post('/register', (req,res) => {
     name:req.body.name,
     emailid:req.body.emailid,
     contact_no:req.body.contact_no,
-    password:req.body.password
+    password:req.body.password,
     
   };
   bcrypt.genSalt(10, (err, salt) => {
@@ -85,6 +85,7 @@ router.post('/register', (req,res) => {
         name:req.body.name,
         emailid:req.body.emailid,
         contact_no:req.body.contact_no,
+        department:req.body.department,
         password: hash
         
       };
