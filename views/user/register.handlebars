@@ -1,8 +1,12 @@
 <style>
   .card{
+    background-color: white;
     margin-left: 27%;
+    height: 43%;
   }
 </style>
+
+
 
 <div class="row">
   <div class="col-md-6 mx-auto">
@@ -12,8 +16,8 @@
       <img style="margin-left:27%;" src="/images/register.png">
       <form action="/user/register" method="post">
         <div class="form-group">
-          <label for="name" style= "color:black; margin-left:10px;">Name</label>
-          <input style="width:400px; margin-left:11%; color:black; background-color:white;" type="text" class="form-control" name="name" value="{{name}}" required>
+          <label for="name" style= "color:black; margin-left:10px;">UserName</label>
+          <input style="width:400px; margin-left:6%; color:black; background-color:white;" type="text" class="form-control" name="name" value="{{name}}" required>
         </div><br>
         <div class="form-group">
           <label for="email" style= "color:black; margin-left:10px;">Email</label>
@@ -25,6 +29,22 @@
     type = "number"
     maxlength = "10" value="{{contact_no}}" required>
         </div><br>
+        <div class="row" >
+          <div class="input-field col s10" style="width:420px;  display:inline-block; color:black; margin-left:18%;">
+           <select name = "department" required>
+             <option value="" disabled selected style="color:black; margin-left:20px;">Choose your Department</option>
+               <option value = "EIII" >E III</option>
+               <option value = "ITD">ITD</option>
+               <option value = "CIVIL">MAINTENANCE</option>
+               <option value = "DGO">DGO</option>
+               <option value = "CVO">VIGILANCE</option>
+               <option value = "DEPT1">DEPT1</option>
+               <option value = "DEPT2">DEPT2</option>
+           </select>
+                      
+        </div>
+    </div>
+    <br>
         <div class="form-group">
           <label for="password" style= "color:black; margin-left:10px;">Password</label>
           <input style="width:400px; margin-left:6%; color:black; background-color:white;" type="password" name="password" class="form-control" value="{{password}}" required>
@@ -39,3 +59,5 @@
     </div>
   </div>
 </div>
+
+
