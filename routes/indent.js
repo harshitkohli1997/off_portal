@@ -297,12 +297,57 @@ router.get('/viewuser', ensureAuthenticated,(req,res) => {
 });
 
 router.delete('/user/:id', (req,res) => {
-    db.query('DELETE from newuser where id = ?',[req.params.id],(err,result) => {
+    let sql2 = 'SELECT * FROM newuser WHERE id =?';
+   
+  
+    db.query(sql2,[req.params.id],(err,rows) => {
+        if(err) throw err;
+       
+
+ let deldesc = {
+     remarks :req.body.remarks,
+     name:rows[0].name,
+     mail:rows[0].emailid
+
+ }
+
+ db.query('INSERT INTO USERREMARKS SET ?', deldesc, (err,result) => {
+     if(err) throw err;
+     let sql = 'DELETE FROM newuser WHERE id =?';
+   
+  
+     db.query(sql,[req.params.id],(err,rows) => {
+         if(err) throw err;
+        
+         res.redirect('/viewuser');
+        
+     })
+
+ });
+    });
+   
+})
+
+router.get('/deletedform', (req,res) => {
+    db.query('SELECT * from REMARKS', (err,result) => {
         if(err) throw err;
 
-        res.redirect('/viewuser');
-        
+        res.render('deletedform', {
+            result:result
+        });
     });
-})
+});
+
+
+router.get('/deleteduser', (req,res) => {
+    db.query('SELECT * from USERREMARKS', (err,result) => {
+        if(err) throw err;
+
+        res.render('deleteduser', {
+            result:result
+        });
+    });
+});
+
 
 module.exports = router;

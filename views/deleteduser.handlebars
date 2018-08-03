@@ -1,6 +1,3 @@
-<META Http-Equiv="Cache-Control" Content="no-cache">
-<META Http-Equiv="Pragma" Content="no-cache">
-<META Http-Equiv="Expires" Content="0">
 <style>
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -49,36 +46,23 @@
 <a href="/viewuser" class="btn "><i class="fa fa-list-ol"></i>&ensp;List of active Users</a>
 <br><br>
  <a href="/deletedform" class="btn push"><i class="fa fa-history"></i>&ensp; Deleted form History</a>
-<a href="/deleteduser" class="btn"><i class="fa fa-history"></i>&ensp; Deleted User History</a>
+<a href="/deleteduser" class="btn"><i class="fa fa-history"></i>&ensp; Deleted User History</a>  
 <table id="customers">
   
   {{#if result}}
-  <h1 class="top-push">Users</h1>
+  <h1 class="top-push">Deleted User History:</h1>
   <tr>
     <th>Name</th>
     <th>Email</th>
-    <th>Delete</th>
-    <th>Department</th>
+    <th>Remark</th>
+    
   </tr>
 {{#each result}}
   <tr>
     <td>{{name}}</td>
-    <td>{{emailid}}</td>
+    <td>{{mail}}</td>
     
-    <td><button data-target="modal1" class="btn red modal-trigger"><i class="fa fa-remove"></i> DELETE</button>
-      <form action="/user/{{id}}?_method=DELETE" method = "post" id="delete-form">
-            <input type="hidden" name = "_method" value="DELETE">
-            
-             <div id="modal1" class="modal">
-    <div class="modal-content" style="height:150px;">
-      <h4>Remarks</h4>
-      <textarea   name="remarks"></textarea>
-    </div>
-    <div class="modal-footer">
-        <button type = "submit" class="btn green"><i class = "fa fa-settings"></i>Confirm</button>
-      
-            </form></td>
-            <td><button class="btn color">{{department}}</button></td>
+<td>{{remarks}}</td>
   </tr>
   {{/each}}
   {{else}}
