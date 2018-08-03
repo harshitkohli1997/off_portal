@@ -52,7 +52,8 @@ app.engine('handlebars', exphbs({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser());
 app.use(bodyParser.json())
-  app.use(session({
+  
+app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false

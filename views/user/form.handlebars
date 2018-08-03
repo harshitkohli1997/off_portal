@@ -18,7 +18,7 @@
 <br>
 <br>
 
-<form action="/" method="post">
+<form action="/" method="post" ref='uploadForm' id='uploadForm' encType="multipart/form-data" >
 
 <p ><b> Name & designation <input style="margin-bottom: 0% ;margin-right:40%;  ;background-color:white;width:250px;" type="text"  name = "name"  required> Date.<input style="margin-bottom: 0% ;  width:250px; float:right;background-color:white;" type="date"  name = "date" required></b></p>
 
@@ -106,8 +106,9 @@ Division: <input style="margin-bottom: 0% ; width:250px;;background-color:white;
   <br>
   
 </ol>
+   <input type="file" name="sampleFile"  >
    <input type="submit" value = "Save" class="btn"> 
-   <input type="file" name="avatar" class="btn" />
+   
   </form>
   </div>
   </div>
