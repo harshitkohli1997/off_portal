@@ -243,15 +243,34 @@ router.get('/admin/dashboard', ensureAuthenticated,(req,res) => {
 
 
 router.delete('/indent/:id', (req,res) => {
-    let sql = 'DELETE FROM indent WHERE id =?';
+
+    let sql2 = 'SELECT * FROM indent WHERE id =?';
    
   
-    db.query(sql,[req.params.id],(err,rows) => {
+    db.query(sql2,[req.params.id],(err,rows) => {
         if(err) throw err;
        
-        res.redirect('/viewall');
-       
-    })
+
+ let deldesc = {
+     remarks :req.body.remarks,
+     indentno:rows[0].indentno
+ }
+
+ db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
+     if(err) throw err;
+     let sql = 'DELETE FROM indent WHERE id =?';
+   
+  
+     db.query(sql,[req.params.id],(err,rows) => {
+         if(err) throw err;
+        
+         res.redirect('/viewall');
+        
+     })
+
+ });
+    });
+   
 });
 
 router.get('/viewall',ensureAuthenticated, (req,res) => {

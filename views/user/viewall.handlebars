@@ -9,6 +9,9 @@
   
     
 }
+.green{
+    background-color: aqua;
+}
 .top-push{
   margin-top: 12%;
 }
@@ -47,8 +50,8 @@
     color: white;
 }
 </style>
-<a href="/viewall" class="btn push">View all Indent Forms</a>
-<a href="/viewuser" class="btn colr">List of active Users</a> 
+<a href="/viewall" class="btn push"><i class="fa fa-eye"></i>&ensp; View all Indent Forms</a>
+<a href="/viewuser" class="btn colr"><i class="fa fa-list-ol"></i>&ensp;List of active Users</a> 
 <table id="customers">
   
   {{#if result}}
@@ -65,12 +68,23 @@
     <td>{{indentno}}</td>
     <td>{{division}}</td>
     <td><a  class="btn" href="/indent/{{id}}"><i class = "fa fa-address-book"></i> View</a></td>
-    <td><form action="/indent/{{id}}?_method=DELETE" method = "post" id="delete-form">
+    <td><button data-target="modal1" class="btn red modal-trigger"><i class="fa fa-remove"></i> DELETE</button>
+      <form action="/indent/{{id}}?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
-            <button type = "submit" class="btn red"><i class = "fa fa-remove"></i> Delete</button>
+            
+             <div id="modal1" class="modal">
+    <div class="modal-content" style="height:150px;">
+      <h4>Remarks</h4>
+      <textarea   name="remarks"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button type = "submit" class="btn green"><i class = "fa fa-setting"></i>Confirm</button>
+      
             </form></a></td>
             {{#if description}}
-            <td><a href="{{description}}">description</a></td>
+            <td><a class="btn green" target="_blank" href="{{description}}"><i class="fa fa-print" ></i> Print Description</a></td>
+            {{else}}
+            <td><a class="btn green"><i class = "fa fa-remove"></i> No Description Uploaded</a> </td>
             {{/if}}  
   </tr>
   {{/each}}
@@ -81,6 +95,10 @@
   {{/if}}
  
 </table>
-<embed src="uploads/1533240368811.pdf" type="application/pdf"   height="300px" width="100%">
 <br><br>
 <br><br>
+
+
+
+ 
+

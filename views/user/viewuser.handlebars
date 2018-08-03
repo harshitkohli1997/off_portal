@@ -55,6 +55,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Delete</th>
+    <th>Department</th>
   </tr>
 {{#each result}}
   <tr>
@@ -65,6 +66,7 @@
             <input type="hidden" name = "_method" value="DELETE">
             <button type = "submit" class="btn color"><i class = "fa fa-remove"></i> Delete</button>
             </form></a></td>
+            <td> <button type = "submit" class="btn color"><i class = "fa fa-university"></i> {{department}}</button></td>
   </tr>
   {{/each}}
   {{else}}
