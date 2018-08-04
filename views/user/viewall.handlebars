@@ -55,8 +55,29 @@
 <br><br>
  <a href="/deletedform" class="btn push"><i class="fa fa-history"></i>&ensp; Deleted form History</a>
 <a href="/deleteduser" class="btn colr"><i class="fa fa-history"></i>&ensp; Deleted User History</a>
-<table id="customers">
-  
+<br><br><br>
+<h4 style="text-align:center">Search Department wise Indent form:</h4><br><br>
+<form action="/viewall" method="POST">
+    <div class="row form-group" >
+          <div class="input-field col s10" style="width:420px;  display:inline-block; color:black; margin-left:18%;">
+           <select name = "department" required>
+             <option value="" disabled selected style="color:black; margin-left:20px;">Select Department</option>
+               <option value = "all">ALL</option>
+               <option value = "EIII" >E III</option>
+               <option value = "ITD">ITD</option>
+               <option value = "CIVIL">MAINTENANCE</option>
+               <option value = "DGO">DGO</option>
+               <option value = "CVO">VIGILANCE</option>
+               <option value = "DEPT1">DEPT1</option>
+               <option value = "DEPT2">DEPT2</option>
+           </select>
+                      
+        </div>
+        
+        <button type="submit" class="btn green">Submit</button>
+        </div>
+        </form>
+  <table id="customers">
   {{#if result}}
   <h1 class="top-push">History:</h1>
   <tr>
@@ -96,6 +117,7 @@
   {{/if}}
  
 </table>
+</div>
 <br><br>
 <br><br>
 

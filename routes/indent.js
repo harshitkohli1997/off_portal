@@ -157,7 +157,8 @@ router.post('/', (req,res) => {
                 three3:req.body.three3,
                 four3:req.body.four3,
                 
-                description:path
+                description:path,
+                dpt:req.user[0].department
             }
         
 
@@ -222,7 +223,9 @@ router.post('/', (req,res) => {
                  two3:req.body.two3,
                  three3:req.body.three3,
                  four3:req.body.four3,
-                 description:path 
+                 description:path,
+
+                 dpt:req.user.dpt
              }
  
              let sql1 = 'INSERT INTO indent SET ?';
@@ -308,6 +311,29 @@ router.get('/viewall',ensureAuthenticated, (req,res) => {
     });
 });
 
+router.post('/viewall', (req,res) => {
+    if(req.body.department ==='all')
+    {
+        db.query('Select * from indent',(err,result) => {
+            if(err) throw err;
+            res.render('user/viewall',{
+                result:result,
+                
+                
+            })
+        });
+    }
+    else {
+        db.query('Select * from indent where dpt = ?',[req.body.department],(err,result) => {
+            if(err) throw err;
+            res.render('user/viewall',{
+                result:result,
+                
+                
+            })
+        });
+    }
+})
 
 
 
