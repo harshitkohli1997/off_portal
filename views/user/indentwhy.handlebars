@@ -1,0 +1,26 @@
+<style>
+    .card {
+        color: black;
+        height: 550px;
+        box-shadow: 10px 10px 10px 10px
+    }
+    h3{
+        text-align: center;
+    }
+    .lef {
+        margin-left: 30%;
+    }
+</style>
+<div class="card">
+    <form action="/formremarks" method="POST">
+      
+    <h3><b>Why you are Deleting this form?</b></h3>
+    <b class="lef">Indent No. -</b><input type="text" style="width:30%;" name="indentno" value="{{indentno}}" readonly></input>
+    <br><br><b class="lef">Created By -</b><input type="text" style="width:30%;" name="indentno" value="{{indentno}}" readonly></input>
+    <br><br>
+    <textarea style="height:150px; width:78%; margin-left:10%;" name="remarks"></textarea>
+    <br><br><br>
+    <button type="submit" class="btn " style="margin-left:35%; height:60px;">Submit</button>
+    </form>
+</div>
+<br><br>

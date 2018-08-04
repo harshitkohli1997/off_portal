@@ -54,7 +54,7 @@
 <a href="/viewuser" class="btn colr"><i class="fa fa-list-ol"></i>&ensp;List of active Users</a> 
 <br><br>
  <a href="/deletedform" class="btn push"><i class="fa fa-history"></i>&ensp; Deleted form History</a>
-<a href="/deleteduser" class="btn"><i class="fa fa-history"></i>&ensp; Deleted User History</a>
+<a href="/deleteduser" class="btn colr"><i class="fa fa-history"></i>&ensp; Deleted User History</a>
 <table id="customers">
   
   {{#if result}}
@@ -71,23 +71,21 @@
     <td>{{indentno}}</td>
     <td>{{division}}</td>
     <td><a  class="btn" href="/indent/{{id}}"><i class = "fa fa-address-book"></i> View</a></td>
-    <td><button data-target="modal1" class="btn red modal-trigger"><i class="fa fa-remove"></i> DELETE</button>
+    <td>
+      
       <form action="/indent/{{id}}?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
+            <button href = "#modal1" class="btn red modal-trigger" type="submit"><i class="fa fa-remove"></i> DELETE</button>
             
-             <div id="modal1" class="modal">
-    <div class="modal-content" style="height:150px;">
-      <h4>Remarks</h4>
-      <textarea   name="remarks"></textarea>
-    </div>
-    <div class="modal-footer">
-        <button type = "submit" class="btn green"><i class = "fa fa-settings    "></i>Confirm</button>
-      
-            </form></a></td>
+            
+            </form></td>
             {{#if description}}
             <td><a class="btn green" target="_blank" href="{{description}}"><i class="fa fa-print" ></i> Print Description</a></td>
             {{else}}
-            <td><a class="btn green"><i class = "fa fa-remove"></i> No Description Uploaded</a> </td>
+            <td><button  data-target="modal2" class="btn red modal-trigger green"><i class = "fa fa-remove"></i> No Description Uploaded</button> </td>
+            <div id="modal2" class="modal">
+    <div class="modal-content" style="height:150px;">
+      <h4>No Description Uploaded</h4>
             {{/if}}  
   </tr>
   {{/each}}

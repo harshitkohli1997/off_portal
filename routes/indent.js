@@ -82,25 +82,27 @@ router.get('/indentform', ensureAuthenticated,(req,res) => {
     });
 })
 router.post('/', (req,res) => {
-   if(req.user[0].department === 'ITD'){
 
     if (!req.files.sampleFile)
-{
-    console.log('not upload')
-}
-    
-else {
-    var path = 'uploads'+'/'+Date.now()+'.pdf';
-     var upload = 'public/'+path;
-    
-     let sampleFile = req.files.sampleFile;
-            sampleFile.mv(upload, function(err) {
-              if (err)
-                return console.log(err)
-           
-              console.log('file uploaded!')
-            });
-        }
+    {
+        console.log('not upload')
+    }
+        
+    else {
+        var path = 'uploads'+'/'+Date.now()+'.pdf';
+         var upload = 'public/'+path;
+        
+         let sampleFile = req.files.sampleFile;
+                sampleFile.mv(upload, function(err) {
+                  if (err)
+                    return console.log(err)
+               
+                  console.log('file uploaded!')
+                });
+            }
+   if(req.user[0].department === 'ITD'){
+
+   
    db.query(`select ITD from indentcount`, (err,result) => {
     const abc = result[0].ITD+1;
     db.query('update indentcount set ?  where ?',[{ITD:abc},{ITD:abc-1}],(err,result) => {
@@ -180,7 +182,7 @@ else {
  
          db.query('select EIII from indentcount', (err,result) => {
  
-             console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].count);
+             console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].EIII);
              const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].EIII
              let indent = {
                  indentno:dude,
@@ -219,7 +221,8 @@ else {
                  one3:req.body.one3,
                  two3:req.body.two3,
                  three3:req.body.three3,
-                 four3:req.body.four3    
+                 four3:req.body.four3,
+                 description:path 
              }
  
              let sql1 = 'INSERT INTO indent SET ?';
@@ -244,35 +247,53 @@ router.get('/admin/dashboard', ensureAuthenticated,(req,res) => {
 
 router.delete('/indent/:id', (req,res) => {
 
-    let sql2 = 'SELECT * FROM indent WHERE id =?';
+    console.log(req.params.id)
+//     let sql2 = 'SELECT * FROM indent WHERE id =?';
    
-  
-    db.query(sql2,[req.params.id],(err,rows) => {
-        if(err) throw err;
+//   var  id = req.params.id;
+//     db.query(sql2,[req.params.id],(err,rows) => {
+//         if(err) throw err;
        
 
- let deldesc = {
-     remarks :req.body.remarks,
-     indentno:rows[0].indentno
- }
+//  let deldesc = {
+//      remarks :req.body.remarks,
+//      indentno:rows[0].indentno
+//  }
 
- db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
-     if(err) throw err;
-     let sql = 'DELETE FROM indent WHERE id =?';
+//  db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
+//      if(err) throw err;
+     
+        db.query('select * from indent where id =? ',[req.params.id], (err,result) => {
+            const num =result[0].indentno;
+            let sql = 'DELETE FROM indent WHERE id =?';
    
-  
+    const id = req.params.id
      db.query(sql,[req.params.id],(err,rows) => {
          if(err) throw err;
+        if(err) throw err 
+        res.render('user/indentwhy', {
+             indentno:num
+            })
         
-         res.redirect('/viewall');
-        
-     })
+    })
+    })
 
- });
-    });
+//  });
+//     });
    
 });
 
+router.post('/formremarks', (req,res) => {
+    let deldesc = {
+             remarks :req.body.remarks,
+              indentno:req.body.indentno
+          }
+        console.log(req.body.indentno)
+          db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
+          if(err) throw err;
+          res.redirect('/viewall')
+});
+});
 router.get('/viewall',ensureAuthenticated, (req,res) => {
     db.query('Select * from indent',(err,result) => {
         if(err) throw err;
@@ -283,6 +304,14 @@ router.get('/viewall',ensureAuthenticated, (req,res) => {
         })
     });
 });
+
+
+
+
+router.get('/testing', (req,res) => {
+    res.render('user/indentwhy');
+})
+
 
 router.get('/viewuser', ensureAuthenticated,(req,res) => {
     const type = 'NULL';    
@@ -327,6 +356,8 @@ router.delete('/user/:id', (req,res) => {
     });
    
 })
+
+
 
 router.get('/deletedform', (req,res) => {
     db.query('SELECT * from REMARKS', (err,result) => {

@@ -9,6 +9,9 @@
   
     
 }
+.colr {
+  background-color: coral;
+}
 .top-push{
   margin-top: 12%;
 }
@@ -48,12 +51,22 @@
     <th>IndentNo</th>
     <th>Division</th>
     <th>View</th>
+    <th>Description</th>
   </tr>
 {{#each result}}
   <tr>
     <td>{{indentno}}</td>
     <td>{{division}}</td>
-    <td><a href="/indent/{{id}}">view</a></td>
+    <td><a class="btn green" href="/indent/{{id}}">view</a></td>
+    <td>
+            {{#if description}}
+          <a class="btn colr" target="_blank" href="{{description}}"><i class="fa fa-print" ></i> Print Description</a></td>
+            {{else}}
+          <button  data-target="modal2" class="btn modal-trigger colr"><i class = "fa fa-remove"></i> No Description Uploaded</button>
+            <div id="modal2" class="modal">
+    <div class="modal-content" style="height:150px;">
+      <h4>No Description Uploaded</h4>
+            {{/if}}  </td>
   </tr>
   {{/each}}
   {{else}}
