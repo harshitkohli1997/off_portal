@@ -65,18 +65,11 @@
     <td>{{name}}</td>
     <td>{{emailid}}</td>
     
-    <td><button data-target="modal1" class="btn red modal-trigger"><i class="fa fa-remove"></i> DELETE</button>
+    <td>
       <form action="/user/{{id}}?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
-            
-             <div id="modal1" class="modal">
-    <div class="modal-content" style="height:150px;">
-      <h4>Remarks</h4>
-      <textarea   name="remarks"></textarea>
-    </div>
-    <div class="modal-footer">
-        <button type = "submit" class="btn green"><i class = "fa fa-settings"></i>Confirm</button>
-      
+        
+      <button type="submit" class="btn red "><i class="fa fa-remove"></i> DELETE</button>
             </form></td>
             <td><button class="btn color">{{department}}</button></td>
   </tr>

@@ -265,6 +265,7 @@ router.delete('/indent/:id', (req,res) => {
      
         db.query('select * from indent where id =? ',[req.params.id], (err,result) => {
             const num =result[0].indentno;
+            const name = result[0].name;
             let sql = 'DELETE FROM indent WHERE id =?';
    
     const id = req.params.id
@@ -272,7 +273,8 @@ router.delete('/indent/:id', (req,res) => {
          if(err) throw err;
         if(err) throw err 
         res.render('user/indentwhy', {
-             indentno:num
+             indentno:num,
+             name:name
             })
         
     })
@@ -286,7 +288,8 @@ router.delete('/indent/:id', (req,res) => {
 router.post('/formremarks', (req,res) => {
     let deldesc = {
              remarks :req.body.remarks,
-              indentno:req.body.indentno
+              indentno:req.body.indentno,
+              name:req.body.name
           }
         console.log(req.body.indentno)
           db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
@@ -308,9 +311,7 @@ router.get('/viewall',ensureAuthenticated, (req,res) => {
 
 
 
-router.get('/testing', (req,res) => {
-    res.render('user/indentwhy');
-})
+
 
 
 router.get('/viewuser', ensureAuthenticated,(req,res) => {
@@ -333,33 +334,49 @@ router.delete('/user/:id', (req,res) => {
         if(err) throw err;
        
 
- let deldesc = {
-     remarks :req.body.remarks,
-     name:rows[0].name,
-     mail:rows[0].emailid
+     const name = rows[0].name;
+     const mail = rows[0].emailid;
+     const contactno = rows[0].contact_no;
 
- }
-
- db.query('INSERT INTO USERREMARKS SET ?', deldesc, (err,result) => {
-     if(err) throw err;
+ 
      let sql = 'DELETE FROM newuser WHERE id =?';
    
   
      db.query(sql,[req.params.id],(err,rows) => {
          if(err) throw err;
         
-         res.redirect('/viewuser');
+         res.render('user/userwhy', {
+          name:name,
+          mail:mail,
+          contactno:contactno
+         });
         
      })
 
- });
+ 
     });
    
 })
 
+router.post('/userremarks', (req,res) => {
+    let deldesc = {
+             remarks :req.body.remarks,
+             mail:req.body.mail,
+             name:req.body.name,
+             contactno:req.body.contactno
+          }
+        
+          db.query('INSERT INTO userremarks SET ?', deldesc, (err,result) => {
+          if(err) throw err;
+          res.redirect('/viewuser')
+});
+});
 
 
-router.get('/deletedform', (req,res) => {
+
+
+
+router.get('/deletedform', ensureAuthenticated,(req,res) => {
     db.query('SELECT * from REMARKS', (err,result) => {
         if(err) throw err;
 
@@ -370,7 +387,7 @@ router.get('/deletedform', (req,res) => {
 });
 
 
-router.get('/deleteduser', (req,res) => {
+router.get('/deleteduser',ensureAuthenticated, (req,res) => {
     db.query('SELECT * from USERREMARKS', (err,result) => {
         if(err) throw err;
 

@@ -1,7 +1,7 @@
 <style>
     .card {
         color: black;
-        height: 550px;
+        height: 650px;
         width:70%;
         box-shadow: 6px 6px 6px 6px;
         margin-left:14.5%;
@@ -14,13 +14,15 @@
     }
 </style>
 <div class="card">
-    <form action="/formremarks" method="POST">
+    <form action="/userremarks" method="POST">
     <br>  
     <h3><b>Why you are Deleting this form?</b></h3>
     
-    <b class="lef">Indent No. -</b><input type="text" style="width:30%;" name="indentno" value="{{indentno}}" readonly></input>
-    <br><br><b class="lef">Created By -</b><input type="text" style="width:30%;" name="name" value="{{name}}" readonly></input>
-    <br><br>
+    <b class="lef">Email: </b> <input type="text" style="width:30%;" name="mail" value="{{mail}}" readonly></input>
+    <br><br><b class="lef">Name: </b> <input type="text" style="width:30%;" name="name" value="{{name}}" readonly></input>
+    <br>
+    <b class="lef">Contact No. </b> <input type="text" style="width:30%;" name="contactno" value="{{contactno}}" readonly></input>
+    <br>
     <textarea style="height:150px; width:78%; margin-left:10%;" name="remarks"></textarea>
     <br><br><br>
     <button type="submit" class="btn " style="margin-left:35%; height:60px;">Submit</button>
