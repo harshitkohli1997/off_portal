@@ -505,6 +505,138 @@ router.post('/', (req,res) => {
                      })
                  });
                     }
+                    else if(req.user[0].department === 'dept1'){
+                        db.query(`select dept1 from indentcount`, (err,result) => {
+                         const abc = result[0].EIII+1;
+                         db.query('update indentcount set ?  where ?',[{dept1:abc},{dept1:abc-1}],(err,result) => {
+                     
+                             const date = new Date();
+                     
+                             db.query('select dept1 from indentcount', (err,result) => {
+                     
+                                 console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].dept1);
+                                 const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].dept1
+                                 let indent = {
+                                     indentno:dude,
+                                     date:req.body.date,
+                                     name:req.body.name,
+                                     division:req.body.division,
+                                     innernm1:req.body.innernm1,
+                                     innernm2:req.body.innernm2,
+                                     projectno:req.body.projectno,
+                                     deadline:req.body.deadline,
+                                     consequence:req.body.consequence,
+                                     equipdetails:req.body.equipdetails,
+                                     delreqnm:req.body.delreqnm,
+                                     fundavail:req.body.fundavail,
+                                     projectnm:req.body.projectnm,
+                                     budget:req.body.budget,
+                                     necfundavail:req.body.fundavail,
+                                     installreq:req.body.installreq,
+                                     vend1:req.body.vend1,
+                                     vend2:req.body.vend2,
+                                     vend3:req.body.vend3,
+                                     inspectionunder:req.body.inspectionunder,
+                                     certifiedavail:req.body.certifiedavail,
+                                     userid : req.user[0].id,
+                                    
+                                     one1:req.body.one1,
+                                     two1:req.body.two1,
+                                     three1:req.body.three1,
+                                     four1:req.body.four1,
+                                     
+                                     one2:req.body.one2,
+                                     two2:req.body.two2,
+                                     three2:req.body.three2,
+                                     four2:req.body.four2,
+                             
+                                     one3:req.body.one3,
+                                     two3:req.body.two3,
+                                     three3:req.body.three3,
+                                     four3:req.body.four3,
+                                     description:path,
+                    
+                                     dpt:req.user[0].department
+                                 }
+                     
+                                 let sql1 = 'INSERT INTO indent SET ?';
+                         let query1 = db.query(sql1,indent,(err,result) => {
+                             if(err) throw err;
+                             res.redirect('/dashboard');    
+                         })
+                     
+                             
+                               
+                     })
+                         })
+                     });
+                        }
+                        else if(req.user[0].department === 'dept2'){
+                            db.query(`select dept2 from indentcount`, (err,result) => {
+                             const abc = result[0].EIII+1;
+                             db.query('update indentcount set ?  where ?',[{dept2:abc},{dept2:abc-1}],(err,result) => {
+                         
+                                 const date = new Date();
+                         
+                                 db.query('select dept2 from indentcount', (err,result) => {
+                         
+                                     console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].dept2);
+                                     const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].dept2
+                                     let indent = {
+                                         indentno:dude,
+                                         date:req.body.date,
+                                         name:req.body.name,
+                                         division:req.body.division,
+                                         innernm1:req.body.innernm1,
+                                         innernm2:req.body.innernm2,
+                                         projectno:req.body.projectno,
+                                         deadline:req.body.deadline,
+                                         consequence:req.body.consequence,
+                                         equipdetails:req.body.equipdetails,
+                                         delreqnm:req.body.delreqnm,
+                                         fundavail:req.body.fundavail,
+                                         projectnm:req.body.projectnm,
+                                         budget:req.body.budget,
+                                         necfundavail:req.body.fundavail,
+                                         installreq:req.body.installreq,
+                                         vend1:req.body.vend1,
+                                         vend2:req.body.vend2,
+                                         vend3:req.body.vend3,
+                                         inspectionunder:req.body.inspectionunder,
+                                         certifiedavail:req.body.certifiedavail,
+                                         userid : req.user[0].id,
+                                        
+                                         one1:req.body.one1,
+                                         two1:req.body.two1,
+                                         three1:req.body.three1,
+                                         four1:req.body.four1,
+                                         
+                                         one2:req.body.one2,
+                                         two2:req.body.two2,
+                                         three2:req.body.three2,
+                                         four2:req.body.four2,
+                                 
+                                         one3:req.body.one3,
+                                         two3:req.body.two3,
+                                         three3:req.body.three3,
+                                         four3:req.body.four3,
+                                         description:path,
+                        
+                                         dpt:req.user[0].department
+                                     }
+                         
+                                     let sql1 = 'INSERT INTO indent SET ?';
+                             let query1 = db.query(sql1,indent,(err,result) => {
+                                 if(err) throw err;
+                                 res.redirect('/dashboard');    
+                             })
+                         
+                                 
+                                   
+                         })
+                             })
+                         });
+                            }
 });
 
 router.get('/admin/dashboard', ensureAuthenticated,(req,res) => {
