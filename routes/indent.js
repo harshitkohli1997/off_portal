@@ -41,6 +41,105 @@ router.get('/indent/:id',ensureAuthenticated ,(req,res) => {
   
 });
 
+router.delete('/cancel', (req,res) => {
+     if(req.user[0].department === 'ITD')
+     {
+    
+    db.query('SELECT * from indentcount', (err,result) => {
+    if(err) throw err;
+
+    const abc = result[0].ITD
+    
+        
+    db.query('update indentcount set ?  where ?',[{ITD:abc-1},{ITD:abc}],(err,result) => {
+      if(err) throw err;
+
+    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
+        if(err) throw err;
+        res.redirect('/dashboard')
+    });
+    });
+});
+     }
+     else   if(req.user[0].department === 'CVO')
+     {
+    
+    db.query('SELECT * from indentcount', (err,result) => {
+    if(err) throw err;
+
+    const abc = result[0].CVO
+    
+        
+    db.query('update indentcount set ?  where ?',[{CVO:abc-1},{CVO:abc}],(err,result) => {
+      if(err) throw err;
+
+    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
+        if(err) throw err;
+        res.redirect('/dashboard')
+    });
+    });
+});
+     }
+     else   if(req.user[0].department === 'DGO')
+     {
+    
+    db.query('SELECT * from indentcount', (err,result) => {
+    if(err) throw err;
+
+    const abc = result[0].DGO
+    
+        
+    db.query('update indentcount set ?  where ?',[{DGO:abc-1},{DGO:abc}],(err,result) => {
+      if(err) throw err;
+
+    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
+        if(err) throw err;
+        res.redirect('/dashboard')
+    });
+    });
+});
+     }
+     else   if(req.user[0].department === 'CIVIL')
+     {
+    
+    db.query('SELECT * from indentcount', (err,result) => {
+    if(err) throw err;
+
+    const abc = result[0].CIVIL
+    
+        
+    db.query('update indentcount set ?  where ?',[{CIVIL:abc-1},{CIVIL:abc}],(err,result) => {
+      if(err) throw err;
+
+    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
+        if(err) throw err;
+        res.redirect('/dashboard')
+    });
+    });
+});
+     }
+     else   if(req.user[0].department === 'EIII')
+     {
+    
+    db.query('SELECT * from indentcount', (err,result) => {
+    if(err) throw err;
+
+    const abc = result[0].EIII
+    
+        
+    db.query('update indentcount set ?  where ?',[{EIII:abc-1},{EIII:abc}],(err,result) => {
+      if(err) throw err;
+
+    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
+        if(err) throw err;
+        res.redirect('/dashboard')
+    });
+    });
+});
+     }
+});
+
+
 // router.get('/try1', (req,res) => {
 //     console.log(req.user[0].type)
 // })
@@ -160,12 +259,19 @@ router.post('/', (req,res) => {
                 description:path,
                 dpt:req.user[0].department
             }
+
+        
         
 
             let sql1 = 'INSERT INTO indent SET ?';
     let query1 = db.query(sql1,indent,(err,result) => {
         if(err) throw err;
-        res.redirect('/dashboard');    
+        db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+            res.render('confirm', {
+                result:result
+            }
+        )
+    })   
     })
 
         
@@ -231,7 +337,12 @@ router.post('/', (req,res) => {
              let sql1 = 'INSERT INTO indent SET ?';
      let query1 = db.query(sql1,indent,(err,result) => {
          if(err) throw err;
-         res.redirect('/dashboard');    
+         db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+            res.render('confirm', {
+                result:result
+            }
+        ) 
+    })  
      })
  
          
@@ -298,7 +409,12 @@ router.post('/', (req,res) => {
                  let sql1 = 'INSERT INTO indent SET ?';
          let query1 = db.query(sql1,indent,(err,result) => {
              if(err) throw err;
-             res.redirect('/dashboard');    
+             db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+                res.render('confirm', {
+                    result:result
+                }
+            ) 
+        })      
          })
      
              
@@ -364,7 +480,12 @@ router.post('/', (req,res) => {
                      let sql1 = 'INSERT INTO indent SET ?';
              let query1 = db.query(sql1,indent,(err,result) => {
                  if(err) throw err;
-                 res.redirect('/dashboard');    
+                 db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+                    res.render('confirm', {
+                        result:result
+                    }
+                ) 
+            })      
              })
          
                  
@@ -430,7 +551,12 @@ router.post('/', (req,res) => {
                          let sql1 = 'INSERT INTO indent SET ?';
                  let query1 = db.query(sql1,indent,(err,result) => {
                      if(err) throw err;
-                     res.redirect('/dashboard');    
+                     db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+                        res.render('confirm', {
+                            result:result
+                        }
+                    ) 
+                })     
                  })
              
                      
@@ -496,7 +622,12 @@ router.post('/', (req,res) => {
                              let sql1 = 'INSERT INTO indent SET ?';
                      let query1 = db.query(sql1,indent,(err,result) => {
                          if(err) throw err;
-                         res.redirect('/dashboard');    
+                         db.query('select * from indent where indentno = ?',[dude], (err,result) => {
+                            res.render('confirm', {
+                                result:result
+                            }
+                        ) 
+                    })      
                      })
                  
                          
