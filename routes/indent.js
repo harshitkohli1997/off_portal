@@ -225,7 +225,7 @@ router.post('/', (req,res) => {
                  four3:req.body.four3,
                  description:path,
 
-                 dpt:req.user.dpt
+                 dpt:req.user[0].department
              }
  
              let sql1 = 'INSERT INTO indent SET ?';
@@ -240,6 +240,271 @@ router.post('/', (req,res) => {
      })
  });
     }
+
+    else if(req.user[0].department === 'CVO'){
+        db.query(`select CVO from indentcount`, (err,result) => {
+         const abc = result[0].CVO+1;
+         db.query('update indentcount set ?  where ?',[{CVO:abc},{CVO:abc-1}],(err,result) => {
+     
+             const date = new Date();
+     
+             db.query('select CVO from indentcount', (err,result) => {
+     
+                 console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].CVO);
+                 const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].CVO
+                 let indent = {
+                     indentno:dude,
+                     date:req.body.date,
+                     name:req.body.name,
+                     division:req.body.division,
+                     innernm1:req.body.innernm1,
+                     innernm2:req.body.innernm2,
+                     projectno:req.body.projectno,
+                     deadline:req.body.deadline,
+                     consequence:req.body.consequence,
+                     equipdetails:req.body.equipdetails,
+                     delreqnm:req.body.delreqnm,
+                     fundavail:req.body.fundavail,
+                     projectnm:req.body.projectnm,
+                     budget:req.body.budget,
+                     necfundavail:req.body.fundavail,
+                     installreq:req.body.installreq,
+                     vend1:req.body.vend1,
+                     vend2:req.body.vend2,
+                     vend3:req.body.vend3,
+                     inspectionunder:req.body.inspectionunder,
+                     certifiedavail:req.body.certifiedavail,
+                     userid : req.user[0].id,
+                    
+                     one1:req.body.one1,
+                     two1:req.body.two1,
+                     three1:req.body.three1,
+                     four1:req.body.four1,
+                     
+                     one2:req.body.one2,
+                     two2:req.body.two2,
+                     three2:req.body.three2,
+                     four2:req.body.four2,
+             
+                     one3:req.body.one3,
+                     two3:req.body.two3,
+                     three3:req.body.three3,
+                     four3:req.body.four3,
+                     description:path,
+    
+                     dpt:req.user[0].department
+                 }
+     
+                 let sql1 = 'INSERT INTO indent SET ?';
+         let query1 = db.query(sql1,indent,(err,result) => {
+             if(err) throw err;
+             res.redirect('/dashboard');    
+         })
+     
+             
+               
+     })
+         })
+     });
+        }
+        else if(req.user[0].department === 'DGO'){
+            db.query(`select DGO from indentcount`, (err,result) => {
+             const abc = result[0].EIII+1;
+             db.query('update indentcount set ?  where ?',[{DGO:abc},{DGO:abc-1}],(err,result) => {
+         
+                 const date = new Date();
+         
+                 db.query('select DGO from indentcount', (err,result) => {
+         
+                     console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].DGO);
+                     const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].DGO
+                     let indent = {
+                         indentno:dude,
+                         date:req.body.date,
+                         name:req.body.name,
+                         division:req.body.division,
+                         innernm1:req.body.innernm1,
+                         innernm2:req.body.innernm2,
+                         projectno:req.body.projectno,
+                         deadline:req.body.deadline,
+                         consequence:req.body.consequence,
+                         equipdetails:req.body.equipdetails,
+                         delreqnm:req.body.delreqnm,
+                         fundavail:req.body.fundavail,
+                         projectnm:req.body.projectnm,
+                         budget:req.body.budget,
+                         necfundavail:req.body.fundavail,
+                         installreq:req.body.installreq,
+                         vend1:req.body.vend1,
+                         vend2:req.body.vend2,
+                         vend3:req.body.vend3,
+                         inspectionunder:req.body.inspectionunder,
+                         certifiedavail:req.body.certifiedavail,
+                         userid : req.user[0].id,
+                        
+                         one1:req.body.one1,
+                         two1:req.body.two1,
+                         three1:req.body.three1,
+                         four1:req.body.four1,
+                         
+                         one2:req.body.one2,
+                         two2:req.body.two2,
+                         three2:req.body.three2,
+                         four2:req.body.four2,
+                 
+                         one3:req.body.one3,
+                         two3:req.body.two3,
+                         three3:req.body.three3,
+                         four3:req.body.four3,
+                         description:path,
+        
+                         dpt:req.user[0].department
+                     }
+         
+                     let sql1 = 'INSERT INTO indent SET ?';
+             let query1 = db.query(sql1,indent,(err,result) => {
+                 if(err) throw err;
+                 res.redirect('/dashboard');    
+             })
+         
+                 
+                   
+         })
+             })
+         });
+            }
+            else if(req.user[0].department === 'CIVIL'){
+                db.query(`select CIVIL from indentcount`, (err,result) => {
+                 const abc = result[0].CIVIL+1;
+                 db.query('update indentcount set ?  where ?',[{CIVIL:abc},{CIVIL:abc-1}],(err,result) => {
+             
+                     const date = new Date();
+             
+                     db.query('select CIVIL from indentcount', (err,result) => {
+             
+                         console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].CIVIL);
+                         const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].CIVIL
+                         let indent = {
+                             indentno:dude,
+                             date:req.body.date,
+                             name:req.body.name,
+                             division:req.body.division,
+                             innernm1:req.body.innernm1,
+                             innernm2:req.body.innernm2,
+                             projectno:req.body.projectno,
+                             deadline:req.body.deadline,
+                             consequence:req.body.consequence,
+                             equipdetails:req.body.equipdetails,
+                             delreqnm:req.body.delreqnm,
+                             fundavail:req.body.fundavail,
+                             projectnm:req.body.projectnm,
+                             budget:req.body.budget,
+                             necfundavail:req.body.fundavail,
+                             installreq:req.body.installreq,
+                             vend1:req.body.vend1,
+                             vend2:req.body.vend2,
+                             vend3:req.body.vend3,
+                             inspectionunder:req.body.inspectionunder,
+                             certifiedavail:req.body.certifiedavail,
+                             userid : req.user[0].id,
+                            
+                             one1:req.body.one1,
+                             two1:req.body.two1,
+                             three1:req.body.three1,
+                             four1:req.body.four1,
+                             
+                             one2:req.body.one2,
+                             two2:req.body.two2,
+                             three2:req.body.three2,
+                             four2:req.body.four2,
+                     
+                             one3:req.body.one3,
+                             two3:req.body.two3,
+                             three3:req.body.three3,
+                             four3:req.body.four3,
+                             description:path,
+            
+                             dpt:req.user[0].department
+                         }
+             
+                         let sql1 = 'INSERT INTO indent SET ?';
+                 let query1 = db.query(sql1,indent,(err,result) => {
+                     if(err) throw err;
+                     res.redirect('/dashboard');    
+                 })
+             
+                     
+                       
+             })
+                 })
+             });
+                }
+                else if(req.user[0].department === 'VIG'){
+                    db.query(`select VIG from indentcount`, (err,result) => {
+                     const abc = result[0].EIII+1;
+                     db.query('update indentcount set ?  where ?',[{VIG:abc},{VIG:abc-1}],(err,result) => {
+                 
+                         const date = new Date();
+                 
+                         db.query('select VIG from indentcount', (err,result) => {
+                 
+                             console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].VIG);
+                             const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].VIG
+                             let indent = {
+                                 indentno:dude,
+                                 date:req.body.date,
+                                 name:req.body.name,
+                                 division:req.body.division,
+                                 innernm1:req.body.innernm1,
+                                 innernm2:req.body.innernm2,
+                                 projectno:req.body.projectno,
+                                 deadline:req.body.deadline,
+                                 consequence:req.body.consequence,
+                                 equipdetails:req.body.equipdetails,
+                                 delreqnm:req.body.delreqnm,
+                                 fundavail:req.body.fundavail,
+                                 projectnm:req.body.projectnm,
+                                 budget:req.body.budget,
+                                 necfundavail:req.body.fundavail,
+                                 installreq:req.body.installreq,
+                                 vend1:req.body.vend1,
+                                 vend2:req.body.vend2,
+                                 vend3:req.body.vend3,
+                                 inspectionunder:req.body.inspectionunder,
+                                 certifiedavail:req.body.certifiedavail,
+                                 userid : req.user[0].id,
+                                
+                                 one1:req.body.one1,
+                                 two1:req.body.two1,
+                                 three1:req.body.three1,
+                                 four1:req.body.four1,
+                                 
+                                 one2:req.body.one2,
+                                 two2:req.body.two2,
+                                 three2:req.body.three2,
+                                 four2:req.body.four2,
+                         
+                                 one3:req.body.one3,
+                                 two3:req.body.two3,
+                                 three3:req.body.three3,
+                                 four3:req.body.four3,
+                                 description:path,
+                
+                                 dpt:req.user[0].department
+                             }
+                 
+                             let sql1 = 'INSERT INTO indent SET ?';
+                     let query1 = db.query(sql1,indent,(err,result) => {
+                         if(err) throw err;
+                         res.redirect('/dashboard');    
+                     })
+                 
+                         
+                           
+                 })
+                     })
+                 });
+                    }
 });
 
 router.get('/admin/dashboard', ensureAuthenticated,(req,res) => {
