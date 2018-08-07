@@ -86,6 +86,42 @@ function myFunction() {
   }
 }
 </script>
+<script>
+ var counter = 1;
+jQuery('a.add-row').click(function(event){
+    event.preventDefault();
+    counter++;
+    if(counter <=3){
+    if(counter == 2)
+    {
+    var newRow = jQuery('<tr><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "one4"' +
+        counter + '"/></td><td><textarea style="margin-bottom: 0%; background-color:white;" type="text"  name = "two4"' +
+        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" type="text"  name = "three4"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "four4"'+
+        counter + '"/></td></tr>');
+    jQuery('table.table').append(newRow);
+    }
+    else {
+         var newRow = jQuery('<tr><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "one5"' +
+        counter + '"/></td><td><textarea style="margin-bottom: 0%; background-color:white;" type="text"  name = "two5"' +
+        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" type="text"  name = "three5"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "four5"'+
+        counter + '"/></td></tr>');
+    jQuery('table.table').append(newRow);
+    }
+    }
+
+});
+
+
+</script>
+<script>
+ $(document).ready(function(){
+    $('#modal').modal();
+    $('#modal').modal('open'); 
+ });
+</script>
+</script>
 </body>
 
 </html>

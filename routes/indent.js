@@ -45,7 +45,7 @@ router.delete('/cancel', (req,res) => {
      if(req.user[0].department === 'ITD')
      {
     
-    db.query('SELECT * from indentcount', (err,result) => {
+    db.query('SELECT ITD from indentcount', (err,result) => {
     if(err) throw err;
 
     const abc = result[0].ITD
@@ -64,7 +64,7 @@ router.delete('/cancel', (req,res) => {
      else   if(req.user[0].department === 'CVO')
      {
     
-    db.query('SELECT * from indentcount', (err,result) => {
+    db.query('SELECT CVO from indentcount', (err,result) => {
     if(err) throw err;
 
     const abc = result[0].CVO
@@ -83,7 +83,7 @@ router.delete('/cancel', (req,res) => {
      else   if(req.user[0].department === 'DGO')
      {
     
-    db.query('SELECT * from indentcount', (err,result) => {
+    db.query('SELECT DGO from indentcount', (err,result) => {
     if(err) throw err;
 
     const abc = result[0].DGO
@@ -102,7 +102,7 @@ router.delete('/cancel', (req,res) => {
      else   if(req.user[0].department === 'CIVIL')
      {
     
-    db.query('SELECT * from indentcount', (err,result) => {
+    db.query('SELECT CIVIL from indentcount', (err,result) => {
     if(err) throw err;
 
     const abc = result[0].CIVIL
@@ -121,7 +121,7 @@ router.delete('/cancel', (req,res) => {
      else   if(req.user[0].department === 'EIII')
      {
     
-    db.query('SELECT * from indentcount', (err,result) => {
+    db.query('SELECT EIII from indentcount', (err,result) => {
     if(err) throw err;
 
     const abc = result[0].EIII
@@ -255,6 +255,16 @@ router.post('/', (req,res) => {
                 two3:req.body.two3,
                 three3:req.body.three3,
                 four3:req.body.four3,
+
+                one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
                 
                 description:path,
                 dpt:req.user[0].department
@@ -329,6 +339,17 @@ router.post('/', (req,res) => {
                  two3:req.body.two3,
                  three3:req.body.three3,
                  four3:req.body.four3,
+
+                 one4:req.body.one4,
+                 two4:req.body.two4,
+                 three4:req.body.three4,
+                 four4:req.body.four4,
+ 
+                 one5:req.body.one5,
+                 two5:req.body.two5,
+                 three5:req.body.three5,
+                 four5:req.body.four5, 
+
                  description:path,
 
                  dpt:req.user[0].department
@@ -401,6 +422,19 @@ router.post('/', (req,res) => {
                      two3:req.body.two3,
                      three3:req.body.three3,
                      four3:req.body.four3,
+
+                     one4:req.body.one4,
+                 two4:req.body.two4,
+                    three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+
+
+                     
                      description:path,
     
                      dpt:req.user[0].department
@@ -425,7 +459,7 @@ router.post('/', (req,res) => {
         }
         else if(req.user[0].department === 'DGO'){
             db.query(`select DGO from indentcount`, (err,result) => {
-             const abc = result[0].EIII+1;
+             const abc = result[0].DGO+1;
              db.query('update indentcount set ?  where ?',[{DGO:abc},{DGO:abc-1}],(err,result) => {
          
                  const date = new Date();
@@ -472,6 +506,17 @@ router.post('/', (req,res) => {
                          two3:req.body.two3,
                          three3:req.body.three3,
                          four3:req.body.four3,
+                         
+                         one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+
                          description:path,
         
                          dpt:req.user[0].department
@@ -543,6 +588,17 @@ router.post('/', (req,res) => {
                              two3:req.body.two3,
                              three3:req.body.three3,
                              four3:req.body.four3,
+                             
+                             one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+
                              description:path,
             
                              dpt:req.user[0].department
@@ -614,6 +670,17 @@ router.post('/', (req,res) => {
                                  two3:req.body.two3,
                                  three3:req.body.three3,
                                  four3:req.body.four3,
+                                 
+                                 one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+                                 
                                  description:path,
                 
                                  dpt:req.user[0].department
@@ -685,6 +752,17 @@ router.post('/', (req,res) => {
                                      two3:req.body.two3,
                                      three3:req.body.three3,
                                      four3:req.body.four3,
+                                     
+                                     one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+                                     
                                      description:path,
                     
                                      dpt:req.user[0].department
@@ -751,6 +829,17 @@ router.post('/', (req,res) => {
                                          two3:req.body.two3,
                                          three3:req.body.three3,
                                          four3:req.body.four3,
+                                        
+                                         one4:req.body.one4,
+                                         two4:req.body.two4,
+                                         three4:req.body.three4,
+                                         four4:req.body.four4,
+                         
+                                         one5:req.body.one5,
+                                         two5:req.body.two5,
+                                         three5:req.body.three5,
+                                         four5:req.body.four5,
+                                         
                                          description:path,
                         
                                          dpt:req.user[0].department

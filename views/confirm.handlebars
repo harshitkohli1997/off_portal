@@ -10,14 +10,21 @@
 h1 {
     text-align: center;
 }
+.modal{
+    width:1600px;
+    height: 1500px;
+}
+.push{
+    margin-top:30%;
+}
 </style>
 
 <br><br>
-<h1>Preview</h1>
-<div class="card">
 
-    <br><br>
-    {{#each result}}
+<h1 class="push">Preview</h1>
+<div id="modal" class="modal" >
+    <div class="modal-content">
+      {{#each result}}
     
     <form action="/cancel?_method=DELETE" method = "post" id="delete-form">
             <input type="hidden" name = "_method" value="DELETE">
@@ -25,11 +32,11 @@ h1 {
             <input type="text" style="width:0%;" name="indentno" value="{{indentno}}" readonly></input>
             <br>
             
-            <button class="btn red" style="float:left;"><i class="fa fa-remove"></i> Cancel</button>
+            <button class="btn red" style="float:left;margin-left:23%;"><i class="fa fa-remove"></i> Cancel</button>
             
             
             </form>
-            <a href="/dashboard" class="btn" style="float:left;margin-left:20%;">Confirm</a>
+            <a href="/dashboard" class="btn" style="float:left;margin-left:10%;">Confirm</a>
     <br><br><br>
 <div id="print-content">
 
@@ -137,6 +144,20 @@ h1 {
                     <td>{{two3}}</td>
                     <td>{{three3}}</td>
                     <td>{{four3}}</td>
+                </tr>
+
+                <tr>
+                    <td>{{one4}}</td>
+                    <td>{{two4}}</td>
+                    <td>{{three4}}</td>
+                    <td>{{four4}}</td>
+                </tr>
+
+                <tr>
+                    <td>{{one5}}</td>
+                    <td>{{two5}}</td>
+                    <td>{{three5}}</td>
+                    <td>{{four5}}</td>
                 </tr>
 
             </tbody>
@@ -251,3 +272,7 @@ h1 {
   </div>
 </div>
 </div>
+    </div>
+    
+</div>
+</div></div></div>

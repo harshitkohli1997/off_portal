@@ -7,6 +7,10 @@
     background-color:#F0FFF9;
   }
 }
+.hidden{
+  visibility: hidden;
+}
+
   
 </style>
 
@@ -20,10 +24,10 @@
 
 <form action="/" method="post" ref='uploadForm' id='uploadForm' encType="multipart/form-data" >
 
-<p ><b> Name & designation <input style="margin-bottom: 0% ;margin-right:40%;  ;background-color:white;width:250px;" type="text"  name = "name"  required> Date.<input style="margin-bottom: 0% ;  width:250px; float:right;background-color:white;" type="date"  name = "date" required></b></p>
+<p ><b> Name & designation <input style="margin-bottom: 0% ;margin-right:40%;  ;background-color:white;width:350px;" type="text"  name = "name"  required> Date.<input style="margin-bottom: 0% ; margin-right:1%; width:200px; float:right;background-color:white;" type="date"  name = "date" required></b></p>
 
 <br>
-Division: <input style="margin-bottom: 0% ; width:250px;;background-color:white;" type="text"  name = "division" required></p>
+Division: <input style="margin-bottom: 0% ; width:350px;;background-color:white;" type="text"  name = "division" required></p>
  
 
 <br>
@@ -60,32 +64,36 @@ Division: <input style="margin-bottom: 0% ; width:250px;;background-color:white;
         <td><input style="margin-bottom: 0%; background-color:white;" type="text"  name = "three3"></td>
        <td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "four3"></td>
        </tr>
+        
       
     </tbody>
   </table>
+<br>
+  <a href="#" title="" class="add-row btn red" style="float:right; width:190px;"><i class="fa fa-plus"></i> Add Row</a>
+  <br><br>
  
  <ol>
-  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:250px;background-color:white;" type="text"  name = "innernm1" required>and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "innernm2" required>in India. We shall be held responsible in case the certificate is found to be incorrect.
+  <li><p>  Certified that to the best of our knowledge, the items indented are the propietary items of M/s:  <input style="margin-bottom: 0% ; width:350px;background-color:white;" type="text"  name = "innernm1" required>and marketed by their only authorize disributer.M/s: <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "innernm2" required>in India. We shall be held responsible in case the certificate is found to be incorrect.
   </p></li>
   <br>
-   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No .  <input style="margin-bottom: 0% ; width:250px;background-color:white;" type="text"  name = "projectno" required>a sponsored / In house project and the deadline for delivery is <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "deadline" required>The consequence if the item is not procured within the dead line is <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "consequence" required>
+   <li><p> The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project No .  <input style="margin-bottom: 0% ; width:350px;background-color:white;" type="text"  name = "projectno" required>a sponsored / In house project and the deadline for delivery is <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "deadline" required>The consequence if the item is not procured within the dead line is <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "consequence" required>
   </p></li>
   <br>
-   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.  <input style="margin-bottom: 0% ; width:250px;background-color:white;" type="text"  name = "equipdetails" required>
+   <li><p>  The details about the equipment, availability of spares, ease of maintainance etc.  <input style="margin-bottom: 0% ; width:350px;background-color:white;" type="text"  name = "equipdetails" required>
   </p></li>
   <br>
-   <li><p>  <input style="margin-bottom: 0% ; width:250px;background-color:white;" type="text"  name = "delreqnm" required>The delivery of the item is required by.
+   <li><p>  <input style="margin-bottom: 0% ; width:350px;background-color:white;" type="text"  name = "delreqnm" required>The delivery of the item is required by.
   </p></li>
   <br>
    <li><p >  The availability of funds: <input type="radio" style="margin-left:10px; background-color:white;" name="fundavail" id="yes" value="yes" required>
         <label for="yes"><b>yes</label> <input  type="radio" name="fundavail" id="no" value="no">
         <label for="no"><b>no</label><br>
-        Name od Project :  <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "projectnm" required>
-        <br>Budget Provision :  <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "budget" required>
+        Name of Project :  <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "projectnm" required>
+        <br>Budget Provision :  <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "budget" required>
         <br>
         <br>
        Whether necessary fund is available to process this item<br>(This should commensurate with the delivery Schedule)<br> PME/Accounts  <input type="radio" name="necfundavail" id="yes1" value="yes" required>
-        <label for="yes1"><b>yes</label> <input  type="radio" name="necfundavail" id="no1" value="no">
+        <label for="yes1" style="color:gray;"><b>yes</label> <input  type="radio" name="necfundavail" id="no1" value="no">
         <label for="no1"><b>no</label><br>
   <br>
    
@@ -95,18 +103,20 @@ Division: <input style="margin-bottom: 0% ; width:250px;;background-color:white;
   </p></li>
       
   
-   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.<input style="margin-bottom: 0% ;background-color:white; width:250px;" type="text"  name = "vend1" required> <br> 2. <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "vend2"> <br>3.<input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "vend3">
+   <li><p>  The list of available vendors. Their addresses and websites whrever available.  <br>1.<input style="margin-bottom: 0% ;background-color:white; width:350px;" type="text"  name = "vend1" required> <br> 2. <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "vend2"> <br>3.<input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "vend3">
   </p></li>
   <br>
-   <li><p>  The inspection schedule for the item is under:  <input style="margin-bottom: 0% ; width:250px;background-color:white;" type="text"  name = "inspectionunder" required>
+   <li><p>  The inspection schedule for the item is under:  <input style="margin-bottom: 0% ; width:350px;background-color:white;" type="text"  name = "inspectionunder" required>
   </p></li>
   <br>
-   <li><p>  Certified that the item is not available in stores:   <input style="margin-bottom: 0% ; width:250px; background-color:white;" type="text"  name = "certifiedavail" required>
+   <li><p>  Certified that the item is not available in stores:   <input style="margin-bottom: 0% ; width:350px; background-color:white;" type="text"  name = "certifiedavail" required>
   </p></li>
   <br>
   
 </ol>
-   <input type="file" name="sampleFile"  >
+    
+   <input type="file" name="sampleFile" class="btn">
+   Upload Description If any
    <input type="submit" value = "Save" class="btn"> 
    
   </form>
