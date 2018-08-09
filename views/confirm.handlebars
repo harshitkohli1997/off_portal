@@ -26,13 +26,11 @@ h1 {
     <div class="modal-content">
       {{#each result}}
     
-    <form action="/cancel?_method=DELETE" method = "post" id="delete-form">
-            <input type="hidden" name = "_method" value="DELETE">
-
-            <input type="text" style="width:0%;" name="indentno" value="{{indentno}}" readonly></input>
+    <form action="/editform" method = "post" >
+<input type="text" style="width:0%;" name="indentno" value="{{indentno}}" readonly></input>
             <br>
             
-            <button class="btn red" style="float:left;margin-left:23%;"><i class="fa fa-remove"></i> Cancel</button>
+            <button class="btn red" style="float:left;margin-left:23%;"><i class="fa fa-pencil"></i>Edit</button>
             
             
             </form>
@@ -127,39 +125,49 @@ h1 {
                 </tr>
             </thead>
             <tbody>
+                
                 <tr>
                     <td>{{one1}}</td>
                     <td>{{two1}}</td>
                     <td>{{three1}}</td>
                     <td>{{four1}}</td>
+                    <td>{{five1}}</td>
                 </tr>
+                {{#if one2}}
                 <tr>
                     <td>{{one2}}</td>
                     <td>{{two2}}</td>
                     <td>{{three2}}</td>
                     <td>{{four2}}</td>
+                    <td>{{five2}}</td>
                 </tr>
+                {{/if}}
+                {{#if one3}}
                 <tr>
                     <td>{{one3}}</td>
                     <td>{{two3}}</td>
                     <td>{{three3}}</td>
                     <td>{{four3}}</td>
+                    <td>{{five3}}</td>
                 </tr>
-
+               {{/if}}
+                {{#if one4}}
                 <tr>
                     <td>{{one4}}</td>
                     <td>{{two4}}</td>
                     <td>{{three4}}</td>
                     <td>{{four4}}</td>
+                    <td>{{five4}}</td>
                 </tr>
-
+{{/if}}          {{#if one5}}
                 <tr>
                     <td>{{one5}}</td>
                     <td>{{two5}}</td>
                     <td>{{three5}}</td>
                     <td>{{four5}}</td>
+                    <td>{{five5}}</td>
                 </tr>
-
+{{/if}}
             </tbody>
         </table>
 

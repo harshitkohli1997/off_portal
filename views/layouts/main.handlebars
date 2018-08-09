@@ -96,18 +96,20 @@ jQuery('a.add-row').click(function(event){
     {
     var newRow = jQuery('<tr><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "one4"' +
         counter + '"/></td><td><textarea style="margin-bottom: 0%; background-color:white;" type="text"  name = "two4"' +
-        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" type="text"  name = "three4"'+
-        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "four4"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" value = "0" type="number"  name = "three4"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" value = "0" type="number"  name = "four4"'+
         counter + '"/></td></tr>');
-    jQuery('table.table').append(newRow);
+    $(newRow).insertAfter("table.table tr:last");
+    //jQuery('table.table').append(newRow);
     }
     else {
          var newRow = jQuery('<tr><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "one5"' +
         counter + '"/></td><td><textarea style="margin-bottom: 0%; background-color:white;" type="text"  name = "two5"' +
-        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" type="text"  name = "three5"'+
-        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" type="text"  name = "four5"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%; background-color:white;" value = "0" type="number"  name = "three5"'+
+        counter + '"/></td><td><input style="margin-bottom: 0%;background-color:white;" value = "0" type="number"  name = "four5"'+
         counter + '"/></td></tr>');
-    jQuery('table.table').append(newRow);
+    $(newRow).insertAfter("table.table tr:last");
+    //jQuery('table.table').insertRow(newRow);
     }
     }
 

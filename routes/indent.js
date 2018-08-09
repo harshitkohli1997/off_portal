@@ -41,102 +41,141 @@ router.get('/indent/:id',ensureAuthenticated ,(req,res) => {
   
 });
 
-router.delete('/cancel', (req,res) => {
-     if(req.user[0].department === 'ITD')
-     {
-    
-    db.query('SELECT ITD from indentcount', (err,result) => {
-    if(err) throw err;
+router.post('/editform',(req,res) => {
+    const num = req.body.indentno;
+    db.query('select * from indent where indentno = ?', [req.body.indentno], (err,result) => {
+        res.render('user/editform', {
+            result:result
+        });
+    })
+})
 
-    const abc = result[0].ITD
-    
+
+router.post('/edit', (req,res) => {
+
+    if (!req.files.sampleFile)
+    {
+        console.log('not upload')
+    }
         
-    db.query('update indentcount set ?  where ?',[{ITD:abc-1},{ITD:abc}],(err,result) => {
+    else {
+        var path = 'uploads'+'/'+Date.now()+'.pdf';
+         var upload = 'public/'+path;
+        
+         let sampleFile = req.files.sampleFile;
+                sampleFile.mv(upload, function(err) {
+                  if (err)
+                    return console.log(err)
+               
+                  console.log('file uploaded!')
+                });
+            }
+    let indent = {
+        indentno:req.body.indentno,
+        date:req.body.date,
+        name:req.body.name,
+        division:req.body.division,
+        innernm1:req.body.innernm1,
+        innernm2:req.body.innernm2,
+        projectno:req.body.projectno,
+        deadline:req.body.deadline,
+        consequence:req.body.consequence,
+        equipdetails:req.body.equipdetails,
+        delreqnm:req.body.delreqnm,
+        fundavail:req.body.fundavail,
+        projectnm:req.body.projectnm,
+        budget:req.body.budget,
+        necfundavail:req.body.fundavail,
+        installreq:req.body.installreq,
+        vend1:req.body.vend1,
+        vend2:req.body.vend2,
+        vend3:req.body.vend3,
+        inspectionunder:req.body.inspectionunder,
+        certifiedavail:req.body.certifiedavail,
+        userid : req.user[0].id,
+       
+        one1:req.body.one1,
+        two1:req.body.two1,
+        three1:req.body.three1,
+        four1:req.body.four1,
+        
+        one2:req.body.one2,
+        two2:req.body.two2,
+        three2:req.body.three2,
+        four2:req.body.four2,
+
+        one3:req.body.one3,
+        two3:req.body.two3,
+        three3:req.body.three3,
+        four3:req.body.four3,
+
+        one4:req.body.one4,
+        two4:req.body.two4,
+        three4:req.body.three4,
+        four4:req.body.four4,
+
+        one5:req.body.one5,
+        two5:req.body.two5,
+        three5:req.body.three5,
+        four5:req.body.four5,
+        
+        description:path,
+        dpt:req.user[0].department
+    }
+  db.query('update indent set ? where ?', [{indentno:req.body.indentno,
+    date:req.body.date,
+    name:req.body.name,
+    division:req.body.division,
+    innernm1:req.body.innernm1,
+    innernm2:req.body.innernm2,
+    projectno:req.body.projectno,
+    deadline:req.body.deadline,
+    consequence:req.body.consequence,
+    equipdetails:req.body.equipdetails,
+    delreqnm:req.body.delreqnm,
+    fundavail:req.body.fundavail,
+    projectnm:req.body.projectnm,
+    budget:req.body.budget,
+    necfundavail:req.body.fundavail,
+    installreq:req.body.installreq,
+    vend1:req.body.vend1,
+    vend2:req.body.vend2,
+    vend3:req.body.vend3,
+    inspectionunder:req.body.inspectionunder,
+    certifiedavail:req.body.certifiedavail,
+    userid : req.user[0].id,
+   
+    one1:req.body.one1,
+    two1:req.body.two1,
+    three1:req.body.three1,
+    four1:req.body.four1,
+    
+    one2:req.body.one2,
+    two2:req.body.two2,
+    three2:req.body.three2,
+    four2:req.body.four2,
+
+    one3:req.body.one3,
+    two3:req.body.two3,
+    three3:req.body.three3,
+    four3:req.body.four3,
+
+    one4:req.body.one4,
+    two4:req.body.two4,
+    three4:req.body.three4,
+    four4:req.body.four4,
+
+    one5:req.body.one5,
+    two5:req.body.two5,
+    three5:req.body.three5,
+    four5:req.body.four5,
+    
+    description:path,
+    dpt:req.user[0].department},{indentno:req.body.indentno}], (err,result) => {
       if(err) throw err;
 
-    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
-        if(err) throw err;
-        res.redirect('/dashboard')
-    });
-    });
-});
-     }
-     else   if(req.user[0].department === 'CVO')
-     {
-    
-    db.query('SELECT CVO from indentcount', (err,result) => {
-    if(err) throw err;
-
-    const abc = result[0].CVO
-    
-        
-    db.query('update indentcount set ?  where ?',[{CVO:abc-1},{CVO:abc}],(err,result) => {
-      if(err) throw err;
-
-    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
-        if(err) throw err;
-        res.redirect('/dashboard')
-    });
-    });
-});
-     }
-     else   if(req.user[0].department === 'DGO')
-     {
-    
-    db.query('SELECT DGO from indentcount', (err,result) => {
-    if(err) throw err;
-
-    const abc = result[0].DGO
-    
-        
-    db.query('update indentcount set ?  where ?',[{DGO:abc-1},{DGO:abc}],(err,result) => {
-      if(err) throw err;
-
-    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
-        if(err) throw err;
-        res.redirect('/dashboard')
-    });
-    });
-});
-     }
-     else   if(req.user[0].department === 'CIVIL')
-     {
-    
-    db.query('SELECT CIVIL from indentcount', (err,result) => {
-    if(err) throw err;
-
-    const abc = result[0].CIVIL
-    
-        
-    db.query('update indentcount set ?  where ?',[{CIVIL:abc-1},{CIVIL:abc}],(err,result) => {
-      if(err) throw err;
-
-    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
-        if(err) throw err;
-        res.redirect('/dashboard')
-    });
-    });
-});
-     }
-     else   if(req.user[0].department === 'EIII')
-     {
-    
-    db.query('SELECT EIII from indentcount', (err,result) => {
-    if(err) throw err;
-
-    const abc = result[0].EIII
-    
-        
-    db.query('update indentcount set ?  where ?',[{EIII:abc-1},{EIII:abc}],(err,result) => {
-      if(err) throw err;
-
-    db.query('DELETE from indent where indentno =?', [req.body.indentno], (err,result) => {
-        if(err) throw err;
-        res.redirect('/dashboard')
-    });
-    });
-});
-     }
+      res.redirect('/dashboard')
+  })
 });
 
 
@@ -214,7 +253,39 @@ router.post('/', (req,res) => {
             const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].ITD
            
             
- 
+             const four1 = req.body.four1;
+             const three1 = req.body.three1;
+             const abc1 = four1*three1;
+
+             console.log(abc1)
+             
+             const four2 = req.body.four2;
+             const three2 = req.body.three2;
+             const abc2 = four2*three2;
+             console.log(abc2);
+
+             const four3 = req.body.four3;
+             const three3 = req.body.three3;
+             const abc3 = four3*three3;
+             console.log(abc3)
+             var abc4 = 1;
+             if(!req.body.one4){
+                  abc4 = 0;
+              }
+              else
+              {
+             const four4 = req.body.four4;
+             const three4 = req.body.three4;
+              abc4 = four4*three4;
+              }
+             console.log(abc4);
+                 var abc5  = 1;
+            if(!req.body.one5){ abc5 = 0;}
+            else{
+             const four5 = req.body.four5;
+             const three5 = req.body.three5;
+             abc5= four5*three5;
+            }
             // Use the mv() method to place the file somewhere on your server
             
             let indent = {
@@ -245,27 +316,32 @@ router.post('/', (req,res) => {
                 two1:req.body.two1,
                 three1:req.body.three1,
                 four1:req.body.four1,
+                five1:abc1,
                 
                 one2:req.body.one2,
                 two2:req.body.two2,
                 three2:req.body.three2,
                 four2:req.body.four2,
+                five2:abc2,
         
                 one3:req.body.one3,
                 two3:req.body.two3,
                 three3:req.body.three3,
                 four3:req.body.four3,
+                five3:abc3,
 
                 one4:req.body.one4,
                 two4:req.body.two4,
                 three4:req.body.three4,
                 four4:req.body.four4,
+                five4:abc4,
 
                 one5:req.body.one5,
                 two5:req.body.two5,
                 three5:req.body.three5,
                 four5:req.body.four5,
-                
+                five5:abc5,
+
                 description:path,
                 dpt:req.user[0].department
             }
@@ -301,59 +377,102 @@ router.post('/', (req,res) => {
  
              console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].EIII);
              const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].EIII
-             let indent = {
-                 indentno:dude,
-                 date:req.body.date,
-                 name:req.body.name,
-                 division:req.body.division,
-                 innernm1:req.body.innernm1,
-                 innernm2:req.body.innernm2,
-                 projectno:req.body.projectno,
-                 deadline:req.body.deadline,
-                 consequence:req.body.consequence,
-                 equipdetails:req.body.equipdetails,
-                 delreqnm:req.body.delreqnm,
-                 fundavail:req.body.fundavail,
-                 projectnm:req.body.projectnm,
-                 budget:req.body.budget,
-                 necfundavail:req.body.fundavail,
-                 installreq:req.body.installreq,
-                 vend1:req.body.vend1,
-                 vend2:req.body.vend2,
-                 vend3:req.body.vend3,
-                 inspectionunder:req.body.inspectionunder,
-                 certifiedavail:req.body.certifiedavail,
-                 userid : req.user[0].id,
+             
+             const four1 = req.body.four1;
+             const three1 = req.body.three1;
+             const abc1 = four1*three1;
+
+             console.log(abc1)
+             
+             const four2 = req.body.four2;
+             const three2 = req.body.three2;
+             const abc2 = four2*three2;
+             console.log(abc2);
+
+             const four3 = req.body.four3;
+             const three3 = req.body.three3;
+             const abc3 = four3*three3;
+             console.log(abc3)
+             var abc4 = 1;
+             if(!req.body.one4){
+                  abc4 = 0;
+              }
+              else
+              {
+             const four4 = req.body.four4;
+             const three4 = req.body.three4;
+              abc4 = four4*three4;
+              }
+             console.log(abc4);
+                 var abc5  = 1;
+            if(!req.body.one5){ abc5 = 0;}
+            else{
+             const four5 = req.body.four5;
+             const three5 = req.body.three5;
+             abc5= four5*three5;
+            }
+             
+            
+            // Use the mv() method to place the file somewhere on your server
+            
+            let indent = {
+                indentno:dude,
+                date:req.body.date,
+                name:req.body.name,
+                division:req.body.division,
+                innernm1:req.body.innernm1,
+                innernm2:req.body.innernm2,
+                projectno:req.body.projectno,
+                deadline:req.body.deadline,
+                consequence:req.body.consequence,
+                equipdetails:req.body.equipdetails,
+                delreqnm:req.body.delreqnm,
+                fundavail:req.body.fundavail,
+                projectnm:req.body.projectnm,
+                budget:req.body.budget,
+                necfundavail:req.body.fundavail,
+                installreq:req.body.installreq,
+                vend1:req.body.vend1,
+                vend2:req.body.vend2,
+                vend3:req.body.vend3,
+                inspectionunder:req.body.inspectionunder,
+                certifiedavail:req.body.certifiedavail,
+                userid : req.user[0].id,
+               
+                one1:req.body.one1,
+                two1:req.body.two1,
+                three1:req.body.three1,
+                four1:req.body.four1,
+                five1:abc1,
                 
-                 one1:req.body.one1,
-                 two1:req.body.two1,
-                 three1:req.body.three1,
-                 four1:req.body.four1,
-                 
-                 one2:req.body.one2,
-                 two2:req.body.two2,
-                 three2:req.body.three2,
-                 four2:req.body.four2,
-         
-                 one3:req.body.one3,
-                 two3:req.body.two3,
-                 three3:req.body.three3,
-                 four3:req.body.four3,
+                one2:req.body.one2,
+                two2:req.body.two2,
+                three2:req.body.three2,
+                four2:req.body.four2,
+                five2:abc2,
+        
+                one3:req.body.one3,
+                two3:req.body.two3,
+                three3:req.body.three3,
+                four3:req.body.four3,
+                five3:abc3,
 
-                 one4:req.body.one4,
-                 two4:req.body.two4,
-                 three4:req.body.three4,
-                 four4:req.body.four4,
- 
-                 one5:req.body.one5,
-                 two5:req.body.two5,
-                 three5:req.body.three5,
-                 four5:req.body.four5, 
+                one4:req.body.one4,
+                two4:req.body.two4,
+                three4:req.body.three4,
+                four4:req.body.four4,
+                five4:abc4,
 
-                 description:path,
+                one5:req.body.one5,
+                two5:req.body.two5,
+                three5:req.body.three5,
+                four5:req.body.four5,
+                five5:abc5,
 
-                 dpt:req.user[0].department
-             }
+                description:path,
+                dpt:req.user[0].department
+            }
+
  
              let sql1 = 'INSERT INTO indent SET ?';
      let query1 = db.query(sql1,indent,(err,result) => {
@@ -384,61 +503,100 @@ router.post('/', (req,res) => {
      
                  console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].CVO);
                  const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].CVO
-                 let indent = {
-                     indentno:dude,
-                     date:req.body.date,
-                     name:req.body.name,
-                     division:req.body.division,
-                     innernm1:req.body.innernm1,
-                     innernm2:req.body.innernm2,
-                     projectno:req.body.projectno,
-                     deadline:req.body.deadline,
-                     consequence:req.body.consequence,
-                     equipdetails:req.body.equipdetails,
-                     delreqnm:req.body.delreqnm,
-                     fundavail:req.body.fundavail,
-                     projectnm:req.body.projectnm,
-                     budget:req.body.budget,
-                     necfundavail:req.body.fundavail,
-                     installreq:req.body.installreq,
-                     vend1:req.body.vend1,
-                     vend2:req.body.vend2,
-                     vend3:req.body.vend3,
-                     inspectionunder:req.body.inspectionunder,
-                     certifiedavail:req.body.certifiedavail,
-                     userid : req.user[0].id,
-                    
-                     one1:req.body.one1,
-                     two1:req.body.two1,
-                     three1:req.body.three1,
-                     four1:req.body.four1,
-                     
-                     one2:req.body.one2,
-                     two2:req.body.two2,
-                     three2:req.body.three2,
-                     four2:req.body.four2,
-             
-                     one3:req.body.one3,
-                     two3:req.body.two3,
-                     three3:req.body.three3,
-                     four3:req.body.four3,
-
-                     one4:req.body.one4,
-                 two4:req.body.two4,
-                    three4:req.body.three4,
-                four4:req.body.four4,
-
-                one5:req.body.one5,
-                two5:req.body.two5,
-                three5:req.body.three5,
-                four5:req.body.four5,
-
-
-                     
-                     description:path,
+                 const four1 = req.body.four1;
+                 const three1 = req.body.three1;
+                 const abc1 = four1*three1;
     
-                     dpt:req.user[0].department
-                 }
+                 console.log(abc1)
+                 
+                 const four2 = req.body.four2;
+                 const three2 = req.body.three2;
+                 const abc2 = four2*three2;
+                 console.log(abc2);
+    
+                 const four3 = req.body.four3;
+                 const three3 = req.body.three3;
+                 const abc3 = four3*three3;
+                 console.log(abc3)
+                 var abc4 = 1;
+                 if(!req.body.one4){
+                      abc4 = 0;
+                  }
+                  else
+                  {
+                 const four4 = req.body.four4;
+                 const three4 = req.body.three4;
+                  abc4 = four4*three4;
+                  }
+                 console.log(abc4);
+                     var abc5  = 1;
+                if(!req.body.one5){ abc5 = 0;}
+                else{
+                 const four5 = req.body.four5;
+                 const three5 = req.body.three5;
+                 abc5= four5*three5;
+                }
+                
+                // Use the mv() method to place the file somewhere on your server
+                
+                let indent = {
+                    indentno:dude,
+                    date:req.body.date,
+                    name:req.body.name,
+                    division:req.body.division,
+                    innernm1:req.body.innernm1,
+                    innernm2:req.body.innernm2,
+                    projectno:req.body.projectno,
+                    deadline:req.body.deadline,
+                    consequence:req.body.consequence,
+                    equipdetails:req.body.equipdetails,
+                    delreqnm:req.body.delreqnm,
+                    fundavail:req.body.fundavail,
+                    projectnm:req.body.projectnm,
+                    budget:req.body.budget,
+                    necfundavail:req.body.fundavail,
+                    installreq:req.body.installreq,
+                    vend1:req.body.vend1,
+                    vend2:req.body.vend2,
+                    vend3:req.body.vend3,
+                    inspectionunder:req.body.inspectionunder,
+                    certifiedavail:req.body.certifiedavail,
+                    userid : req.user[0].id,
+                   
+                    one1:req.body.one1,
+                    two1:req.body.two1,
+                    three1:req.body.three1,
+                    four1:req.body.four1,
+                    five1:abc1,
+                    
+                    one2:req.body.one2,
+                    two2:req.body.two2,
+                    three2:req.body.three2,
+                    four2:req.body.four2,
+                    five2:abc2,
+            
+                    one3:req.body.one3,
+                    two3:req.body.two3,
+                    three3:req.body.three3,
+                    four3:req.body.four3,
+                    five3:abc3,
+    
+                    one4:req.body.one4,
+                    two4:req.body.two4,
+                    three4:req.body.three4,
+                    four4:req.body.four4,
+                    five4:abc4,
+    
+                    one5:req.body.one5,
+                    two5:req.body.two5,
+                    three5:req.body.three5,
+                    four5:req.body.four5,
+                    five5:abc5,
+    
+                    description:path,
+                    dpt:req.user[0].department
+                }
+    
      
                  let sql1 = 'INSERT INTO indent SET ?';
          let query1 = db.query(sql1,indent,(err,result) => {
@@ -468,59 +626,100 @@ router.post('/', (req,res) => {
          
                      console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].DGO);
                      const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].DGO
-                     let indent = {
-                         indentno:dude,
-                         date:req.body.date,
-                         name:req.body.name,
-                         division:req.body.division,
-                         innernm1:req.body.innernm1,
-                         innernm2:req.body.innernm2,
-                         projectno:req.body.projectno,
-                         deadline:req.body.deadline,
-                         consequence:req.body.consequence,
-                         equipdetails:req.body.equipdetails,
-                         delreqnm:req.body.delreqnm,
-                         fundavail:req.body.fundavail,
-                         projectnm:req.body.projectnm,
-                         budget:req.body.budget,
-                         necfundavail:req.body.fundavail,
-                         installreq:req.body.installreq,
-                         vend1:req.body.vend1,
-                         vend2:req.body.vend2,
-                         vend3:req.body.vend3,
-                         inspectionunder:req.body.inspectionunder,
-                         certifiedavail:req.body.certifiedavail,
-                         userid : req.user[0].id,
+                     const four1 = req.body.four1;
+             const three1 = req.body.three1;
+             const abc1 = four1*three1;
+
+             console.log(abc1)
+             
+             const four2 = req.body.four2;
+             const three2 = req.body.three2;
+             const abc2 = four2*three2;
+             console.log(abc2);
+
+             const four3 = req.body.four3;
+             const three3 = req.body.three3;
+             const abc3 = four3*three3;
+             console.log(abc3)
+             var abc4 = 1;
+             if(!req.body.one4){
+                  abc4 = 0;
+              }
+              else
+              {
+             const four4 = req.body.four4;
+             const three4 = req.body.three4;
+              abc4 = four4*three4;
+              }
+             console.log(abc4);
+                 var abc5  = 1;
+            if(!req.body.one5){ abc5 = 0;}
+            else{
+             const four5 = req.body.four5;
+             const three5 = req.body.three5;
+             abc5= four5*three5;
+            }
+                    
+                    // Use the mv() method to place the file somewhere on your server
+                    
+                    let indent = {
+                        indentno:dude,
+                        date:req.body.date,
+                        name:req.body.name,
+                        division:req.body.division,
+                        innernm1:req.body.innernm1,
+                        innernm2:req.body.innernm2,
+                        projectno:req.body.projectno,
+                        deadline:req.body.deadline,
+                        consequence:req.body.consequence,
+                        equipdetails:req.body.equipdetails,
+                        delreqnm:req.body.delreqnm,
+                        fundavail:req.body.fundavail,
+                        projectnm:req.body.projectnm,
+                        budget:req.body.budget,
+                        necfundavail:req.body.fundavail,
+                        installreq:req.body.installreq,
+                        vend1:req.body.vend1,
+                        vend2:req.body.vend2,
+                        vend3:req.body.vend3,
+                        inspectionunder:req.body.inspectionunder,
+                        certifiedavail:req.body.certifiedavail,
+                        userid : req.user[0].id,
+                       
+                        one1:req.body.one1,
+                        two1:req.body.two1,
+                        three1:req.body.three1,
+                        four1:req.body.four1,
+                        five1:abc1,
                         
-                         one1:req.body.one1,
-                         two1:req.body.two1,
-                         three1:req.body.three1,
-                         four1:req.body.four1,
-                         
-                         one2:req.body.one2,
-                         two2:req.body.two2,
-                         three2:req.body.three2,
-                         four2:req.body.four2,
-                 
-                         one3:req.body.one3,
-                         two3:req.body.two3,
-                         three3:req.body.three3,
-                         four3:req.body.four3,
-                         
-                         one4:req.body.one4,
-                two4:req.body.two4,
-                three4:req.body.three4,
-                four4:req.body.four4,
-
-                one5:req.body.one5,
-                two5:req.body.two5,
-                three5:req.body.three5,
-                four5:req.body.four5,
-
-                         description:path,
+                        one2:req.body.one2,
+                        two2:req.body.two2,
+                        three2:req.body.three2,
+                        four2:req.body.four2,
+                        five2:abc2,
+                
+                        one3:req.body.one3,
+                        two3:req.body.two3,
+                        three3:req.body.three3,
+                        four3:req.body.four3,
+                        five3:abc3,
         
-                         dpt:req.user[0].department
-                     }
+                        one4:req.body.one4,
+                        two4:req.body.two4,
+                        three4:req.body.three4,
+                        four4:req.body.four4,
+                        five4:abc4,
+        
+                        one5:req.body.one5,
+                        two5:req.body.two5,
+                        three5:req.body.three5,
+                        four5:req.body.four5,
+                        five5:abc5,
+        
+                        description:path,
+                        dpt:req.user[0].department
+                    }
+        
          
                      let sql1 = 'INSERT INTO indent SET ?';
              let query1 = db.query(sql1,indent,(err,result) => {
@@ -550,59 +749,100 @@ router.post('/', (req,res) => {
              
                          console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].CIVIL);
                          const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].CIVIL
-                         let indent = {
-                             indentno:dude,
-                             date:req.body.date,
-                             name:req.body.name,
-                             division:req.body.division,
-                             innernm1:req.body.innernm1,
-                             innernm2:req.body.innernm2,
-                             projectno:req.body.projectno,
-                             deadline:req.body.deadline,
-                             consequence:req.body.consequence,
-                             equipdetails:req.body.equipdetails,
-                             delreqnm:req.body.delreqnm,
-                             fundavail:req.body.fundavail,
-                             projectnm:req.body.projectnm,
-                             budget:req.body.budget,
-                             necfundavail:req.body.fundavail,
-                             installreq:req.body.installreq,
-                             vend1:req.body.vend1,
-                             vend2:req.body.vend2,
-                             vend3:req.body.vend3,
-                             inspectionunder:req.body.inspectionunder,
-                             certifiedavail:req.body.certifiedavail,
-                             userid : req.user[0].id,
-                            
-                             one1:req.body.one1,
-                             two1:req.body.two1,
-                             three1:req.body.three1,
-                             four1:req.body.four1,
-                             
-                             one2:req.body.one2,
-                             two2:req.body.two2,
-                             three2:req.body.three2,
-                             four2:req.body.four2,
-                     
-                             one3:req.body.one3,
-                             two3:req.body.two3,
-                             three3:req.body.three3,
-                             four3:req.body.four3,
-                             
-                             one4:req.body.one4,
-                two4:req.body.two4,
-                three4:req.body.three4,
-                four4:req.body.four4,
-
-                one5:req.body.one5,
-                two5:req.body.two5,
-                three5:req.body.three5,
-                four5:req.body.four5,
-
-                             description:path,
+                         const four1 = req.body.four1;
+                         const three1 = req.body.three1;
+                         const abc1 = four1*three1;
             
-                             dpt:req.user[0].department
-                         }
+                         console.log(abc1)
+                         
+                         const four2 = req.body.four2;
+                         const three2 = req.body.three2;
+                         const abc2 = four2*three2;
+                         console.log(abc2);
+            
+                         const four3 = req.body.four3;
+                         const three3 = req.body.three3;
+                         const abc3 = four3*three3;
+                         console.log(abc3)
+                         var abc4 = 1;
+                         if(!req.body.one4){
+                              abc4 = 0;
+                          }
+                          else
+                          {
+                         const four4 = req.body.four4;
+                         const three4 = req.body.three4;
+                          abc4 = four4*three4;
+                          }
+                         console.log(abc4);
+                             var abc5  = 1;
+                        if(!req.body.one5){ abc5 = 0;}
+                        else{
+                         const four5 = req.body.four5;
+                         const three5 = req.body.three5;
+                         abc5= four5*three5;
+                        }
+                        
+                        // Use the mv() method to place the file somewhere on your server
+                        
+                        let indent = {
+                            indentno:dude,
+                            date:req.body.date,
+                            name:req.body.name,
+                            division:req.body.division,
+                            innernm1:req.body.innernm1,
+                            innernm2:req.body.innernm2,
+                            projectno:req.body.projectno,
+                            deadline:req.body.deadline,
+                            consequence:req.body.consequence,
+                            equipdetails:req.body.equipdetails,
+                            delreqnm:req.body.delreqnm,
+                            fundavail:req.body.fundavail,
+                            projectnm:req.body.projectnm,
+                            budget:req.body.budget,
+                            necfundavail:req.body.fundavail,
+                            installreq:req.body.installreq,
+                            vend1:req.body.vend1,
+                            vend2:req.body.vend2,
+                            vend3:req.body.vend3,
+                            inspectionunder:req.body.inspectionunder,
+                            certifiedavail:req.body.certifiedavail,
+                            userid : req.user[0].id,
+                           
+                            one1:req.body.one1,
+                            two1:req.body.two1,
+                            three1:req.body.three1,
+                            four1:req.body.four1,
+                            five1:abc1,
+                            
+                            one2:req.body.one2,
+                            two2:req.body.two2,
+                            three2:req.body.three2,
+                            four2:req.body.four2,
+                            five2:abc2,
+                    
+                            one3:req.body.one3,
+                            two3:req.body.two3,
+                            three3:req.body.three3,
+                            four3:req.body.four3,
+                            five3:abc3,
+            
+                            one4:req.body.one4,
+                            two4:req.body.two4,
+                            three4:req.body.three4,
+                            four4:req.body.four4,
+                            five4:abc4,
+            
+                            one5:req.body.one5,
+                            two5:req.body.two5,
+                            three5:req.body.three5,
+                            four5:req.body.four5,
+                            five5:abc5,
+            
+                            description:path,
+                            dpt:req.user[0].department
+                        }
+            
              
                          let sql1 = 'INSERT INTO indent SET ?';
                  let query1 = db.query(sql1,indent,(err,result) => {
@@ -632,59 +872,100 @@ router.post('/', (req,res) => {
                  
                              console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].VIG);
                              const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].VIG
-                             let indent = {
-                                 indentno:dude,
-                                 date:req.body.date,
-                                 name:req.body.name,
-                                 division:req.body.division,
-                                 innernm1:req.body.innernm1,
-                                 innernm2:req.body.innernm2,
-                                 projectno:req.body.projectno,
-                                 deadline:req.body.deadline,
-                                 consequence:req.body.consequence,
-                                 equipdetails:req.body.equipdetails,
-                                 delreqnm:req.body.delreqnm,
-                                 fundavail:req.body.fundavail,
-                                 projectnm:req.body.projectnm,
-                                 budget:req.body.budget,
-                                 necfundavail:req.body.fundavail,
-                                 installreq:req.body.installreq,
-                                 vend1:req.body.vend1,
-                                 vend2:req.body.vend2,
-                                 vend3:req.body.vend3,
-                                 inspectionunder:req.body.inspectionunder,
-                                 certifiedavail:req.body.certifiedavail,
-                                 userid : req.user[0].id,
-                                
-                                 one1:req.body.one1,
-                                 two1:req.body.two1,
-                                 three1:req.body.three1,
-                                 four1:req.body.four1,
-                                 
-                                 one2:req.body.one2,
-                                 two2:req.body.two2,
-                                 three2:req.body.three2,
-                                 four2:req.body.four2,
-                         
-                                 one3:req.body.one3,
-                                 two3:req.body.two3,
-                                 three3:req.body.three3,
-                                 four3:req.body.four3,
-                                 
-                                 one4:req.body.one4,
+                             const four1 = req.body.four1;
+             const three1 = req.body.three1;
+             const abc1 = four1*three1;
+
+             console.log(abc1)
+             
+             const four2 = req.body.four2;
+             const three2 = req.body.three2;
+             const abc2 = four2*three2;
+             console.log(abc2);
+
+             const four3 = req.body.four3;
+             const three3 = req.body.three3;
+             const abc3 = four3*three3;
+             console.log(abc3)
+             var abc4 = 1;
+             if(!req.body.one4){
+                  abc4 = 0;
+              }
+              else
+              {
+             const four4 = req.body.four4;
+             const three4 = req.body.three4;
+              abc4 = four4*three4;
+              }
+             console.log(abc4);
+                 var abc5  = 1;
+            if(!req.body.one5){ abc5 = 0;}
+            else{
+             const four5 = req.body.four5;
+             const three5 = req.body.three5;
+             abc5= four5*three5;
+            }
+            
+            // Use the mv() method to place the file somewhere on your server
+            
+            let indent = {
+                indentno:dude,
+                date:req.body.date,
+                name:req.body.name,
+                division:req.body.division,
+                innernm1:req.body.innernm1,
+                innernm2:req.body.innernm2,
+                projectno:req.body.projectno,
+                deadline:req.body.deadline,
+                consequence:req.body.consequence,
+                equipdetails:req.body.equipdetails,
+                delreqnm:req.body.delreqnm,
+                fundavail:req.body.fundavail,
+                projectnm:req.body.projectnm,
+                budget:req.body.budget,
+                necfundavail:req.body.fundavail,
+                installreq:req.body.installreq,
+                vend1:req.body.vend1,
+                vend2:req.body.vend2,
+                vend3:req.body.vend3,
+                inspectionunder:req.body.inspectionunder,
+                certifiedavail:req.body.certifiedavail,
+                userid : req.user[0].id,
+               
+                one1:req.body.one1,
+                two1:req.body.two1,
+                three1:req.body.three1,
+                four1:req.body.four1,
+                five1:abc1,
+                
+                one2:req.body.one2,
+                two2:req.body.two2,
+                three2:req.body.three2,
+                four2:req.body.four2,
+                five2:abc2,
+        
+                one3:req.body.one3,
+                two3:req.body.two3,
+                three3:req.body.three3,
+                four3:req.body.four3,
+                five3:abc3,
+
+                one4:req.body.one4,
                 two4:req.body.two4,
                 three4:req.body.three4,
                 four4:req.body.four4,
+                five4:abc4,
 
                 one5:req.body.one5,
                 two5:req.body.two5,
                 three5:req.body.three5,
                 four5:req.body.four5,
-                                 
-                                 description:path,
-                
-                                 dpt:req.user[0].department
-                             }
+                five5:abc5,
+
+                description:path,
+                dpt:req.user[0].department
+            }
+
                  
                              let sql1 = 'INSERT INTO indent SET ?';
                      let query1 = db.query(sql1,indent,(err,result) => {
@@ -714,59 +995,100 @@ router.post('/', (req,res) => {
                      
                                  console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].dept1);
                                  const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].dept1
-                                 let indent = {
-                                     indentno:dude,
-                                     date:req.body.date,
-                                     name:req.body.name,
-                                     division:req.body.division,
-                                     innernm1:req.body.innernm1,
-                                     innernm2:req.body.innernm2,
-                                     projectno:req.body.projectno,
-                                     deadline:req.body.deadline,
-                                     consequence:req.body.consequence,
-                                     equipdetails:req.body.equipdetails,
-                                     delreqnm:req.body.delreqnm,
-                                     fundavail:req.body.fundavail,
-                                     projectnm:req.body.projectnm,
-                                     budget:req.body.budget,
-                                     necfundavail:req.body.fundavail,
-                                     installreq:req.body.installreq,
-                                     vend1:req.body.vend1,
-                                     vend2:req.body.vend2,
-                                     vend3:req.body.vend3,
-                                     inspectionunder:req.body.inspectionunder,
-                                     certifiedavail:req.body.certifiedavail,
-                                     userid : req.user[0].id,
-                                    
-                                     one1:req.body.one1,
-                                     two1:req.body.two1,
-                                     three1:req.body.three1,
-                                     four1:req.body.four1,
-                                     
-                                     one2:req.body.one2,
-                                     two2:req.body.two2,
-                                     three2:req.body.three2,
-                                     four2:req.body.four2,
-                             
-                                     one3:req.body.one3,
-                                     two3:req.body.two3,
-                                     three3:req.body.three3,
-                                     four3:req.body.four3,
-                                     
-                                     one4:req.body.one4,
-                two4:req.body.two4,
-                three4:req.body.three4,
-                four4:req.body.four4,
-
-                one5:req.body.one5,
-                two5:req.body.two5,
-                three5:req.body.three5,
-                four5:req.body.four5,
-                                     
-                                     description:path,
+                                 const four1 = req.body.four1;
+                                 const three1 = req.body.three1;
+                                 const abc1 = four1*three1;
                     
-                                     dpt:req.user[0].department
-                                 }
+                                 console.log(abc1)
+                                 
+                                 const four2 = req.body.four2;
+                                 const three2 = req.body.three2;
+                                 const abc2 = four2*three2;
+                                 console.log(abc2);
+                    
+                                 const four3 = req.body.four3;
+                                 const three3 = req.body.three3;
+                                 const abc3 = four3*three3;
+                                 console.log(abc3)
+                                 var abc4 = 1;
+                                 if(!req.body.one4){
+                                      abc4 = 0;
+                                  }
+                                  else
+                                  {
+                                 const four4 = req.body.four4;
+                                 const three4 = req.body.three4;
+                                  abc4 = four4*three4;
+                                  }
+                                 console.log(abc4);
+                                     var abc5  = 1;
+                                if(!req.body.one5){ abc5 = 0;}
+                                else{
+                                 const four5 = req.body.four5;
+                                 const three5 = req.body.three5;
+                                 abc5= four5*three5;
+                                }
+                                
+                                // Use the mv() method to place the file somewhere on your server
+                                
+                                let indent = {
+                                    indentno:dude,
+                                    date:req.body.date,
+                                    name:req.body.name,
+                                    division:req.body.division,
+                                    innernm1:req.body.innernm1,
+                                    innernm2:req.body.innernm2,
+                                    projectno:req.body.projectno,
+                                    deadline:req.body.deadline,
+                                    consequence:req.body.consequence,
+                                    equipdetails:req.body.equipdetails,
+                                    delreqnm:req.body.delreqnm,
+                                    fundavail:req.body.fundavail,
+                                    projectnm:req.body.projectnm,
+                                    budget:req.body.budget,
+                                    necfundavail:req.body.fundavail,
+                                    installreq:req.body.installreq,
+                                    vend1:req.body.vend1,
+                                    vend2:req.body.vend2,
+                                    vend3:req.body.vend3,
+                                    inspectionunder:req.body.inspectionunder,
+                                    certifiedavail:req.body.certifiedavail,
+                                    userid : req.user[0].id,
+                                   
+                                    one1:req.body.one1,
+                                    two1:req.body.two1,
+                                    three1:req.body.three1,
+                                    four1:req.body.four1,
+                                    five1:abc1,
+                                    
+                                    one2:req.body.one2,
+                                    two2:req.body.two2,
+                                    three2:req.body.three2,
+                                    four2:req.body.four2,
+                                    five2:abc2,
+                            
+                                    one3:req.body.one3,
+                                    two3:req.body.two3,
+                                    three3:req.body.three3,
+                                    four3:req.body.four3,
+                                    five3:abc3,
+                    
+                                    one4:req.body.one4,
+                                    two4:req.body.two4,
+                                    three4:req.body.three4,
+                                    four4:req.body.four4,
+                                    five4:abc4,
+                    
+                                    one5:req.body.one5,
+                                    two5:req.body.two5,
+                                    three5:req.body.three5,
+                                    four5:req.body.four5,
+                                    five5:abc5,
+                    
+                                    description:path,
+                                    dpt:req.user[0].department
+                                }
+                    
                      
                                  let sql1 = 'INSERT INTO indent SET ?';
                          let query1 = db.query(sql1,indent,(err,result) => {
@@ -791,59 +1113,100 @@ router.post('/', (req,res) => {
                          
                                      console.log(req.user[0].department+'/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/' +(date.getMonth()+1) +'/'+result[0].dept2);
                                      const dude = req.user[0].department+ '/' + date.getFullYear() +`-`+ (date.getFullYear()%100+1)+'/'+(date.getMonth()+1) + '/'+result[0].dept2
-                                     let indent = {
-                                         indentno:dude,
-                                         date:req.body.date,
-                                         name:req.body.name,
-                                         division:req.body.division,
-                                         innernm1:req.body.innernm1,
-                                         innernm2:req.body.innernm2,
-                                         projectno:req.body.projectno,
-                                         deadline:req.body.deadline,
-                                         consequence:req.body.consequence,
-                                         equipdetails:req.body.equipdetails,
-                                         delreqnm:req.body.delreqnm,
-                                         fundavail:req.body.fundavail,
-                                         projectnm:req.body.projectnm,
-                                         budget:req.body.budget,
-                                         necfundavail:req.body.fundavail,
-                                         installreq:req.body.installreq,
-                                         vend1:req.body.vend1,
-                                         vend2:req.body.vend2,
-                                         vend3:req.body.vend3,
-                                         inspectionunder:req.body.inspectionunder,
-                                         certifiedavail:req.body.certifiedavail,
-                                         userid : req.user[0].id,
-                                        
-                                         one1:req.body.one1,
-                                         two1:req.body.two1,
-                                         three1:req.body.three1,
-                                         four1:req.body.four1,
-                                         
-                                         one2:req.body.one2,
-                                         two2:req.body.two2,
-                                         three2:req.body.three2,
-                                         four2:req.body.four2,
-                                 
-                                         one3:req.body.one3,
-                                         two3:req.body.two3,
-                                         three3:req.body.three3,
-                                         four3:req.body.four3,
-                                        
-                                         one4:req.body.one4,
-                                         two4:req.body.two4,
-                                         three4:req.body.three4,
-                                         four4:req.body.four4,
-                         
-                                         one5:req.body.one5,
-                                         two5:req.body.two5,
-                                         three5:req.body.three5,
-                                         four5:req.body.four5,
-                                         
-                                         description:path,
+                                     const four1 = req.body.four1;
+                                     const three1 = req.body.three1;
+                                     const abc1 = four1*three1;
                         
-                                         dpt:req.user[0].department
-                                     }
+                                     console.log(abc1)
+                                     
+                                     const four2 = req.body.four2;
+                                     const three2 = req.body.three2;
+                                     const abc2 = four2*three2;
+                                     console.log(abc2);
+                        
+                                     const four3 = req.body.four3;
+                                     const three3 = req.body.three3;
+                                     const abc3 = four3*three3;
+                                     console.log(abc3)
+                                     var abc4 = 1;
+                                     if(!req.body.one4){
+                                          abc4 = 0;
+                                      }
+                                      else
+                                      {
+                                     const four4 = req.body.four4;
+                                     const three4 = req.body.three4;
+                                      abc4 = four4*three4;
+                                      }
+                                     console.log(abc4);
+                                         var abc5  = 1;
+                                    if(!req.body.one5){ abc5 = 0;}
+                                    else{
+                                     const four5 = req.body.four5;
+                                     const three5 = req.body.three5;
+                                     abc5= four5*three5;
+                                    }
+                                    
+                                    // Use the mv() method to place the file somewhere on your server
+                                    
+                                    let indent = {
+                                        indentno:dude,
+                                        date:req.body.date,
+                                        name:req.body.name,
+                                        division:req.body.division,
+                                        innernm1:req.body.innernm1,
+                                        innernm2:req.body.innernm2,
+                                        projectno:req.body.projectno,
+                                        deadline:req.body.deadline,
+                                        consequence:req.body.consequence,
+                                        equipdetails:req.body.equipdetails,
+                                        delreqnm:req.body.delreqnm,
+                                        fundavail:req.body.fundavail,
+                                        projectnm:req.body.projectnm,
+                                        budget:req.body.budget,
+                                        necfundavail:req.body.fundavail,
+                                        installreq:req.body.installreq,
+                                        vend1:req.body.vend1,
+                                        vend2:req.body.vend2,
+                                        vend3:req.body.vend3,
+                                        inspectionunder:req.body.inspectionunder,
+                                        certifiedavail:req.body.certifiedavail,
+                                        userid : req.user[0].id,
+                                       
+                                        one1:req.body.one1,
+                                        two1:req.body.two1,
+                                        three1:req.body.three1,
+                                        four1:req.body.four1,
+                                        five1:abc1,
+                                        
+                                        one2:req.body.one2,
+                                        two2:req.body.two2,
+                                        three2:req.body.three2,
+                                        four2:req.body.four2,
+                                        five2:abc2,
+                                
+                                        one3:req.body.one3,
+                                        two3:req.body.two3,
+                                        three3:req.body.three3,
+                                        four3:req.body.four3,
+                                        five3:abc3,
+                        
+                                        one4:req.body.one4,
+                                        two4:req.body.two4,
+                                        three4:req.body.three4,
+                                        four4:req.body.four4,
+                                        five4:abc4,
+                        
+                                        one5:req.body.one5,
+                                        two5:req.body.two5,
+                                        three5:req.body.three5,
+                                        four5:req.body.four5,
+                                        five5:abc5,
+                        
+                                        description:path,
+                                        dpt:req.user[0].department
+                                    }
+                        
                          
                                      let sql1 = 'INSERT INTO indent SET ?';
                              let query1 = db.query(sql1,indent,(err,result) => {

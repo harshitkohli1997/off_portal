@@ -23,7 +23,7 @@
         <div class="column2">
             <div id="texts" style="display:inline; white-space:nowrap;">
                 <h5 class="first">
-                    <b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4>
+                    <font size = "4"><b>वैज्ञानिक तथा औद्योगिक अनुसंधान परिषद</h4>
                     </b>
                     <h6 class="h6col">
                         <b>2- रफी मार्ग, नई दिल्ली, दिल्ली 110001</b>
@@ -35,7 +35,7 @@
                     <h6 class="h6col">
                         <b> 2- Rafi Marg, New Delhi, Delhi 110001
                             <b>
-                    </h6>
+                    </h6></font>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
     <div class="indentform">
         <h5 class="alignto">
             <b>
-                <u>खरीद मांग पत्र/Purchase Indent</u>
+               <font size = "3.5"><u>खरीद मांग पत्र/Purchase Indent</u></font>
             </b>
         </h5>
 
@@ -54,14 +54,14 @@
             <div class="column3">
                 <p>
                 
-                        <span class="space">मांग पत्र संख्या  / INDENT NO : {{indentno}}</span>
+                        <font size = "2.5"><span class="space">मांग पत्र संख्या  / INDENT NO : {{indentno}}</span></font>
                 
                 </p>
             </div>
             <div class="column4">
                 <p>
                     
-                        <span class="space1">दिनांक/ Date : {{formatDate date 'MMMM Do YYYY'}}</span>
+                       <font size ="2.5"> <span class="space1">दिनांक/ Date : {{formatDate date 'MMMM Do YYYY'}}</span></font>
                         
                         
                                     </p>
@@ -70,16 +70,16 @@
             <div class="column3">
                 <p>
                     <b>
-                       Name & Designation of Indenter : {{name}}
-                       <br>मांगकर्ता का नाम और पदनाम
+                      <font size = "2.5"> Name & Designation of Indenter : {{name}}
+                       <br>मांगकर्ता का नाम और पदनाम</font>
                     </b>
                 </p>
             </div>
             <div class="column4">
                 <p>
-                    <b>
+                    <b><font size ="2.5">
                         Division : {{division}}
-                        <br>अनुभाग 
+                        <br>अनुभाग </font>
                     </b>
                 </p>
             </div>
@@ -98,34 +98,43 @@
                     <th>Sr.no</th>
                     <th>Name of Item/Material</th>
                     <th>Qty</th>
+                    <th>Unit Price <br>(₹)</th>
                     <th>Estimated cost(`)</th>
                 </tr>
-            </thead>
+            </thead>    
             <tbody>
                 <tr>
                     <td>{{one1}}</td>
                     <td>{{two1}}</td>
                     <td>{{three1}}</td>
                     <td>{{four1}}</td>
+                    <td>{{five1}}</td>
                 </tr>
+               {{#if one2}}
                 <tr>
                     <td>{{one2}}</td>
                     <td>{{two2}}</td>
                     <td>{{three2}}</td>
                     <td>{{four2}}</td>
+                    <td>{{five2}}</td>
                 </tr>
+                {{/if}}
+                {{#if one3}}
                 <tr>
                     <td>{{one3}}</td>
                     <td>{{two3}}</td>
                     <td>{{three3}}</td>
                     <td>{{four3}}</td>
-                </tr>
+                    <td>{{five3}}</td>
+                    
+                </tr>{{/if}}
                 {{#if one4}}
                 <tr>
                     <td>{{one4}}</td>
                     <td>{{two4}}</td>
                     <td>{{three4}}</td>
                     <td>{{four4}}</td>
+                    <td>{{five4}}</td>
                 </tr>
                 {{/if}}
                 {{#if one5}}
@@ -134,19 +143,19 @@
                     <td>{{two5}}</td>
                     <td>{{three5}}</td>
                     <td>{{four5}}</td>
+                    <td>{{five5}}</td>
                 </tr>
                 {{/if}}
 
             </tbody>
         </table>
-
         <ol>
-            <li>
-                <p>प्रमाणित किया जाता है की मेरी जानकारी तथा विश्वास के अनुसार इस मांग पत्र की मदे (वस्तुए)
+           
+                 <li><p>प्रमाणित किया जाता है की मेरी जानकारी तथा विश्वास के अनुसार इस मांग पत्र की मदे (वस्तुए)
 मैसर्स / Certified that to the best of our knowledge, the items indented are the propietary items of M/s:
                     <u>&emsp; {{innernm1}} &emsp;</u>की मालिकाना  (प्रोपराइटरी) मदे (वस्तुए) है तथा इनके विपणन भारत मई इसके एक मात्र वितरक मैसर्स / and marketed by their only authorize disributer.M/s:
                     <u>&emsp;{{innernm2}}&emsp;</u>द्वारा किया जाता है यदि उपयुक्त प्रमाण पत्र सही नहीं पाया जाता है तो इस स्थिति में/ हम जिमिदार होंगे / in India. We shall be held responsible in case the certificate is found to
-                    be incorrect.
+                    be incorrect.</font>
                 </p>
             </li>
             <br>
@@ -154,21 +163,21 @@
                 <p>यह मांग आपातिक है  तथा पूर्वानुमान नहीं लगाया जा सका , ये मदें एक प्रायोजित/ घरेलु परियोजना संख्या / The requirement could not be anticipated earlier, is emergent is nature. The items are required for Project
                     No .
                     <u>&emsp;{{projectno}}&emsp;</u>के लिये अपेक्षित है माल सुपुर्दगी की अंतिम तारीख / a sponsored / In house project and the deadline for delivery is
-                    <u>&emsp;{{deadline}}&emsp;</u>यदि और अंतिम तारीख तक इस मद की खरीद नहीं की जा सकी तो इसका परिणाम यह  होगा की / The consequence if the item is not procured within the dead line is {{consequence}}
-                </p>
+                    <u>&emsp;{{deadline}}&emsp;</u>यदि और अंतिम तारीख तक इस मद की खरीद नहीं की जा सकी तो इसका परिणाम यह  होगा की / The consequence if the item is not procured within the dead line is <u>&emsp;{{consequence}}&emsp;</u>
+                </font></p>
             </li>
             <br>
             <li>
                 <p>उपस्कर की आयु कल पुर्जा की उपलब्धता रखरखाव में आसानी अदि से सम्बधित विवरण 
  / The details about the equipment, availability of spares, ease of maintainance etc.
                     <u> &emsp;{{equipdetails}}&emsp;</u>
-                </p>
+                </font></p>
             </li>
             <br>
             <li>
                 <p>
                     <u>&emsp;{{delreqnm}}&emsp;</u>को मद की सुपुर्दगी की जाए / The delivery of the item is required by.
-                </p>
+                </font></p>
             </li>
             <br>
             <li>
@@ -181,19 +190,19 @@
                     <br><br>
                     क्या इस मद(बस्तु) को प्राप्त करने के लिये आवश्यक निधि उपलब्ध है 
                     <br> Whether necessary fund is available to process this item
-                    <br>(This should commensurate with the delivery Schedule)&emsp;&emsp;&emsp;<u>&emsp;{{necfundavail}}&emsp;</u>
+                    <br>(This should commensurate with the delivery Schedule)&emsp;<u>&emsp;{{necfundavail}}&emsp;</u>
 <br>
                     (ये माल सुपुर्दगी कार्यक्रम के अनुरूप होना चाहिये)
                     <br>पीएमई/लेखा / PME/Accounts
                     
                     <br>
-<br><br><br><br>
+<br><br></font></p>
                     <li>
                         
                         <p>अधिष्ठापन आवश्यकताए जैसे क्षेत्र, बिजली ,सिविल कार्य आदि तैयार है  / The installation Requirement like area , power , civil works etc. are ready ?
                             <u>&emsp; {{installreq}}&emsp;</u>
 
-                        </p>
+                        </p></font>
                     </li>
 
 
@@ -205,23 +214,24 @@
                             <u>&emsp; {{vend2}}&emsp; </u>
                             <br>3.
                             <u>&emsp;{{vend3}}&emsp;</u>
-                        </p>
+                        </font></p>
                     </li>
                     <br>
                     <li>
                         <p>मद(वस्तुओ) के लिये निरिक्षण  / The inspection schedule for the item is under:
                             <u> &emsp; {{inspectionunder}} &emsp;</u>
-                        </p>
+                        </font></p>
                     </li>
                     <br>
                     <li>
                         <p> प्रमाणित किया जाता है की ये सामान भण्डार में उपलब्ध नहीं है  / Certified that the item is not available in stores:
                             <u> &emsp;{{certifiedavail}}&emsp;</u>
-                        </p>
+                        </font></p>
                     </li>
                     <br>
 
         </ol>
+        </font>
 
     </div>
 
@@ -289,10 +299,10 @@
             '}' +
             '.h6col{' +
             'color: black;' +
-            'margin-left:90px; margin-top:1px; margin-bottom:2px;' +
+            'margin-left:80px; margin-top:1px; margin-bottom:2px;' +
             '}' +
             '.first{' +
-            ' margin-left: 55px;margin-bottom:2px;' +
+            ' margin-left: 40px;margin-bottom:2px;' +
             '}' +
             '.second{margin-bottom:2px; margin-top:2px;}' +
             'img{margin-top:15%;height:30:width:20}' +
