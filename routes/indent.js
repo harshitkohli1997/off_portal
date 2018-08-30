@@ -1277,7 +1277,9 @@ router.post('/formremarks', (req,res) => {
         console.log(req.body.indentno)
           db.query('INSERT INTO REMARKS SET ?', deldesc, (err,result) => {
           if(err) throw err;
+          
           res.redirect('/viewall')
+          req.flash('succes_msg','Form Deleted')
 });
 });
 router.get('/viewall',ensureAuthenticated, (req,res) => {
@@ -1375,6 +1377,7 @@ router.post('/userremarks', (req,res) => {
           db.query('INSERT INTO userremarks SET ?', deldesc, (err,result) => {
           if(err) throw err;
           res.redirect('/viewuser')
+          req.flash('success_msg','User Deleted')
 });
 });
 
