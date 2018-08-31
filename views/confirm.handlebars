@@ -121,6 +121,7 @@ h1 {
                     <th>Sr.no</th>
                     <th>Name of Item/Material</th>
                     <th>Qty</th>
+                     <th>Unit Price <br>(₹)</th>
                     <th>Estimated cost(`)</th>
                 </tr>
             </thead>
@@ -169,6 +170,10 @@ h1 {
                 </tr>
 {{/if}}
             </tbody>
+            <tr>
+                <td colspan="3"> Total Estimated Cost</td>
+                <td colspan="2">{{total}}</td>
+                </tr>
         </table>
 
         <ol>

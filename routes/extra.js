@@ -74,6 +74,7 @@ router.post('/', (req,res) => {
              const three5 = req.body.three5;
              abc5= four5*three5;
             }
+            const total = abc1+abc2+abc3+abc4+abc5;
             // Use the mv() method to place the file somewhere on your server
             
             let indent = {
@@ -131,7 +132,8 @@ router.post('/', (req,res) => {
                 five5:abc5,
 
                 description:path,
-                dpt:req.user[0].department
+                dpt:req.user[0].department,
+                total:total
             }
 
         
@@ -199,7 +201,7 @@ router.post('/', (req,res) => {
              const three5 = req.body.three5;
              abc5= four5*three5;
             }
-             
+            const total = abc1+abc2+abc3+abc4+abc5;
             
             // Use the mv() method to place the file somewhere on your server
             
@@ -258,7 +260,8 @@ router.post('/', (req,res) => {
                 five5:abc5,
 
                 description:path,
-                dpt:req.user[0].department
+                dpt:req.user[0].department,
+                total:total
             }
 
  
@@ -324,7 +327,7 @@ router.post('/', (req,res) => {
                  const three5 = req.body.three5;
                  abc5= four5*three5;
                 }
-                
+                const total = abc1+abc2+abc3+abc4+abc5;
                 // Use the mv() method to place the file somewhere on your server
                 
                 let indent = {
@@ -382,7 +385,8 @@ router.post('/', (req,res) => {
                     five5:abc5,
     
                     description:path,
-                    dpt:req.user[0].department
+                    dpt:req.user[0].department,
+                    total:total
                 }
     
      
@@ -447,7 +451,7 @@ router.post('/', (req,res) => {
              const three5 = req.body.three5;
              abc5= four5*three5;
             }
-                    
+            const total = abc1+abc2+abc3+abc4+abc5;
                     // Use the mv() method to place the file somewhere on your server
                     
                     let indent = {
@@ -505,7 +509,8 @@ router.post('/', (req,res) => {
                         five5:abc5,
         
                         description:path,
-                        dpt:req.user[0].department
+                        dpt:req.user[0].department,
+                        total:total
                     }
         
          
@@ -570,6 +575,7 @@ router.post('/', (req,res) => {
                          const three5 = req.body.three5;
                          abc5= four5*three5;
                         }
+                        
 
                         const total = abc1+abc2+abc3+abc4+abc5;
                         
@@ -696,7 +702,7 @@ router.post('/', (req,res) => {
              const three5 = req.body.three5;
              abc5= four5*three5;
             }
-            
+            const total = abc1+abc2+abc3+abc4+abc5;
             // Use the mv() method to place the file somewhere on your server
             
             let indent = {
@@ -754,7 +760,8 @@ router.post('/', (req,res) => {
                 five5:abc5,
 
                 description:path,
-                dpt:req.user[0].department
+                dpt:req.user[0].department,
+                total:total
             }
 
                  
@@ -820,6 +827,7 @@ router.post('/', (req,res) => {
                                  abc5= four5*three5;
                                 }
                                 
+                                const total = abc1+abc2+abc3+abc4+abc5;
                                 // Use the mv() method to place the file somewhere on your server
                                 
                                 let indent = {
@@ -877,7 +885,8 @@ router.post('/', (req,res) => {
                                     five5:abc5,
                     
                                     description:path,
-                                    dpt:req.user[0].department
+                                    dpt:req.user[0].department,
+                                    total:total
                                 }
                     
                      
