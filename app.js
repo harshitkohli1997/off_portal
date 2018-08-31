@@ -16,7 +16,8 @@ const db = require('./database/db')
 const app = express();
 
 const indent = require('./routes/indent');
-const user = require('./routes/user')
+const user = require('./routes/user');
+const extra =require('./routes/extra')
 
 // Passport Config
 require('./config/passport')(passport);
@@ -89,7 +90,7 @@ app.use(function(req, res, next){
 
 
 
-
+app.use('/',extra);
 app.use('/',indent);
 app.use('/user',user)
 
