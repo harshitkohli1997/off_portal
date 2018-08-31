@@ -387,6 +387,38 @@ router.post('/viewall', (req,res) => {
             })
         });
     }}
+else
+    if(req.body.fromdate && req.body.todate)
+    {
+ 
+        if(req.body.department === 'Dept1')
+        {
+        db.query(`Select * from indent where dpt = 'CIVIL' and date between? and?`,[req.body.datefrom,req.body.dateto],(err,result) => {
+            if(err) throw err;
+            
+            res.render('user/viewall',{
+                result:result,
+                
+                
+            })
+        });
+    }}
+else
+    if(req.body.fromdate && req.body.todate)
+    {
+ 
+        if(req.body.department === 'Dept2')
+        {
+        db.query(`Select * from indent where dpt = 'CIVIL' and date between? and?`,[req.body.datefrom,req.body.dateto],(err,result) => {
+            if(err) throw err;
+            
+            res.render('user/viewall',{
+                result:result,
+                
+                
+            })
+        });
+    }}
     else {
         db.query(`Select * from indent where dpt = ?`,[req.body.department],(err,result) => {
             if(err) throw err;
